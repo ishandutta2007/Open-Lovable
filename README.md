@@ -7,12 +7,12 @@
 - **Potential Limitations**: As a basic version, it focuses on web apps; mobile support and advanced scaling may require manual extensions. Evidence from similar tools suggests high success rates for MVPs, but complex apps benefit from iterative refinements.
 
 ### Getting Started
-To set up Open-Lovable, clone the hypothetical repository (e.g., from GitHub at `github.com/yourusername/grokbuilder`) and follow these steps:
+To set up Open-Lovable, clone the hypothetical repository (e.g., from GitHub at `github.com/yourusername/Open-Lovable`) and follow these steps:
 
 1. **Prerequisites**: Python 3.10+, Node.js 18+, and an API key from your preferred AI provider (e.g., OpenAI).
 2. **Installation**:
-   - `git clone https://github.com/yourusername/grokbuilder.git`
-   - `cd grokbuilder`
+   - `git clone https://github.com/yourusername/Open-Lovable.git`
+   - `cd Open-Lovable`
    - `pip install -r requirements.txt` (includes Streamlit, LangChain, OpenAI SDK)
    - `npm install` for frontend dependencies.
 3. **Run Locally**: `streamlit run app.py` to launch the chat interface. Enter prompts like "Build a note-taking app with user authentication and image uploads."
@@ -74,8 +74,8 @@ Setting up Open-Lovable is straightforward, requiring minimal dependencies to ge
 ### Step-by-Step Guide
 1. **Clone the Repository**:
    ```
-   git clone https://github.com/yourusername/grokbuilder.git
-   cd grokbuilder
+   git clone https://github.com/yourusername/Open-Lovable.git
+   cd Open-Lovable
    ```
 
 2. **Install Python Dependencies**:
@@ -135,8 +135,8 @@ Check `CONTRIBUTING.md` for more details. Early contributors get shoutouts in re
 Licensed under Apache 2.0—free to use, modify, and distribute. See `LICENSE` file for full terms. This ensures broad compatibility while protecting core innovations, similar to Dyad's hybrid licensing approach.
 
 ## 🔗 Resources and Community
-- **Website**: [grokbuilder.dev](https://grokbuilder.dev) (placeholder for future site)
-- **Discord/Reddit**: Join discussions on r/grokbuilder for tips and project shares.
+- **Website**: [Open-Lovable.dev](https://Open-Lovable.dev) (placeholder for future site)
+- **Discord/Reddit**: Join discussions on r/Open-Lovable for tips and project shares.
 - **Documentation**: Full docs in `/docs` folder, covering API endpoints and extension guides.
 - **Related Tools**: Explore integrations with open-source ecosystems like LangChain, Supabase, and Ollama.
 
