@@ -7,11 +7,11 @@
 - **Potential Limitations**: As a basic version, it focuses on web apps; mobile support and advanced scaling may require manual extensions. Evidence from similar tools suggests high success rates for MVPs, but complex apps benefit from iterative refinements.
 
 ### Getting Started
-To set up Open-Lovable, clone the hypothetical repository (e.g., from GitHub at `github.com/yourusername/Open-Lovable`) and follow these steps:
+To set up Open-Lovable, clone the hypothetical repository (e.g., from GitHub at `github.com/ishandutta2007/Open-Lovable`) and follow these steps:
 
 1. **Prerequisites**: Python 3.10+, Node.js 18+, and an API key from your preferred AI provider (e.g., OpenAI).
 2. **Installation**:
-   - `git clone https://github.com/yourusername/Open-Lovable.git`
+   - `git clone https://github.com/ishandutta2007/Open-Lovable.git`
    - `cd Open-Lovable`
    - `pip install -r requirements.txt` (includes Streamlit, LangChain, OpenAI SDK)
    - `npm install` for frontend dependencies.
@@ -74,7 +74,7 @@ Setting up Open-Lovable is straightforward, requiring minimal dependencies to ge
 ### Step-by-Step Guide
 1. **Clone the Repository**:
    ```
-   git clone https://github.com/yourusername/Open-Lovable.git
+   git clone https://github.com/ishandutta2007/Open-Lovable.git
    cd Open-Lovable
    ```
 
