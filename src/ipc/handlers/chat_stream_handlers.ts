@@ -1377,11 +1377,11 @@ ${formattedSearchReplaceIssues}`,
           if (
             !abortController.signal.aborted &&
             settings.selectedChatMode !== "ask" &&
-            hasUnclosedOpen-LovableWrite(fullResponse)
+            hasUnclosedOpenLovableWrite(fullResponse)
           ) {
             let continuationAttempts = 0;
             while (
-              hasUnclosedOpen-LovableWrite(fullResponse) &&
+              hasUnclosedOpenLovableWrite(fullResponse) &&
               continuationAttempts < 2 &&
               !abortController.signal.aborted
             ) {
@@ -1860,7 +1860,7 @@ export function removeOpenLovableTags(text: string): string {
   return text.replace(openlovableRegex, "").trim();
 }
 
-export function hasUnclosedOpen-LovableWrite(text: string): boolean {
+export function hasUnclosedOpenLovableWrite(text: string): boolean {
   // Find the last opening openlovable-write tag
   const openRegex = /<openlovable-write[^>]*>/g;
   let lastOpenIndex = -1;

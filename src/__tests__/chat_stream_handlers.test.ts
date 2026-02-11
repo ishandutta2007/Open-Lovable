@@ -10,7 +10,7 @@ import {
 import { processFullResponseActions } from "../ipc/processors/response_processor";
 import {
   removeOpenLovableTags,
-  hasUnclosedOpen-LovableWrite,
+  hasUnclosedOpenLovableWrite,
 } from "../ipc/handlers/chat_stream_handlers";
 import fs from "node:fs";
 import { db } from "../db";
@@ -1080,34 +1080,34 @@ const special = "Special chars: @#$%^&*()[]{}|\\";
   });
 });
 
-describe("hasUnclosedOpen-LovableWrite", () => {
+describe("hasUnclosedOpenLovableWrite", () => {
   it("should return false when there are no openlovable-write tags", () => {
     const text = "This is just regular text without any openlovable tags.";
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(false);
   });
 
   it("should return false when openlovable-write tag is properly closed", () => {
     const text = `<openlovable-write path="src/file.js">console.log('hello');</openlovable-write>`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(false);
   });
 
   it("should return true when openlovable-write tag is not closed", () => {
     const text = `<openlovable-write path="src/file.js">console.log('hello');`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(true);
   });
 
   it("should return false when openlovable-write tag with attributes is properly closed", () => {
     const text = `<openlovable-write path="src/file.js" description="A test file">console.log('hello');</openlovable-write>`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(false);
   });
 
   it("should return true when openlovable-write tag with attributes is not closed", () => {
     const text = `<openlovable-write path="src/file.js" description="A test file">console.log('hello');`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(true);
   });
 
@@ -1115,7 +1115,7 @@ describe("hasUnclosedOpen-LovableWrite", () => {
     const text = `<openlovable-write path="src/file1.js">code1</openlovable-write>
     Some text in between
     <openlovable-write path="src/file2.js">code2</openlovable-write>`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(false);
   });
 
@@ -1123,7 +1123,7 @@ describe("hasUnclosedOpen-LovableWrite", () => {
     const text = `<openlovable-write path="src/file1.js">code1</openlovable-write>
     Some text in between
     <openlovable-write path="src/file2.js">code2`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(true);
   });
 
@@ -1131,7 +1131,7 @@ describe("hasUnclosedOpen-LovableWrite", () => {
     const text = `<openlovable-write path="src/file1.js">code1
     Some text in between
     <openlovable-write path="src/file2.js">code2</openlovable-write>`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(false);
   });
 
@@ -1149,7 +1149,7 @@ const Component = () => {
 
 export default Component;
 </openlovable-write>`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(false);
   });
 
@@ -1166,7 +1166,7 @@ const Component = () => {
 };
 
 export default Component;`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(true);
   });
 
@@ -1175,7 +1175,7 @@ export default Component;`;
 const message = "Hello 'world'";
 const regex = /<div[^>]*>/g;
 </openlovable-write>`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(false);
   });
 
@@ -1183,7 +1183,7 @@ const regex = /<div[^>]*>/g;
     const text = `Some text before the tag
 <openlovable-write path="src/file.js">console.log('hello');</openlovable-write>
 Some text after the tag`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(false);
   });
 
@@ -1191,19 +1191,19 @@ Some text after the tag`;
     const text = `Some text before the tag
 <openlovable-write path="src/file.js">console.log('hello');
 Some text after the unclosed tag`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(true);
   });
 
   it("should handle empty openlovable-write tags", () => {
     const text = `<openlovable-write path="src/file.js"></openlovable-write>`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(false);
   });
 
   it("should handle unclosed empty openlovable-write tags", () => {
     const text = `<openlovable-write path="src/file.js">`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(true);
   });
 
@@ -1211,13 +1211,13 @@ Some text after the unclosed tag`;
     const text = `<openlovable-write path="src/file1.js">completed content</openlovable-write>
     <openlovable-write path="src/file2.js">unclosed content
     <openlovable-write path="src/file3.js">final content</openlovable-write>`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(false);
   });
 
   it("should handle tags with special characters in attributes", () => {
     const text = `<openlovable-write path="src/file-name_with.special@chars.js" description="File with special chars in path">content</openlovable-write>`;
-    const result = hasUnclosedOpen-LovableWrite(text);
+    const result = hasUnclosedOpenLovableWrite(text);
     expect(result).toBe(false);
   });
 });
