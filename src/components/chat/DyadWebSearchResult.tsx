@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Globe } from "lucide-react";
-import { VanillaMarkdownParser } from "./DyadMarkdownParser";
+import { VanillaMarkdownParser } from "./Open-LovableMarkdownParser";
 import { CustomTagState } from "./stateTypes";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadStateIndicator,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableStateIndicator,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadWebSearchResultProps {
+interface Open-LovableWebSearchResultProps {
   node?: any;
   children?: React.ReactNode;
 }
 
-export const DyadWebSearchResult: React.FC<DyadWebSearchResultProps> = ({
+export const Open-LovableWebSearchResult: React.FC<Open-LovableWebSearchResultProps> = ({
   children,
   node,
 }) => {
@@ -31,22 +31,22 @@ export const DyadWebSearchResult: React.FC<DyadWebSearchResultProps> = ({
   }, [inProgress]);
 
   return (
-    <DyadCard
+    <Open-LovableCard
       state={state}
       accentColor="blue"
       onClick={() => setIsExpanded(!isExpanded)}
       isExpanded={isExpanded}
     >
-      <DyadCardHeader icon={<Globe size={15} />} accentColor="blue">
-        <DyadBadge color="blue">Web Search Result</DyadBadge>
+      <Open-LovableCardHeader icon={<Globe size={15} />} accentColor="blue">
+        <Open-LovableBadge color="blue">Web Search Result</Open-LovableBadge>
         {inProgress && (
-          <DyadStateIndicator state="pending" pendingLabel="Loading..." />
+          <Open-LovableStateIndicator state="pending" pendingLabel="Loading..." />
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isExpanded} />
+          <Open-LovableExpandIcon isExpanded={isExpanded} />
         </div>
-      </DyadCardHeader>
-      <DyadCardContent isExpanded={isExpanded}>
+      </Open-LovableCardHeader>
+      <Open-LovableCardContent isExpanded={isExpanded}>
         <div className="text-sm text-muted-foreground">
           {typeof children === "string" ? (
             <VanillaMarkdownParser content={children} />
@@ -54,7 +54,7 @@ export const DyadWebSearchResult: React.FC<DyadWebSearchResultProps> = ({
             children
           )}
         </div>
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

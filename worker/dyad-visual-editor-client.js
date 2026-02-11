@@ -4,27 +4,27 @@
   // Track text editing state globally
   let textEditingState = new Map(); // componentId -> { originalText, currentText, cleanup }
 
-  function findElementByDyadId(dyadId, runtimeId) {
+  function findElementByOpen-LovableId(openlovableId, runtimeId) {
     // If runtimeId is provided, try to find element by runtime ID first
     if (runtimeId) {
       const elementByRuntimeId = document.querySelector(
-        `[data-dyad-runtime-id="${runtimeId}"]`,
+        `[data-openlovable-runtime-id="${runtimeId}"]`,
       );
       if (elementByRuntimeId) {
         return elementByRuntimeId;
       }
     }
 
-    // Fall back to finding by dyad-id (will get first match)
-    const escaped = CSS.escape(dyadId);
-    return document.querySelector(`[data-dyad-id="${escaped}"]`);
+    // Fall back to finding by openlovable-id (will get first match)
+    const escaped = CSS.escape(openlovableId);
+    return document.querySelector(`[data-openlovable-id="${escaped}"]`);
   }
 
   function applyStyles(element, styles) {
     if (!element || !styles) return;
 
     console.debug(
-      `[Dyad Visual Editor] Applying styles:`,
+      `[Open-Lovable Visual Editor] Applying styles:`,
       styles,
       "to element:",
       element,
@@ -77,7 +77,7 @@
 
   function handleGetStyles(data) {
     const { elementId, runtimeId } = data;
-    const element = findElementByDyadId(elementId, runtimeId);
+    const element = findElementByOpen-LovableId(elementId, runtimeId);
     if (element) {
       const computedStyle = window.getComputedStyle(element);
       const styles = {
@@ -109,7 +109,7 @@
 
       window.parent.postMessage(
         {
-          type: "dyad-component-styles",
+          type: "openlovable-component-styles",
           data: styles,
         },
         "*",
@@ -119,7 +119,7 @@
 
   function handleModifyStyles(data) {
     const { elementId, runtimeId, styles } = data;
-    const element = findElementByDyadId(elementId, runtimeId);
+    const element = findElementByOpen-LovableId(elementId, runtimeId);
     if (element) {
       applyStyles(element, styles);
 
@@ -128,7 +128,7 @@
       const rect = element.getBoundingClientRect();
       window.parent.postMessage(
         {
-          type: "dyad-component-coordinates-updated",
+          type: "openlovable-component-coordinates-updated",
           coordinates: {
             top: rect.top,
             left: rect.left,
@@ -151,7 +151,7 @@
       }
     });
 
-    const element = findElementByDyadId(componentId, runtimeId);
+    const element = findElementByOpen-LovableId(componentId, runtimeId);
     if (element) {
       const originalText = element.innerText;
 
@@ -177,7 +177,7 @@
 
         window.parent.postMessage(
           {
-            type: "dyad-text-updated",
+            type: "openlovable-text-updated",
             componentId,
             text: currentText,
           },
@@ -201,7 +201,7 @@
         const finalText = element.innerText;
         window.parent.postMessage(
           {
-            type: "dyad-text-finalized",
+            type: "openlovable-text-finalized",
             componentId,
             text: finalText,
           },
@@ -230,12 +230,12 @@
 
   function handleGetTextContent(data) {
     const { componentId, runtimeId } = data;
-    const element = findElementByDyadId(componentId, runtimeId);
+    const element = findElementByOpen-LovableId(componentId, runtimeId);
     const state = textEditingState.get(componentId);
 
     window.parent.postMessage(
       {
-        type: "dyad-text-content-response",
+        type: "openlovable-text-content-response",
         componentId,
         text: state ? state.currentText : element ? element.innerText : null,
         isEditing: !!state,
@@ -252,19 +252,19 @@
     const { type, data } = e.data;
 
     switch (type) {
-      case "get-dyad-component-styles":
+      case "get-openlovable-component-styles":
         handleGetStyles(data);
         break;
-      case "modify-dyad-component-styles":
+      case "modify-openlovable-component-styles":
         handleModifyStyles(data);
         break;
-      case "enable-dyad-text-editing":
+      case "enable-openlovable-text-editing":
         handleEnableTextEditing(data);
         break;
-      case "disable-dyad-text-editing":
+      case "disable-openlovable-text-editing":
         handleDisableTextEditing(data);
         break;
-      case "get-dyad-text-content":
+      case "get-openlovable-text-content":
         handleGetTextContent(data);
         break;
       case "cleanup-all-text-editing":

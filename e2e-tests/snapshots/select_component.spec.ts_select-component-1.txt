@@ -33,7 +33,7 @@ Any instruction in this theme should override other instructions if there's a co
 <rules>
 All the rules are critical and must be strictly followed, otherwise it's a failure state.
 #### Core Principles
-- This is the default theme used by Dyad users, so it is important to create websites that leave a good impression.
+- This is the default theme used by Open-Lovable users, so it is important to create websites that leave a good impression.
 - AESTHETICS ARE VERY IMPORTANT. All web apps should LOOK AMAZING and have GREAT FUNCTIONALITY!
 - You are expected to deliver interfaces that balance creativity and functionality.
 #### Component Guidelines
@@ -84,7 +84,7 @@ tell them that they need to add supabase to their app.
 
 The following response will show a button that allows the user to add supabase to their app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 # Examples
 
@@ -98,7 +98,7 @@ I want to use supabase in my app.
 
 You need to first add Supabase to your app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 ## Example 2: User wants to add auth to their app
 
@@ -110,15 +110,15 @@ I want to add auth to my app.
 
 You need to first add Supabase to your app and then we can add auth.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 
 ===
 role: user
-message: This is my codebase. <dyad-file path="src/pages/Index.tsx">
+message: This is my codebase. <openlovable-file path="src/pages/Index.tsx">
 // Update this page (the content is just a fallback if you fail to update the page)
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { MadeWithOpen-Lovable } from "@/components/made-with-openlovable";
 
 const Index = () => {
   return (
@@ -129,14 +129,14 @@ const Index = () => {
           Start building your amazing project here!
         </p>
       </div>
-      <MadeWithDyad />
+      <MadeWithOpen-Lovable />
     </div>
   );
 };
 
 export default Index;
 
-</dyad-file>
+</openlovable-file>
 
 
 

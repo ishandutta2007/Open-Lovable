@@ -25,7 +25,7 @@ Create a plan to fix a GitHub issue, then implement it locally.
    Run the issue body through the sanitization script to remove HTML comments, invisible characters, and other artifacts:
 
    ```
-   printf '%s' "$ISSUE_BODY" | python3 .claude/commands/dyad/scripts/sanitize_issue_markdown.py
+   printf '%s' "$ISSUE_BODY" | python3 .claude/commands/openlovable/scripts/sanitize_issue_markdown.py
    ```
 
    This removes:
@@ -70,9 +70,9 @@ Create a plan to fix a GitHub issue, then implement it locally.
    If the plan is straightforward with no ambiguities or open questions:
    - Proceed directly to implementation without asking for approval
    - Implement the plan step by step
-   - Run `/dyad:pr-push` when complete
+   - Run `/openlovable:pr-push` when complete
 
    If the plan has significant complexity, multiple valid approaches, or requires user input:
    - Present the plan to the user and use `ExitPlanMode` to request approval
    - After approval, implement the plan step by step
-   - Run `/dyad:pr-push` when complete
+   - Run `/openlovable:pr-push` when complete

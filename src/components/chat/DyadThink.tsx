@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { ChevronRight } from "lucide-react";
-import { VanillaMarkdownParser } from "./DyadMarkdownParser";
+import { VanillaMarkdownParser } from "./Open-LovableMarkdownParser";
 import { CustomTagState } from "./stateTypes";
-import { DyadTokenSavings } from "./DyadTokenSavings";
+import { Open-LovableTokenSavings } from "./Open-LovableTokenSavings";
 
-interface DyadThinkProps {
+interface Open-LovableThinkProps {
   node?: any;
   children?: React.ReactNode;
 }
 
-export const DyadThink: React.FC<DyadThinkProps> = ({ children, node }) => {
+export const Open-LovableThink: React.FC<Open-LovableThinkProps> = ({ children, node }) => {
   const state = node?.properties?.state as CustomTagState;
   const inProgress = state === "pending";
   const [isExpanded, setIsExpanded] = useState(inProgress);
@@ -25,7 +25,7 @@ export const DyadThink: React.FC<DyadThinkProps> = ({ children, node }) => {
   const tokenSavingsMatch =
     typeof children === "string"
       ? children.match(
-          /^dyad-token-savings\?original-tokens=([0-9.]+)&smart-context-tokens=([0-9.]+)$/,
+          /^openlovable-token-savings\?original-tokens=([0-9.]+)&smart-context-tokens=([0-9.]+)$/,
         )
       : null;
 
@@ -36,12 +36,12 @@ export const DyadThink: React.FC<DyadThinkProps> = ({ children, node }) => {
     }
   }, [inProgress]);
 
-  // If it's token savings format, render DyadTokenSavings component
+  // If it's token savings format, render Open-LovableTokenSavings component
   if (tokenSavingsMatch) {
     const originalTokens = parseFloat(tokenSavingsMatch[1]);
     const smartContextTokens = parseFloat(tokenSavingsMatch[2]);
     return (
-      <DyadTokenSavings
+      <Open-LovableTokenSavings
         originalTokens={originalTokens}
         smartContextTokens={smartContextTokens}
       />

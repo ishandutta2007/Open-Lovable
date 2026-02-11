@@ -5,20 +5,20 @@ import { selectedChatIdAtom } from "@/atoms/chatAtoms";
 import { useStreamChat } from "@/hooks/useStreamChat";
 import { CopyErrorMessage } from "@/components/CopyErrorMessage";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadOutputProps {
+interface Open-LovableOutputProps {
   type: "error" | "warning";
   message?: string;
   children?: React.ReactNode;
 }
 
-export const DyadOutput: React.FC<DyadOutputProps> = ({
+export const Open-LovableOutput: React.FC<Open-LovableOutputProps> = ({
   type,
   message,
   children,
@@ -44,14 +44,14 @@ export const DyadOutput: React.FC<DyadOutputProps> = ({
   };
 
   return (
-    <DyadCard
+    <Open-LovableCard
       showAccent
       accentColor={accentColor}
       onClick={() => setIsContentVisible(!isContentVisible)}
       isExpanded={isContentVisible}
     >
-      <DyadCardHeader icon={icon} accentColor={accentColor}>
-        <DyadBadge color={accentColor}>{label}</DyadBadge>
+      <Open-LovableCardHeader icon={icon} accentColor={accentColor}>
+        <Open-LovableBadge color={accentColor}>{label}</Open-LovableBadge>
         {message && (
           <span className="text-sm text-foreground truncate">
             {message.slice(0, isContentVisible ? undefined : 100) +
@@ -59,16 +59,16 @@ export const DyadOutput: React.FC<DyadOutputProps> = ({
           </span>
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isContentVisible} />
+          <Open-LovableExpandIcon isExpanded={isContentVisible} />
         </div>
-      </DyadCardHeader>
+      </Open-LovableCardHeader>
 
       {/* Content area */}
-      <DyadCardContent isExpanded={isContentVisible}>
+      <Open-LovableCardContent isExpanded={isContentVisible}>
         {children && (
           <div className="text-sm text-muted-foreground mb-3">{children}</div>
         )}
-      </DyadCardContent>
+      </Open-LovableCardContent>
 
       {/* Action buttons at the bottom - always visible for errors */}
       {isError && message && (
@@ -85,6 +85,6 @@ export const DyadOutput: React.FC<DyadOutputProps> = ({
           </button>
         </div>
       )}
-    </DyadCard>
+    </Open-LovableCard>
   );
 };

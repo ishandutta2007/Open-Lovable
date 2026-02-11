@@ -16,7 +16,7 @@ Detailed rules and learnings are in the `rules/` directory. Read the relevant fi
 | [rules/typescript-strict-mode.md](rules/typescript-strict-mode.md)   | Debugging type errors from `npm run ts` (tsgo) that pass normal tsc                              |
 | [rules/openai-reasoning-models.md](rules/openai-reasoning-models.md) | Working with OpenAI reasoning model (o1/o3/o4-mini) conversation history                         |
 | [rules/adding-settings.md](rules/adding-settings.md)                 | Adding a new user-facing setting or toggle to the Settings page                                  |
-| [rules/chat-message-indicators.md](rules/chat-message-indicators.md) | Using `<dyad-status>` tags in chat messages for system indicators                                |
+| [rules/chat-message-indicators.md](rules/chat-message-indicators.md) | Using `<openlovable-status>` tags in chat messages for system indicators                                |
 
 ## Project setup and lints
 
@@ -32,10 +32,10 @@ npm run init-precommit
 
 RUN THE FOLLOWING CHECKS before you do a commit.
 
-If you have access to the `/dyad:lint` skill, use it to run all pre-commit checks automatically:
+If you have access to the `/openlovable:lint` skill, use it to run all pre-commit checks automatically:
 
 ```
-/dyad:lint
+/openlovable:lint
 ```
 
 Otherwise, run the following commands directly:
@@ -97,8 +97,8 @@ See [rules/e2e-testing.md](rules/e2e-testing.md) for full E2E testing guidance, 
 When pushing changes and creating PRs:
 
 1. If the branch already has an associated PR, push to whichever remote the branch is tracking.
-2. If the branch hasn't been pushed before, default to pushing to `origin` (the fork `wwwillchen/dyad`), then create a PR from the fork to the upstream repo (`dyad-sh/dyad`).
-3. If you cannot push to the fork due to permissions, push directly to `upstream` (`dyad-sh/dyad`) as a last resort.
+2. If the branch hasn't been pushed before, default to pushing to `origin` (the fork `wwwillchen/openlovable`), then create a PR from the fork to the upstream repo (`openlovable-sh/openlovable`).
+3. If you cannot push to the fork due to permissions, push directly to `upstream` (`openlovable-sh/openlovable`) as a last resort.
 
 ### Skipping automated review
 
@@ -130,12 +130,12 @@ In `prepareStep`, the AI SDK sets `stepNumber = steps.length`. The first call ha
 
 ### Custom chat message indicators
 
-The `<dyad-status>` tag in chat messages renders as a collapsible status indicator box. Use it for system messages like compaction notifications:
+The `<openlovable-status>` tag in chat messages renders as a collapsible status indicator box. Use it for system messages like compaction notifications:
 
 ```
-<dyad-status title="My Title" state="finished">
+<openlovable-status title="My Title" state="finished">
 Content here
-</dyad-status>
+</openlovable-status>
 ```
 
 Valid states: `"finished"`, `"in-progress"`, `"aborted"`

@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { CustomTagState } from "./stateTypes";
 import { FolderOpen } from "lucide-react";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadStateIndicator,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableStateIndicator,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadListFilesProps {
+interface Open-LovableListFilesProps {
   node: {
     properties: {
       directory?: string;
@@ -22,7 +22,7 @@ interface DyadListFilesProps {
   children: React.ReactNode;
 }
 
-export function DyadListFiles({ node, children }: DyadListFilesProps) {
+export function Open-LovableListFiles({ node, children }: Open-LovableListFilesProps) {
   const { directory, recursive, include_hidden, state } = node.properties;
   const isLoading = state === "pending";
   const isRecursive = recursive === "true";
@@ -33,33 +33,33 @@ export function DyadListFiles({ node, children }: DyadListFilesProps) {
   const title = directory ? directory : "List Files";
 
   return (
-    <DyadCard
+    <Open-LovableCard
       state={state}
       accentColor="slate"
       isExpanded={isExpanded}
       onClick={() => setIsExpanded(!isExpanded)}
-      data-testid="dyad-list-files"
+      data-testid="openlovable-list-files"
     >
-      <DyadCardHeader icon={<FolderOpen size={15} />} accentColor="slate">
+      <Open-LovableCardHeader icon={<FolderOpen size={15} />} accentColor="slate">
         <span className="font-medium text-sm text-foreground truncate">
           {title}
         </span>
-        {isRecursive && <DyadBadge color="slate">recursive</DyadBadge>}
-        {isIncludeHidden && <DyadBadge color="slate">include hidden</DyadBadge>}
+        {isRecursive && <Open-LovableBadge color="slate">recursive</Open-LovableBadge>}
+        {isIncludeHidden && <Open-LovableBadge color="slate">include hidden</Open-LovableBadge>}
         {isLoading && (
-          <DyadStateIndicator state="pending" pendingLabel="Listing..." />
+          <Open-LovableStateIndicator state="pending" pendingLabel="Listing..." />
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isExpanded} />
+          <Open-LovableExpandIcon isExpanded={isExpanded} />
         </div>
-      </DyadCardHeader>
-      <DyadCardContent isExpanded={isExpanded}>
+      </Open-LovableCardHeader>
+      <Open-LovableCardContent isExpanded={isExpanded}>
         {content && (
           <div className="p-3 text-xs font-mono whitespace-pre-wrap max-h-60 overflow-y-auto bg-muted/20 rounded-lg">
             {content}
           </div>
         )}
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 }

@@ -3,20 +3,20 @@ import { useState, type ReactNode } from "react";
 import { FileCode } from "lucide-react";
 import { CustomTagState } from "./stateTypes";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadStateIndicator,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableStateIndicator,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadCodeSearchProps {
+interface Open-LovableCodeSearchProps {
   children?: ReactNode;
   node?: { properties?: { query?: string; state?: CustomTagState } };
 }
 
-export const DyadCodeSearch: React.FC<DyadCodeSearchProps> = ({
+export const Open-LovableCodeSearch: React.FC<Open-LovableCodeSearchProps> = ({
   children,
   node,
 }) => {
@@ -27,27 +27,27 @@ export const DyadCodeSearch: React.FC<DyadCodeSearchProps> = ({
   const inProgress = state === "pending";
 
   return (
-    <DyadCard
+    <Open-LovableCard
       state={state}
       accentColor="indigo"
       onClick={() => setIsExpanded(!isExpanded)}
       isExpanded={isExpanded}
     >
-      <DyadCardHeader icon={<FileCode size={15} />} accentColor="indigo">
-        <DyadBadge color="indigo">Code Search</DyadBadge>
+      <Open-LovableCardHeader icon={<FileCode size={15} />} accentColor="indigo">
+        <Open-LovableBadge color="indigo">Code Search</Open-LovableBadge>
         {!isExpanded && query && (
           <span className="text-sm text-muted-foreground italic truncate">
             {query}
           </span>
         )}
         {inProgress && (
-          <DyadStateIndicator state="pending" pendingLabel="Searching..." />
+          <Open-LovableStateIndicator state="pending" pendingLabel="Searching..." />
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isExpanded} />
+          <Open-LovableExpandIcon isExpanded={isExpanded} />
         </div>
-      </DyadCardHeader>
-      <DyadCardContent isExpanded={isExpanded}>
+      </Open-LovableCardHeader>
+      <Open-LovableCardContent isExpanded={isExpanded}>
         <div className="text-sm text-muted-foreground space-y-2">
           {query && (
             <div>
@@ -68,7 +68,7 @@ export const DyadCodeSearch: React.FC<DyadCodeSearchProps> = ({
             </div>
           )}
         </div>
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

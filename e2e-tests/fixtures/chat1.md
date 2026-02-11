@@ -1,3 +1,3 @@
 chat1
 
-<dyad-chat-summary>Chat 1</dyad-chat-summary>
+<openlovable-chat-summary>Chat 1</openlovable-chat-summary>

@@ -5,15 +5,15 @@ import { Search } from "lucide-react";
 import { CodeHighlight } from "./CodeHighlight";
 import { CustomTagState } from "./stateTypes";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadStateIndicator,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableStateIndicator,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadGrepProps {
+interface Open-LovableGrepProps {
   children?: ReactNode;
   node?: {
     properties?: {
@@ -29,7 +29,7 @@ interface DyadGrepProps {
   };
 }
 
-export const DyadGrep: React.FC<DyadGrepProps> = ({ children, node }) => {
+export const Open-LovableGrep: React.FC<Open-LovableGrepProps> = ({ children, node }) => {
   const [isContentVisible, setIsContentVisible] = useState(false);
 
   const state = node?.properties?.state as CustomTagState;
@@ -62,15 +62,15 @@ export const DyadGrep: React.FC<DyadGrepProps> = ({ children, node }) => {
     : "";
 
   return (
-    <DyadCard
+    <Open-LovableCard
       state={state}
       accentColor="violet"
       onClick={() => setIsContentVisible(!isContentVisible)}
       isExpanded={isContentVisible}
-      data-testid="dyad-grep"
+      data-testid="openlovable-grep"
     >
-      <DyadCardHeader icon={<Search size={15} />} accentColor="violet">
-        <DyadBadge color="violet">GREP</DyadBadge>
+      <Open-LovableCardHeader icon={<Search size={15} />} accentColor="violet">
+        <Open-LovableBadge color="violet">GREP</Open-LovableBadge>
         <span className="font-medium text-sm text-foreground truncate">
           {description}
         </span>
@@ -80,20 +80,20 @@ export const DyadGrep: React.FC<DyadGrepProps> = ({ children, node }) => {
           </span>
         )}
         {inProgress && (
-          <DyadStateIndicator state="pending" pendingLabel="Searching..." />
+          <Open-LovableStateIndicator state="pending" pendingLabel="Searching..." />
         )}
         {aborted && (
-          <DyadStateIndicator state="aborted" abortedLabel="Did not finish" />
+          <Open-LovableStateIndicator state="aborted" abortedLabel="Did not finish" />
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isContentVisible} />
+          <Open-LovableExpandIcon isExpanded={isContentVisible} />
         </div>
-      </DyadCardHeader>
-      <DyadCardContent isExpanded={isContentVisible}>
+      </Open-LovableCardHeader>
+      <Open-LovableCardContent isExpanded={isContentVisible}>
         <div className="text-xs" onClick={(e) => e.stopPropagation()}>
           <CodeHighlight className="language-log">{children}</CodeHighlight>
         </div>
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

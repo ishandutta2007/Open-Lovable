@@ -52,7 +52,7 @@ Record a visual demonstration of the key feature of this PR using screenshots an
    This PR appears to be a non-user-facing change (refactoring, documentation, tests, or internal changes), so no screencast was recorded.
 
    ---
-   *Automated by `/dyad:pr-screencast`*
+   *Automated by `/openlovable:pr-screencast`*
    EOF
    )"
    ```
@@ -243,7 +243,7 @@ Record a visual demonstration of the key feature of this PR using screenshots an
    2. <Expected behavior>
 
    ---
-   *Automated by `/dyad:pr-screencast`*
+   *Automated by `/openlovable:pr-screencast`*
    EOF
    )"
    ```

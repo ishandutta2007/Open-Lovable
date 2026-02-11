@@ -1,7 +1,7 @@
 /**
- * XML escape/unescape utilities for dyad tags.
+ * XML escape/unescape utilities for openlovable tags.
  *
- * When serializing dyad tags, we escape special characters to prevent
+ * When serializing openlovable tags, we escape special characters to prevent
  * breaking the tag structure. When deserializing (parsing), we need
  * to unescape these characters to get the original values.
  */

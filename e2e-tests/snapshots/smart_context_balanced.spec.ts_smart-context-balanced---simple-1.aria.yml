@@ -1,5 +1,5 @@
 - paragraph: "[dump]"
-- paragraph: "[[dyad-dump-path=*]]"
+- paragraph: "[[openlovable-dump-path=*]]"
 - button "Copy":
   - img
 - img

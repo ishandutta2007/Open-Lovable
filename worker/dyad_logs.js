@@ -1,5 +1,5 @@
 /**
- * dyad_logs.js – Console interception script
+ * openlovable_logs.js – Console interception script
  * Intercepts all console methods and forwards them to the parent window
  */
 

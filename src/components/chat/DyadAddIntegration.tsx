@@ -8,9 +8,9 @@ import { showError } from "@/lib/toast";
 import { useLoadApp } from "@/hooks/useLoadApp";
 import { useStreamChat } from "@/hooks/useStreamChat";
 import { CheckCircle2, Plug } from "lucide-react";
-import { DyadCard, DyadCardHeader, DyadBadge } from "./DyadCardPrimitives";
+import { Open-LovableCard, Open-LovableCardHeader, Open-LovableBadge } from "./Open-LovableCardPrimitives";
 
-interface DyadAddIntegrationProps {
+interface Open-LovableAddIntegrationProps {
   node: {
     properties: {
       provider: string;
@@ -19,7 +19,7 @@ interface DyadAddIntegrationProps {
   children: React.ReactNode;
 }
 
-export const DyadAddIntegration: React.FC<DyadAddIntegrationProps> = ({
+export const Open-LovableAddIntegration: React.FC<Open-LovableAddIntegrationProps> = ({
   node,
   children,
 }) => {
@@ -52,13 +52,13 @@ export const DyadAddIntegration: React.FC<DyadAddIntegrationProps> = ({
 
   if (app?.supabaseProjectName) {
     return (
-      <DyadCard accentColor="green" state="finished">
-        <DyadCardHeader icon={<CheckCircle2 size={15} />} accentColor="green">
-          <DyadBadge color="green">Integration Complete</DyadBadge>
+      <Open-LovableCard accentColor="green" state="finished">
+        <Open-LovableCardHeader icon={<CheckCircle2 size={15} />} accentColor="green">
+          <Open-LovableBadge color="green">Integration Complete</Open-LovableBadge>
           <span className="text-sm font-medium text-foreground">
             Supabase integration complete
           </span>
-        </DyadCardHeader>
+        </Open-LovableCardHeader>
         <div className="px-3 pb-3">
           <p className="text-sm text-muted-foreground mb-2">
             This app is connected to Supabase project:{" "}
@@ -75,24 +75,24 @@ export const DyadAddIntegration: React.FC<DyadAddIntegrationProps> = ({
             Continue
           </Button>
         </div>
-      </DyadCard>
+      </Open-LovableCard>
     );
   }
 
   return (
-    <DyadCard accentColor="blue">
-      <DyadCardHeader icon={<Plug size={15} />} accentColor="blue">
-        <DyadBadge color="blue">Integration</DyadBadge>
+    <Open-LovableCard accentColor="blue">
+      <Open-LovableCardHeader icon={<Plug size={15} />} accentColor="blue">
+        <Open-LovableBadge color="blue">Integration</Open-LovableBadge>
         <span className="text-sm font-medium text-foreground">
           Integrate with {provider}?
         </span>
-      </DyadCardHeader>
+      </Open-LovableCardHeader>
       <div className="px-3 pb-3">
         <div className="text-xs text-muted-foreground mb-3">{children}</div>
         <Button onClick={handleSetupClick} className="w-full" size="sm">
           Set up {provider}
         </Button>
       </div>
-    </DyadCard>
+    </Open-LovableCard>
   );
 };

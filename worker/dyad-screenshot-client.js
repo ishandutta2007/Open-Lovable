@@ -10,34 +10,34 @@
       }
       throw new Error("html-to-image library not found");
     } catch (error) {
-      console.error("[dyad-screenshot] Failed to capture screenshot:", error);
+      console.error("[openlovable-screenshot] Failed to capture screenshot:", error);
       throw error;
     }
   }
   async function handleScreenshotRequest() {
     try {
-      console.debug("[dyad-screenshot] Capturing screenshot...");
+      console.debug("[openlovable-screenshot] Capturing screenshot...");
 
       const dataUrl = await captureScreenshot();
 
-      console.debug("[dyad-screenshot] Screenshot captured successfully");
+      console.debug("[openlovable-screenshot] Screenshot captured successfully");
 
       // Send success response to parent
       window.parent.postMessage(
         {
-          type: "dyad-screenshot-response",
+          type: "openlovable-screenshot-response",
           success: true,
           dataUrl: dataUrl,
         },
         "*",
       );
     } catch (error) {
-      console.error("[dyad-screenshot] Screenshot capture failed:", error);
+      console.error("[openlovable-screenshot] Screenshot capture failed:", error);
 
       // Send error response to parent
       window.parent.postMessage(
         {
-          type: "dyad-screenshot-response",
+          type: "openlovable-screenshot-response",
           success: false,
           error: error.message,
         },
@@ -49,7 +49,7 @@
   window.addEventListener("message", (event) => {
     if (event.source !== window.parent) return;
 
-    if (event.data.type === "dyad-take-screenshot") {
+    if (event.data.type === "openlovable-take-screenshot") {
       handleScreenshotRequest();
     }
   });

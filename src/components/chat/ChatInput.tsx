@@ -283,7 +283,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
     // Clear overlays in the preview iframe
     if (previewIframeRef?.contentWindow) {
       previewIframeRef.contentWindow.postMessage(
-        { type: "clear-dyad-component-overlays" },
+        { type: "clear-openlovable-component-overlays" },
         "*",
       );
     }
@@ -404,7 +404,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
         <ChatErrorBox
           onDismiss={dismissError}
           error={error}
-          isDyadProEnabled={settings.enableDyadPro ?? false}
+          isOpen-LovableProEnabled={settings.enableOpen-LovablePro ?? false}
           onStartNewChat={handleNewChat}
         />
       )}
@@ -512,7 +512,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
                 // Deactivate component selector in iframe
                 if (previewIframeRef?.contentWindow) {
                   previewIframeRef.contentWindow.postMessage(
-                    { type: "deactivate-dyad-component-selector" },
+                    { type: "deactivate-openlovable-component-selector" },
                     "*",
                   );
                 }
@@ -526,7 +526,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
                     render={
                       <button
                         onClick={() => {
-                          ipc.system.openExternalUrl("https://dyad.sh/pro");
+                          ipc.system.openExternalUrl("https://openlovable.sh/pro");
                         }}
                         className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                       />
@@ -560,7 +560,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
               onChange={setInputValue}
               onSubmit={handleSubmit}
               onPaste={handlePaste}
-              placeholder={t("askDyadToBuild")}
+              placeholder={t("askOpen-LovableToBuild")}
               excludeCurrentApp={true}
               disableSendButton={disableSendButton}
               messageHistory={userMessageHistory}
@@ -698,7 +698,7 @@ function WriteCodeProperlyButton() {
       return;
     }
     streamMessage({
-      prompt: `Write the code in the previous message in the correct format using \`<dyad-write>\` tags!`,
+      prompt: `Write the code in the previous message in the correct format using \`<openlovable-write>\` tags!`,
       chatId,
       redo: false,
     });

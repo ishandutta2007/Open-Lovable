@@ -3,10 +3,10 @@ import { ChevronRight, Loader2, CircleX, CheckCircle2 } from "lucide-react";
 import { CustomTagState } from "./stateTypes";
 
 /**
- * Accent color configuration for DyadCard components.
+ * Accent color configuration for Open-LovableCard components.
  * Maps to Tailwind color classes for border, background, and text.
  */
-export type DyadAccentColor =
+export type Open-LovableAccentColor =
   | "blue"
   | "purple"
   | "violet"
@@ -19,7 +19,7 @@ export type DyadAccentColor =
   | "indigo"
   | "slate";
 
-const ACCENT_BORDER: Record<DyadAccentColor, string> = {
+const ACCENT_BORDER: Record<Open-LovableAccentColor, string> = {
   blue: "border-l-blue-500",
   purple: "border-l-purple-500",
   violet: "border-l-violet-500",
@@ -33,7 +33,7 @@ const ACCENT_BORDER: Record<DyadAccentColor, string> = {
   slate: "border-l-slate-400",
 };
 
-const ACCENT_ICON_BG: Record<DyadAccentColor, string> = {
+const ACCENT_ICON_BG: Record<Open-LovableAccentColor, string> = {
   blue: "bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400",
   purple:
     "bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400",
@@ -51,7 +51,7 @@ const ACCENT_ICON_BG: Record<DyadAccentColor, string> = {
   slate: "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400",
 };
 
-const ACCENT_BADGE: Record<DyadAccentColor, string> = {
+const ACCENT_BADGE: Record<Open-LovableAccentColor, string> = {
   blue: "bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 ring-blue-200 dark:ring-blue-800",
   purple:
     "bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 ring-purple-200 dark:ring-purple-800",
@@ -72,12 +72,12 @@ const ACCENT_BADGE: Record<DyadAccentColor, string> = {
     "bg-slate-50 dark:bg-slate-900/60 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700",
 };
 
-// -- DyadCard --
+// -- Open-LovableCard --
 
-interface DyadCardProps {
+interface Open-LovableCardProps {
   children: React.ReactNode;
   state?: CustomTagState;
-  accentColor?: DyadAccentColor;
+  accentColor?: Open-LovableAccentColor;
   showAccent?: boolean;
   variant?: "default" | "ghost";
   onClick?: () => void;
@@ -87,7 +87,7 @@ interface DyadCardProps {
 }
 
 /**
- * Premium container for all Dyad markdown action cards.
+ * Premium container for all Open-Lovable markdown action cards.
  * Provides consistent borders, backgrounds, hover states, and a colored
  * left-accent border when the action is pending or aborted (or when
  * `showAccent` is explicitly set).
@@ -95,7 +95,7 @@ interface DyadCardProps {
  * When `onClick` is provided, the card behaves as an interactive button
  * with keyboard support (Enter/Space) and appropriate ARIA attributes.
  */
-export function DyadCard({
+export function Open-LovableCard({
   children,
   state,
   accentColor = "blue",
@@ -105,7 +105,7 @@ export function DyadCard({
   isExpanded,
   className = "",
   ...props
-}: DyadCardProps) {
+}: Open-LovableCardProps) {
   const isPending = state === "pending";
   const isAborted = state === "aborted";
 
@@ -154,22 +154,22 @@ export function DyadCard({
   );
 }
 
-// -- DyadCardHeader --
+// -- Open-LovableCardHeader --
 
-interface DyadCardHeaderProps {
+interface Open-LovableCardHeaderProps {
   icon: React.ReactNode;
-  accentColor?: DyadAccentColor;
+  accentColor?: Open-LovableAccentColor;
   children?: React.ReactNode;
 }
 
 /**
- * Header row for DyadCard. Contains a tinted icon circle and flexible content area.
+ * Header row for Open-LovableCard. Contains a tinted icon circle and flexible content area.
  */
-export function DyadCardHeader({
+export function Open-LovableCardHeader({
   icon,
   accentColor = "blue",
   children,
-}: DyadCardHeaderProps) {
+}: Open-LovableCardHeaderProps) {
   return (
     <div className="flex items-center gap-2.5 px-3 py-2">
       <div
@@ -182,17 +182,17 @@ export function DyadCardHeader({
   );
 }
 
-// -- DyadBadge --
+// -- Open-LovableBadge --
 
-interface DyadBadgeProps {
+interface Open-LovableBadgeProps {
   children: React.ReactNode;
-  color?: DyadAccentColor;
+  color?: Open-LovableAccentColor;
 }
 
 /**
  * Small pill badge for labeling card types (e.g. "GREP", "Turbo Edit", "SQL").
  */
-export function DyadBadge({ children, color = "blue" }: DyadBadgeProps) {
+export function Open-LovableBadge({ children, color = "blue" }: Open-LovableBadgeProps) {
   return (
     <span
       className={`inline-flex items-center text-[11px] font-semibold px-1.5 py-0.5 rounded-md ring-1 ring-inset ${ACCENT_BADGE[color]}`}
@@ -202,16 +202,16 @@ export function DyadBadge({ children, color = "blue" }: DyadBadgeProps) {
   );
 }
 
-// -- DyadExpandIcon --
+// -- Open-LovableExpandIcon --
 
-interface DyadExpandIconProps {
+interface Open-LovableExpandIconProps {
   isExpanded: boolean;
 }
 
 /**
  * Animated chevron icon for expand/collapse. Rotates 90 degrees when expanded.
  */
-export function DyadExpandIcon({ isExpanded }: DyadExpandIconProps) {
+export function Open-LovableExpandIcon({ isExpanded }: Open-LovableExpandIconProps) {
   return (
     <ChevronRight
       size={16}
@@ -222,9 +222,9 @@ export function DyadExpandIcon({ isExpanded }: DyadExpandIconProps) {
   );
 }
 
-// -- DyadStateIndicator --
+// -- Open-LovableStateIndicator --
 
-interface DyadStateIndicatorProps {
+interface Open-LovableStateIndicatorProps {
   state: CustomTagState;
   pendingLabel?: string;
   abortedLabel?: string;
@@ -235,12 +235,12 @@ interface DyadStateIndicatorProps {
  * Renders a spinner (pending), X icon (aborted), or checkmark (finished).
  * Includes an optional text label for each state.
  */
-export function DyadStateIndicator({
+export function Open-LovableStateIndicator({
   state,
   pendingLabel,
   abortedLabel,
   finishedLabel,
-}: DyadStateIndicatorProps) {
+}: Open-LovableStateIndicatorProps) {
   if (state === "pending") {
     return (
       <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 text-xs shrink-0">
@@ -271,20 +271,20 @@ export function DyadStateIndicator({
   return null;
 }
 
-// -- DyadFinishedIcon --
+// -- Open-LovableFinishedIcon --
 
 /**
  * Small green checkmark for completed state, useful for status-type cards.
  */
-export function DyadFinishedIcon() {
+export function Open-LovableFinishedIcon() {
   return (
     <CheckCircle2 className="size-4 text-green-600 dark:text-green-500 shrink-0" />
   );
 }
 
-// -- DyadCardContent --
+// -- Open-LovableCardContent --
 
-interface DyadCardContentProps {
+interface Open-LovableCardContentProps {
   isExpanded: boolean;
   children: React.ReactNode;
   className?: string;
@@ -295,11 +295,11 @@ interface DyadCardContentProps {
  * Uses lazy mounting: children are only rendered after the first expansion,
  * preventing heavy components from initializing when collapsed.
  */
-export function DyadCardContent({
+export function Open-LovableCardContent({
   isExpanded,
   children,
   className = "",
-}: DyadCardContentProps) {
+}: Open-LovableCardContentProps) {
   const [hasExpanded, setHasExpanded] = useState(false);
 
   useEffect(() => {
@@ -323,16 +323,16 @@ export function DyadCardContent({
   );
 }
 
-// -- DyadFilePath --
+// -- Open-LovableFilePath --
 
-interface DyadFilePathProps {
+interface Open-LovableFilePathProps {
   path: string;
 }
 
 /**
  * Styled file path display with monospace font and muted color.
  */
-export function DyadFilePath({ path }: DyadFilePathProps) {
+export function Open-LovableFilePath({ path }: Open-LovableFilePathProps) {
   if (!path) return null;
   return (
     <div className="px-3 pb-1">
@@ -343,16 +343,16 @@ export function DyadFilePath({ path }: DyadFilePathProps) {
   );
 }
 
-// -- DyadDescription --
+// -- Open-LovableDescription --
 
-interface DyadDescriptionProps {
+interface Open-LovableDescriptionProps {
   children: React.ReactNode;
 }
 
 /**
  * Description/summary text below the header.
  */
-export function DyadDescription({ children }: DyadDescriptionProps) {
+export function Open-LovableDescription({ children }: Open-LovableDescriptionProps) {
   return (
     <div className="px-3 pb-2 text-xs text-muted-foreground">{children}</div>
   );

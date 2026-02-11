@@ -24,8 +24,8 @@ import {
 import { getLanguageModelProviders } from "../shared/language_model_helpers";
 import { LanguageModelProvider } from "@/ipc/types";
 import {
-  createDyadEngine,
-  type DyadEngineProvider,
+  createOpen-LovableEngine,
+  type Open-LovableEngineProvider,
 } from "./llm_engine_provider";
 
 import { LM_STUDIO_BASE_URL } from "./lm_studio_utils";
@@ -33,7 +33,7 @@ import { createOllamaProvider } from "./ollama_provider";
 import { getOllamaApiUrl } from "../handlers/local_model_ollama_handler";
 import { createFallback } from "./fallback_ai_model";
 
-const dyadEngineUrl = process.env.DYAD_ENGINE_URL;
+const openlovableEngineUrl = process.env.DYAD_ENGINE_URL;
 
 const AUTO_MODELS = [
   {
@@ -71,7 +71,7 @@ export async function getModelClient(
 }> {
   const allProviders = await getLanguageModelProviders();
 
-  const dyadApiKey = settings.providerSettings?.auto?.apiKey?.value;
+  const openlovableApiKey = settings.providerSettings?.auto?.apiKey?.value;
 
   // --- Handle specific provider ---
   const providerConfig = allProviders.find((p) => p.id === model.provider);
@@ -80,18 +80,18 @@ export async function getModelClient(
     throw new Error(`Configuration not found for provider: ${model.provider}`);
   }
 
-  // Handle Dyad Pro override
-  if (dyadApiKey && settings.enableDyadPro) {
-    // Check if the selected provider supports Dyad Pro (has a gateway prefix) OR
+  // Handle Open-Lovable Pro override
+  if (openlovableApiKey && settings.enableOpen-LovablePro) {
+    // Check if the selected provider supports Open-Lovable Pro (has a gateway prefix) OR
     // we're using local engine.
     // IMPORTANT: some providers like OpenAI have an empty string gateway prefix,
     // so we do a nullish and not a truthy check here.
-    if (providerConfig.gatewayPrefix != null || dyadEngineUrl) {
+    if (providerConfig.gatewayPrefix != null || openlovableEngineUrl) {
       const enableSmartFilesContext = settings.enableProSmartFilesContextMode;
-      const provider = createDyadEngine({
-        apiKey: dyadApiKey,
-        baseURL: dyadEngineUrl ?? "https://engine.dyad.sh/v1",
-        dyadOptions: {
+      const provider = createOpen-LovableEngine({
+        apiKey: openlovableApiKey,
+        baseURL: openlovableEngineUrl ?? "https://engine.openlovable.sh/v1",
+        openlovableOptions: {
           enableLazyEdits:
             settings.selectedChatMode === "ask"
               ? false
@@ -104,11 +104,11 @@ export async function getModelClient(
       });
 
       logger.info(
-        `\x1b[1;97;44m Using Dyad Pro API key for model: ${model.name} \x1b[0m`,
+        `\x1b[1;97;44m Using Open-Lovable Pro API key for model: ${model.name} \x1b[0m`,
       );
 
       logger.info(
-        `\x1b[1;30;42m Using Dyad Pro engine: ${dyadEngineUrl ?? "<prod>"} \x1b[0m`,
+        `\x1b[1;30;42m Using Open-Lovable Pro engine: ${openlovableEngineUrl ?? "<prod>"} \x1b[0m`,
       );
 
       // Do not use free variant (for openrouter).
@@ -127,7 +127,7 @@ export async function getModelClient(
       };
     } else {
       logger.warn(
-        `Dyad Pro enabled, but provider ${model.provider} does not have a gateway prefix defined. Falling back to direct provider connection.`,
+        `Open-Lovable Pro enabled, but provider ${model.provider} does not have a gateway prefix defined. Falling back to direct provider connection.`,
       );
       // Fall through to regular provider logic if gateway prefix is missing
     }
@@ -198,7 +198,7 @@ function getProModelClient({
 }: {
   model: LargeLanguageModel;
   settings: UserSettings;
-  provider: DyadEngineProvider;
+  provider: Open-LovableEngineProvider;
   modelId: string;
 }): ModelClient {
   if (

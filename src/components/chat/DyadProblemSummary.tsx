@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { AlertTriangle, FileText } from "lucide-react";
 import type { Problem } from "@/ipc/types";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
 type ProblemWithoutSnippet = Omit<Problem, "snippet">;
 
-interface DyadProblemSummaryProps {
+interface Open-LovableProblemSummaryProps {
   summary?: string;
   children?: React.ReactNode;
 }
@@ -50,7 +50,7 @@ const ProblemItem: React.FC<ProblemItemProps> = ({ problem, index }) => {
   );
 };
 
-export const DyadProblemSummary: React.FC<DyadProblemSummaryProps> = ({
+export const Open-LovableProblemSummary: React.FC<Open-LovableProblemSummaryProps> = ({
   summary,
   children,
 }) => {
@@ -95,24 +95,24 @@ export const DyadProblemSummary: React.FC<DyadProblemSummaryProps> = ({
     summary || `${totalProblems} problems found (TypeScript errors)`;
 
   return (
-    <DyadCard
+    <Open-LovableCard
       accentColor="amber"
       isExpanded={isContentVisible}
       onClick={() => setIsContentVisible(!isContentVisible)}
       data-testid="problem-summary"
     >
-      <DyadCardHeader icon={<AlertTriangle size={15} />} accentColor="amber">
-        <DyadBadge color="amber">Auto-fix</DyadBadge>
+      <Open-LovableCardHeader icon={<AlertTriangle size={15} />} accentColor="amber">
+        <Open-LovableBadge color="amber">Auto-fix</Open-LovableBadge>
         <span className="font-medium text-sm text-foreground truncate">
           {displaySummary}
         </span>
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isContentVisible} />
+          <Open-LovableExpandIcon isExpanded={isContentVisible} />
         </div>
-      </DyadCardHeader>
+      </Open-LovableCardHeader>
 
       {/* Content area - show individual problems */}
-      <DyadCardContent isExpanded={isContentVisible}>
+      <Open-LovableCardContent isExpanded={isContentVisible}>
         {totalProblems > 0 ? (
           <div className="bg-muted/20 rounded-lg border border-border/40 overflow-hidden">
             {problems.map((problem, index) => (
@@ -130,7 +130,7 @@ export const DyadProblemSummary: React.FC<DyadProblemSummaryProps> = ({
             </pre>
           )
         )}
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

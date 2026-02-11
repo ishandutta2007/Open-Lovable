@@ -5,21 +5,21 @@ import { Database } from "lucide-react";
 import { CodeHighlight } from "./CodeHighlight";
 import { CustomTagState } from "./stateTypes";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadStateIndicator,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableStateIndicator,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadExecuteSqlProps {
+interface Open-LovableExecuteSqlProps {
   children?: ReactNode;
   node?: any;
   description?: string;
 }
 
-export const DyadExecuteSql: React.FC<DyadExecuteSqlProps> = ({
+export const Open-LovableExecuteSql: React.FC<Open-LovableExecuteSqlProps> = ({
   children,
   node,
   description,
@@ -31,34 +31,34 @@ export const DyadExecuteSql: React.FC<DyadExecuteSqlProps> = ({
   const queryDescription = description || node?.properties?.description;
 
   return (
-    <DyadCard
+    <Open-LovableCard
       state={state}
       accentColor="teal"
       isExpanded={isContentVisible}
       onClick={() => setIsContentVisible(!isContentVisible)}
     >
-      <DyadCardHeader icon={<Database size={15} />} accentColor="teal">
-        <DyadBadge color="teal">SQL</DyadBadge>
+      <Open-LovableCardHeader icon={<Database size={15} />} accentColor="teal">
+        <Open-LovableBadge color="teal">SQL</Open-LovableBadge>
         {queryDescription && (
           <span className="font-medium text-sm text-foreground truncate">
             {queryDescription}
           </span>
         )}
         {inProgress && (
-          <DyadStateIndicator state="pending" pendingLabel="Executing..." />
+          <Open-LovableStateIndicator state="pending" pendingLabel="Executing..." />
         )}
         {aborted && (
-          <DyadStateIndicator state="aborted" abortedLabel="Did not finish" />
+          <Open-LovableStateIndicator state="aborted" abortedLabel="Did not finish" />
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isContentVisible} />
+          <Open-LovableExpandIcon isExpanded={isContentVisible} />
         </div>
-      </DyadCardHeader>
-      <DyadCardContent isExpanded={isContentVisible}>
+      </Open-LovableCardHeader>
+      <Open-LovableCardContent isExpanded={isContentVisible}>
         <div className="text-xs">
           <CodeHighlight className="language-sql">{children}</CodeHighlight>
         </div>
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

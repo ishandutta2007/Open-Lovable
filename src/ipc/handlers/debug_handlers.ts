@@ -14,7 +14,7 @@ import { extractCodebase } from "../../utils/codebase";
 import { db } from "../../db";
 import { chats, apps } from "../../db/schema";
 import { eq } from "drizzle-orm";
-import { getDyadAppPath } from "../../paths/paths";
+import { getOpen-LovableAppPath } from "../../paths/paths";
 import { LargeLanguageModel } from "@/lib/schemas";
 import { validateChatContext } from "../utils/context_paths_utils";
 
@@ -54,12 +54,12 @@ async function getSystemDebugInfo({
     console.error("Failed to get node path:", err);
   }
 
-  // Get Dyad version from package.json
+  // Get Open-Lovable version from package.json
   const packageJsonPath = path.resolve(__dirname, "..", "..", "package.json");
-  let dyadVersion = "unknown";
+  let openlovableVersion = "unknown";
   try {
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
-    dyadVersion = packageJson.version;
+    openlovableVersion = packageJson.version;
   } catch (err) {
     console.error("Failed to read package.json:", err);
   }
@@ -110,7 +110,7 @@ async function getSystemDebugInfo({
       serializeModelForDebug(settings.selectedModel) || "unknown",
     telemetryConsent: settings.telemetryConsent || "unknown",
     telemetryUrl: "https://us.i.posthog.com", // Hardcoded from renderer.tsx
-    dyadVersion,
+    openlovableVersion,
     platform: process.platform,
     architecture: arch(),
     logs,
@@ -173,7 +173,7 @@ export function registerDebugHandlers() {
       }
 
       // Extract codebase
-      const appPath = getDyadAppPath(app.path);
+      const appPath = getOpen-LovableAppPath(app.path);
       const codebase = (
         await extractCodebase({
           appPath,

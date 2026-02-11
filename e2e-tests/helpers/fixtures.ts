@@ -47,7 +47,7 @@ export const test = base.extend<{
       const page = await electronApp.firstWindow();
 
       const po = new PageObject(electronApp, page, {
-        userDataDir: (electronApp as any).$dyadUserDataDir,
+        userDataDir: (electronApp as any).$openlovableUserDataDir,
         fakeLlmPort: (electronApp as any).$fakeLlmPort,
       });
       await use(po);
@@ -96,7 +96,7 @@ export const test = base.extend<{
         process.env.OPENAI_API_KEY = "sk-test";
       }
       const baseTmpDir = os.tmpdir();
-      const userDataDir = path.join(baseTmpDir, `dyad-e2e-tests-${Date.now()}`);
+      const userDataDir = path.join(baseTmpDir, `openlovable-e2e-tests-${Date.now()}`);
       if (electronConfig.preLaunchHook) {
         await electronConfig.preLaunchHook({ userDataDir, fakeLlmPort });
       }
@@ -113,7 +113,7 @@ export const test = base.extend<{
         //   dir: "test-results",
         // },
       });
-      (electronApp as any).$dyadUserDataDir = userDataDir;
+      (electronApp as any).$openlovableUserDataDir = userDataDir;
       (electronApp as any).$fakeLlmPort = fakeLlmPort;
 
       console.log("electronApp launched!");
@@ -160,7 +160,7 @@ export const test = base.extend<{
           console.log(`[cleanup:end] Killed ${executableName}`);
         } catch (error) {
           console.warn(
-            "Failed to kill dyad.exe: (continuing with test cleanup)",
+            "Failed to kill openlovable.exe: (continuing with test cleanup)",
             error,
           );
         }

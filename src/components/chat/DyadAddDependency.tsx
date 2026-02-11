@@ -7,20 +7,20 @@ import { ipc } from "@/ipc/types";
 import { Package } from "lucide-react";
 import { CodeHighlight } from "./CodeHighlight";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadAddDependencyProps {
+interface Open-LovableAddDependencyProps {
   children?: ReactNode;
   node?: any;
   packages?: string;
 }
 
-export const DyadAddDependency: React.FC<DyadAddDependencyProps> = ({
+export const Open-LovableAddDependency: React.FC<Open-LovableAddDependencyProps> = ({
   children,
   node,
 }) => {
@@ -31,21 +31,21 @@ export const DyadAddDependency: React.FC<DyadAddDependencyProps> = ({
   const hasChildren = !!children;
 
   return (
-    <DyadCard
+    <Open-LovableCard
       accentColor="blue"
       isExpanded={isContentVisible}
       onClick={
         hasChildren ? () => setIsContentVisible(!isContentVisible) : undefined
       }
     >
-      <DyadCardHeader icon={<Package size={15} />} accentColor="blue">
-        <DyadBadge color="blue">Add Packages</DyadBadge>
+      <Open-LovableCardHeader icon={<Package size={15} />} accentColor="blue">
+        <Open-LovableBadge color="blue">Add Packages</Open-LovableBadge>
         {hasChildren && (
           <div className="ml-auto">
-            <DyadExpandIcon isExpanded={isContentVisible} />
+            <Open-LovableExpandIcon isExpanded={isContentVisible} />
           </div>
         )}
-      </DyadCardHeader>
+      </Open-LovableCardHeader>
       {packages.length > 0 && (
         <div className="px-3 pb-2">
           <div className="text-sm text-foreground mb-1">
@@ -72,13 +72,13 @@ export const DyadAddDependency: React.FC<DyadAddDependencyProps> = ({
           </div>
         </div>
       )}
-      <DyadCardContent isExpanded={isContentVisible}>
+      <Open-LovableCardContent isExpanded={isContentVisible}>
         {hasChildren && (
           <div className="text-xs">
             <CodeHighlight className="language-shell">{children}</CodeHighlight>
           </div>
         )}
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

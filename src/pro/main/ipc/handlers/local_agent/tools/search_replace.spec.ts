@@ -45,9 +45,9 @@ describe("searchReplaceTool", () => {
     supabaseOrganizationSlug: null,
     messageId: 1,
     isSharedModulesChanged: false,
-    isDyadPro: false,
+    isOpen-LovablePro: false,
     todos: [],
-    dyadRequestId: "test-request",
+    openlovableRequestId: "test-request",
     fileEditTracker: {},
     onXmlStream: vi.fn(),
     onXmlComplete: vi.fn(),
@@ -383,7 +383,7 @@ describe("searchReplaceTool", () => {
       expect(result).toContain("=======");
       expect(result).toContain("new content");
       expect(result).toContain(">>>>>>> REPLACE");
-      expect(result).toContain("</dyad-search-replace>");
+      expect(result).toContain("</openlovable-search-replace>");
     });
   });
 

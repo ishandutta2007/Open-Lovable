@@ -40,7 +40,7 @@ or to provide a custom fetch implementation for e.g. testing.
 */
   fetch?: FetchFunction;
 
-  dyadOptions: {
+  openlovableOptions: {
     enableLazyEdits?: boolean;
     enableSmartFilesContext?: boolean;
     enableWebSearch?: boolean;
@@ -48,7 +48,7 @@ or to provide a custom fetch implementation for e.g. testing.
   settings: UserSettings;
 }
 
-export interface DyadEngineProvider {
+export interface Open-LovableEngineProvider {
   /**
 Creates a model for text generation.
 */
@@ -62,11 +62,11 @@ Creates a chat model for text generation.
   responses(modelId: ExampleChatModelId, chatParams: ChatParams): LanguageModel;
 }
 
-export function createDyadEngine(
+export function createOpen-LovableEngine(
   options: ExampleProviderSettings,
-): DyadEngineProvider {
+): Open-LovableEngineProvider {
   const baseURL = withoutTrailingSlash(options.baseURL);
-  logger.info("creating dyad engine with baseURL", baseURL);
+  logger.info("creating openlovable engine with baseURL", baseURL);
 
   // Track request ID attempts
   const requestIdAttempts = new Map<string, number>();
@@ -88,7 +88,7 @@ export function createDyadEngine(
   }
 
   const getCommonModelConfig = (): CommonModelConfig => ({
-    provider: `dyad-engine`,
+    provider: `openlovable-engine`,
     url: ({ path }) => {
       const url = new URL(`${baseURL}${path}`);
       if (options.queryParams) {
@@ -100,8 +100,8 @@ export function createDyadEngine(
     fetch: options.fetch,
   });
 
-  // Custom fetch implementation that adds dyad-specific options to the request
-  const createDyadFetch = ({
+  // Custom fetch implementation that adds openlovable-specific options to the request
+  const createOpen-LovableFetch = ({
     providerId,
   }: {
     providerId: string;
@@ -118,33 +118,33 @@ export function createDyadEngine(
           ...JSON.parse(init.body),
           ...getExtraProviderOptions(providerId, options.settings),
         };
-        const dyadVersionedFiles = parsedBody.dyadVersionedFiles;
-        if ("dyadVersionedFiles" in parsedBody) {
-          delete parsedBody.dyadVersionedFiles;
+        const openlovableVersionedFiles = parsedBody.openlovableVersionedFiles;
+        if ("openlovableVersionedFiles" in parsedBody) {
+          delete parsedBody.openlovableVersionedFiles;
         }
-        const dyadFiles = parsedBody.dyadFiles;
-        if ("dyadFiles" in parsedBody) {
-          delete parsedBody.dyadFiles;
+        const openlovableFiles = parsedBody.openlovableFiles;
+        if ("openlovableFiles" in parsedBody) {
+          delete parsedBody.openlovableFiles;
         }
-        const requestId = parsedBody.dyadRequestId;
-        if ("dyadRequestId" in parsedBody) {
-          delete parsedBody.dyadRequestId;
+        const requestId = parsedBody.openlovableRequestId;
+        if ("openlovableRequestId" in parsedBody) {
+          delete parsedBody.openlovableRequestId;
         }
-        const dyadAppId = parsedBody.dyadAppId;
-        if ("dyadAppId" in parsedBody) {
-          delete parsedBody.dyadAppId;
+        const openlovableAppId = parsedBody.openlovableAppId;
+        if ("openlovableAppId" in parsedBody) {
+          delete parsedBody.openlovableAppId;
         }
-        const dyadDisableFiles = parsedBody.dyadDisableFiles;
-        if ("dyadDisableFiles" in parsedBody) {
-          delete parsedBody.dyadDisableFiles;
+        const openlovableDisableFiles = parsedBody.openlovableDisableFiles;
+        if ("openlovableDisableFiles" in parsedBody) {
+          delete parsedBody.openlovableDisableFiles;
         }
-        const dyadMentionedApps = parsedBody.dyadMentionedApps;
-        if ("dyadMentionedApps" in parsedBody) {
-          delete parsedBody.dyadMentionedApps;
+        const openlovableMentionedApps = parsedBody.openlovableMentionedApps;
+        if ("openlovableMentionedApps" in parsedBody) {
+          delete parsedBody.openlovableMentionedApps;
         }
-        const dyadSmartContextMode = parsedBody.dyadSmartContextMode;
-        if ("dyadSmartContextMode" in parsedBody) {
-          delete parsedBody.dyadSmartContextMode;
+        const openlovableSmartContextMode = parsedBody.openlovableSmartContextMode;
+        if ("openlovableSmartContextMode" in parsedBody) {
+          delete parsedBody.openlovableSmartContextMode;
         }
 
         // Track and modify requestId with attempt number
@@ -156,19 +156,19 @@ export function createDyadEngine(
         }
 
         // Add files to the request if they exist
-        if (!dyadDisableFiles) {
-          parsedBody.dyad_options = {
-            files: dyadFiles,
-            versioned_files: dyadVersionedFiles,
-            enable_lazy_edits: options.dyadOptions.enableLazyEdits,
+        if (!openlovableDisableFiles) {
+          parsedBody.openlovable_options = {
+            files: openlovableFiles,
+            versioned_files: openlovableVersionedFiles,
+            enable_lazy_edits: options.openlovableOptions.enableLazyEdits,
             enable_smart_files_context:
-              options.dyadOptions.enableSmartFilesContext,
-            smart_context_mode: dyadSmartContextMode,
-            enable_web_search: options.dyadOptions.enableWebSearch,
-            app_id: dyadAppId,
+              options.openlovableOptions.enableSmartFilesContext,
+            smart_context_mode: openlovableSmartContextMode,
+            enable_web_search: options.openlovableOptions.enableWebSearch,
+            app_id: openlovableAppId,
           };
-          if (dyadMentionedApps?.length) {
-            parsedBody.dyad_options.mentioned_apps = dyadMentionedApps;
+          if (openlovableMentionedApps?.length) {
+            parsedBody.openlovable_options.mentioned_apps = openlovableMentionedApps;
           }
         }
 
@@ -178,7 +178,7 @@ export function createDyadEngine(
           headers: {
             ...init.headers,
             ...(modifiedRequestId && {
-              "X-Dyad-Request-Id": modifiedRequestId,
+              "X-Open-Lovable-Request-Id": modifiedRequestId,
             }),
           },
           body: JSON.stringify(parsedBody),
@@ -200,7 +200,7 @@ export function createDyadEngine(
   ) => {
     const config = {
       ...getCommonModelConfig(),
-      fetch: createDyadFetch({ providerId: chatParams.providerId }),
+      fetch: createOpen-LovableFetch({ providerId: chatParams.providerId }),
     };
 
     return new OpenAICompatibleChatLanguageModel(modelId, config);
@@ -212,7 +212,7 @@ export function createDyadEngine(
   ) => {
     const config = {
       ...getCommonModelConfig(),
-      fetch: createDyadFetch({ providerId: chatParams.providerId }),
+      fetch: createOpen-LovableFetch({ providerId: chatParams.providerId }),
     };
 
     return new OpenAIResponsesLanguageModel(modelId, config);

@@ -142,17 +142,17 @@ export const editFileTool: ToolDefinition<z.infer<typeof editFileSchema>> = {
   defaultConsent: "always",
   modifiesState: true,
 
-  // Requires Dyad Pro engine API
-  isEnabled: (ctx) => ctx.isDyadPro,
+  // Requires Open-Lovable Pro engine API
+  isEnabled: (ctx) => ctx.isOpen-LovablePro,
 
   getConsentPreview: (args) => `Edit ${args.path}`,
 
   buildXml: (args, isComplete) => {
     if (!args.path) return undefined;
 
-    let xml = `<dyad-edit path="${escapeXmlAttr(args.path)}" description="${escapeXmlAttr(args.instructions ?? "")}">\n${args.content ?? ""}`;
+    let xml = `<openlovable-edit path="${escapeXmlAttr(args.path)}" description="${escapeXmlAttr(args.instructions ?? "")}">\n${args.content ?? ""}`;
     if (isComplete) {
-      xml += "\n</dyad-edit>";
+      xml += "\n</openlovable-edit>";
     }
     return xml;
   },

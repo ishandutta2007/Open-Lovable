@@ -18,8 +18,8 @@ Analyze session debugging data to identify errors and issues that may have cause
 
    **Validation:** If fewer than two arguments are provided, inform the user:
 
-   > "Usage: /dyad:session-debug <session-data-url> <issue-number-or-url>"
-   > "Example: /dyad:session-debug https://example.com/session.json 123"
+   > "Usage: /openlovable:session-debug <session-data-url> <issue-number-or-url>"
+   > "Example: /openlovable:session-debug https://example.com/session.json 123"
 
    Then stop execution.
 

@@ -2,21 +2,21 @@ import type React from "react";
 import type { ReactNode } from "react";
 import { Trash2 } from "lucide-react";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadFilePath,
-  DyadDescription,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableFilePath,
+  Open-LovableDescription,
+} from "./Open-LovableCardPrimitives";
 import { CustomTagState } from "./stateTypes";
 
-interface DyadDeleteProps {
+interface Open-LovableDeleteProps {
   children?: ReactNode;
   node?: any;
   path?: string;
 }
 
-export const DyadDelete: React.FC<DyadDeleteProps> = ({
+export const Open-LovableDelete: React.FC<Open-LovableDeleteProps> = ({
   children,
   node,
   path: pathProp,
@@ -26,17 +26,17 @@ export const DyadDelete: React.FC<DyadDeleteProps> = ({
   const fileName = path ? path.split("/").pop() : "";
 
   return (
-    <DyadCard accentColor="red" state={state}>
-      <DyadCardHeader icon={<Trash2 size={15} />} accentColor="red">
+    <Open-LovableCard accentColor="red" state={state}>
+      <Open-LovableCardHeader icon={<Trash2 size={15} />} accentColor="red">
         {fileName && (
           <span className="font-medium text-sm text-foreground truncate">
             {fileName}
           </span>
         )}
-        <DyadBadge color="red">Delete</DyadBadge>
-      </DyadCardHeader>
-      <DyadFilePath path={path} />
-      {children && <DyadDescription>{children}</DyadDescription>}
-    </DyadCard>
+        <Open-LovableBadge color="red">Delete</Open-LovableBadge>
+      </Open-LovableCardHeader>
+      <Open-LovableFilePath path={path} />
+      {children && <Open-LovableDescription>{children}</Open-LovableDescription>}
+    </Open-LovableCard>
   );
 };

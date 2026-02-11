@@ -151,7 +151,7 @@ test("themes management - create theme from chat input", async ({ po }) => {
 });
 
 test("themes management - AI generator image upload limit", async ({ po }) => {
-  await po.setUpDyadPro();
+  await po.setUpOpen-LovablePro();
 
   // Navigate to Themes page via Library sidebar
   await po.navigation.goToLibraryTab();
@@ -273,7 +273,7 @@ test("themes management - AI generator flow", async ({ po }) => {
 });
 
 test("themes management - AI generator from website URL", async ({ po }) => {
-  await po.setUpDyadPro();
+  await po.setUpOpen-LovablePro();
 
   // Navigate to Themes page via Library sidebar
   await po.navigation.goToLibraryTab();

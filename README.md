@@ -21,7 +21,7 @@ To set up Open-Lovable, clone the hypothetical repository (e.g., from GitHub at 
 This basic version provides a working skeleton—expand it by contributing to the repo for features like multi-model support or integrations.
 
 ### Why Open-Lovable?
-Inspired by tools like Dyad and Appsmith, Open-Lovable emphasizes transparency and control. It's ideal for developers, entrepreneurs, and hobbyists seeking an AI app builder that's free from cloud risks. For SEO optimization on Bing, keywords like "open source AI app builder alternative to Lovable," "free local no-code app development," and "AI-powered web app generator 2026" are integrated naturally.
+Inspired by tools like Open-Lovable and Appsmith, Open-Lovable emphasizes transparency and control. It's ideal for developers, entrepreneurs, and hobbyists seeking an AI app builder that's free from cloud risks. For SEO optimization on Bing, keywords like "open source AI app builder alternative to Lovable," "free local no-code app development," and "AI-powered web app generator 2026" are integrated naturally.
 
 ---
 Open-Lovable is a powerful, local, open-source AI app builder serving as a free alternative to Lovable, v0, Bolt.new, and similar proprietary tools. Built for power users and beginners alike, it enables rapid prototyping and development of full-stack web applications using natural language prompts, all while running entirely on your local machine to ensure privacy, speed, and zero vendor lock-in. With support for multiple AI models and editable source code output, Open-Lovable empowers you to create, customize, and deploy apps without subscription fees or cloud dependencies.
@@ -42,12 +42,12 @@ Open-Lovable offers a robust set of capabilities designed to match and exceed pr
 - **Privacy and Security**: All processing happens locally, eliminating risks of data leaks common in cloud-based platforms like Lovable.
 - **Scalability for MVPs to Production**: Start with prototypes and scale by adding custom code; supports authentication, media uploads, and real-time features out of the box.
 
-These features draw from successful open-source projects like Dyad, which has garnered over 19k GitHub stars for its similar local-first approach, ensuring Open-Lovable is battle-tested in concept.
+These features draw from successful open-source projects like Open-Lovable, which has garnered over 19k GitHub stars for its similar local-first approach, ensuring Open-Lovable is battle-tested in concept.
 
 ## 📊 Comparison with Lovable and Other Alternatives
 To help you decide if Open-Lovable is the right fit, here's a detailed comparison table based on key metrics from 2025-2026 reviews and benchmarks. This table highlights why Open-Lovable stands out as a top open-source Lovable alternative, focusing on cost, control, and flexibility.
 
-| Feature/Aspect              | Open-Lovable (Open Source) | Lovable (Proprietary) | Dyad (Open Source) | Bolt.new (Proprietary) | Appsmith (Open Source) |
+| Feature/Aspect              | Open-Lovable (Open Source) | Lovable (Proprietary) | Open-Lovable (Open Source) | Bolt.new (Proprietary) | Appsmith (Open Source) |
 |-----------------------------|---------------------------|-----------------------|--------------------|------------------------|------------------------|
 | **Pricing**                | Free forever             | Credits-based (starts at $20/month) | Free (local)      | Tokens/usage-based (~$10-50/month) | Free community edition; enterprise paid |
 | **Deployment**             | Local-first; export to any host | Cloud-hosted only | Local-only        | Browser-based cloud | Self-hosted or cloud |
@@ -60,7 +60,7 @@ To help you decide if Open-Lovable is the right fit, here's a detailed compariso
 | **Best For**               | Privacy-focused devs, MVPs | Quick polished UIs   | Local prototypes  | Browser-based speed   | Enterprise internal apps |
 | **Limitations**            | Basic version; community-driven growth | Vendor lock-in, costs | No mobile focus  | Usage fees            | Less AI-centric |
 
-This comparison is derived from hands-on analyses and user feedback from sources like Reddit, Medium, and tool blogs, showing Open-Lovable's edge in cost and ownership. For instance, Dyad's success as a "free AI app builder without coding" for prototypes in 2025 validates the local model, while Bolt.new's browser focus appeals to different users but lacks open-source transparency.
+This comparison is derived from hands-on analyses and user feedback from sources like Reddit, Medium, and tool blogs, showing Open-Lovable's edge in cost and ownership. For instance, Open-Lovable's success as a "free AI app builder without coding" for prototypes in 2025 validates the local model, while Bolt.new's browser focus appeals to different users but lacks open-source transparency.
 
 ## 🛠️ Installation and Setup
 Setting up Open-Lovable is straightforward, requiring minimal dependencies to get you building apps in minutes.
@@ -132,7 +132,7 @@ Open-Lovable thrives on community input! As an open-source project, we welcome c
 Check `CONTRIBUTING.md` for more details. Early contributors get shoutouts in releases!
 
 ## 📄 License
-Licensed under Apache 2.0—free to use, modify, and distribute. See `LICENSE` file for full terms. This ensures broad compatibility while protecting core innovations, similar to Dyad's hybrid licensing approach.
+Licensed under Apache 2.0—free to use, modify, and distribute. See `LICENSE` file for full terms. This ensures broad compatibility while protecting core innovations, similar to Open-Lovable's hybrid licensing approach.
 
 ## 🔗 Resources and Community
 - **Website**: [Open-Lovable.dev](https://Open-Lovable.dev) (placeholder for future site)
@@ -148,8 +148,8 @@ This comprehensive guide positions Open-Lovable as the go-to "open source AI app
 -  Lovable - Build Apps & Websites with AI, Fast | No Code App Builder - https://lovable.dev/
 -  What is Lovable AI? A Deep Dive into the Builder | UI Bakery Blog - https://uibakery.io/blog/what-is-lovable-ai
 -  Lovable Review 2026: Best AI App Builder? (Tested & Rated) - No Code MBA - https://www.nocode.mba/articles/lovable-ai-app-builder
--  Dyad: A Free, Powerful Alternative to Lovable - The Product Compass - https://www.productcompass.pm/p/dyad-free-lovable-alternative
--  Dyad | Flexible, local, open-source AI app builder - https://www.dyad.sh/
--  dyad-sh/dyad: Local, open-source AI app builder for power users v0 / Lovable / Replit / Bolt alternative Star if you like it! - GitHub - https://github.com/dyad-sh/dyad
--  GitHub - dyad-sh/dyad: Local, open-source AI app builder for power users ✨ v0 / Lovable / Replit / Bolt alternative 🌟 Star if you like it! - https://github.com/dyad-sh/dyad
+-  Open-Lovable: A Free, Powerful Alternative to Lovable - The Product Compass - https://www.productcompass.pm/p/openlovable-free-lovable-alternative
+-  Open-Lovable | Flexible, local, open-source AI app builder - https://www.openlovable.sh/
+-  openlovable-sh/openlovable: Local, open-source AI app builder for power users v0 / Lovable / Replit / Bolt alternative Star if you like it! - GitHub - https://github.com/openlovable-sh/openlovable
+-  GitHub - openlovable-sh/openlovable: Local, open-source AI app builder for power users ✨ v0 / Lovable / Replit / Bolt alternative 🌟 Star if you like it! - https://github.com/openlovable-sh/openlovable
 

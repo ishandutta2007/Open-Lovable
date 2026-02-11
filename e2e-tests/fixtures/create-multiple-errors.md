@@ -1,9 +1,9 @@
 I will intentionally add multiple errors to test the Fix All Errors button
 
-<dyad-write path="src/pages/Index.tsx" description="intentionally add first error">
+<openlovable-write path="src/pages/Index.tsx" description="intentionally add first error">
 // Update this page (the content is just a fallback if you fail to update the page)
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { MadeWithOpen-Lovable } from "@/components/made-with-openlovable";
 
 const Index = () => {
 throw new Error("First error in Index");
@@ -16,40 +16,40 @@ return (
 Start building your amazing project here!
 </p>
 </div>
-<MadeWithDyad />
+<MadeWithOpen-Lovable />
 </div>
 );
 };
 
 export default Index;
-</dyad-write>
+</openlovable-write>
 
-<dyad-output type="error" message="First error in Index">
+<openlovable-output type="error" message="First error in Index">
 Error: First error in Index
     at Index (http://localhost:5173/src/pages/Index.tsx:6:7)
-</dyad-output>
+</openlovable-output>
 
-<dyad-write path="src/components/ErrorComponent.tsx" description="intentionally add second error">
+<openlovable-write path="src/components/ErrorComponent.tsx" description="intentionally add second error">
 const ErrorComponent = () => {
   throw new Error("Second error in ErrorComponent");
   return <div>This will never render</div>;
 };
 
 export default ErrorComponent;
-</dyad-write>
+</openlovable-write>
 
-<dyad-output type="error" message="Second error in ErrorComponent">
+<openlovable-output type="error" message="Second error in ErrorComponent">
 Error: Second error in ErrorComponent
     at ErrorComponent (http://localhost:5173/src/components/ErrorComponent.tsx:2:9)
-</dyad-output>
+</openlovable-output>
 
-<dyad-write path="src/utils/helper.ts" description="intentionally add third error">
+<openlovable-write path="src/utils/helper.ts" description="intentionally add third error">
 export const brokenHelper = () => {
   throw new Error("Third error in helper");
 };
-</dyad-write>
+</openlovable-write>
 
-<dyad-output type="error" message="Third error in helper">
+<openlovable-output type="error" message="Third error in helper">
 Error: Third error in helper
     at brokenHelper (http://localhost:5173/src/utils/helper.ts:2:9)
-</dyad-output>
+</openlovable-output>

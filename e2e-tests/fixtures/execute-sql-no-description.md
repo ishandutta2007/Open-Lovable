@@ -1,7 +1,7 @@
 No description!
 
-<dyad-execute-sql>
+<openlovable-execute-sql>
 DROP TABLE users;
-</dyad-execute-sql>
+</openlovable-execute-sql>
 
 Done.

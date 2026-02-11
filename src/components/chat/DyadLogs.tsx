@@ -5,20 +5,20 @@ import { FileText } from "lucide-react";
 import { CodeHighlight } from "./CodeHighlight";
 import { CustomTagState } from "./stateTypes";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadStateIndicator,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableStateIndicator,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadLogsProps {
+interface Open-LovableLogsProps {
   children?: ReactNode;
   node?: any;
 }
 
-export const DyadLogs: React.FC<DyadLogsProps> = ({ children, node }) => {
+export const Open-LovableLogs: React.FC<Open-LovableLogsProps> = ({ children, node }) => {
   const [isContentVisible, setIsContentVisible] = useState(false);
 
   const state = node?.properties?.state as CustomTagState;
@@ -38,32 +38,32 @@ export const DyadLogs: React.FC<DyadLogsProps> = ({ children, node }) => {
   const displayText = `Reading ${hasResults ? `${logCount} ` : ""}logs${filterDesc}`;
 
   return (
-    <DyadCard
+    <Open-LovableCard
       state={state}
       accentColor="slate"
       isExpanded={isContentVisible}
       onClick={() => setIsContentVisible(!isContentVisible)}
     >
-      <DyadCardHeader icon={<FileText size={15} />} accentColor="slate">
-        <DyadBadge color="slate">LOGS</DyadBadge>
+      <Open-LovableCardHeader icon={<FileText size={15} />} accentColor="slate">
+        <Open-LovableBadge color="slate">LOGS</Open-LovableBadge>
         <span className="font-medium text-sm text-foreground truncate">
           {displayText}
         </span>
         {inProgress && (
-          <DyadStateIndicator state="pending" pendingLabel="Reading..." />
+          <Open-LovableStateIndicator state="pending" pendingLabel="Reading..." />
         )}
         {aborted && (
-          <DyadStateIndicator state="aborted" abortedLabel="Did not finish" />
+          <Open-LovableStateIndicator state="aborted" abortedLabel="Did not finish" />
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isContentVisible} />
+          <Open-LovableExpandIcon isExpanded={isContentVisible} />
         </div>
-      </DyadCardHeader>
-      <DyadCardContent isExpanded={isContentVisible}>
+      </Open-LovableCardHeader>
+      <Open-LovableCardContent isExpanded={isContentVisible}>
         <div className="text-xs">
           <CodeHighlight className="language-log">{children}</CodeHighlight>
         </div>
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

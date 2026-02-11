@@ -1,16 +1,16 @@
 {
-  "name": "@dyad-sh/nextjs-webpack-component-tagger",
+  "name": "@openlovable-sh/nextjs-webpack-component-tagger",
   "version": "0.8.0",
   "description": "A webpack loader that automatically adds data attributes to your React components in Next.js.",
   "keywords": [
-    "dyad",
+    "openlovable",
     "nextjs",
     "react",
     "webpack",
     "webpack-loader"
   ],
   "license": "Apache-2.0",
-  "author": "Dyad",
+  "author": "Open-Lovable",
   "files": [
     "dist"
   ],

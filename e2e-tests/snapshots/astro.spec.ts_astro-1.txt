@@ -30,7 +30,7 @@ tell them that they need to add supabase to their app.
 
 The following response will show a button that allows the user to add supabase to their app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 # Examples
 
@@ -44,7 +44,7 @@ I want to use supabase in my app.
 
 You need to first add Supabase to your app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 ## Example 2: User wants to add auth to their app
 
@@ -56,12 +56,12 @@ I want to add auth to my app.
 
 You need to first add Supabase to your app and then we can add auth.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 
 ===
 role: user
-message: This is my codebase. <dyad-file path=".gitignore">
+message: This is my codebase. <openlovable-file path=".gitignore">
 # Logs
 logs
 *.log
@@ -87,19 +87,19 @@ dist-ssr
 *.sln
 *.sw?
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="file1.txt">
+<openlovable-file path="file1.txt">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="index.html">
+<openlovable-file path="index.html">
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dyad-generated-app</title>
+    <title>openlovable-generated-app</title>
   </head>
 
   <body>
@@ -108,16 +108,16 @@ dist-ssr
   </body>
 </html>
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/App.tsx">
+<openlovable-file path="src/App.tsx">
 const App = () => <div>Minimal imported app</div>;
 
 export default App;
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/foo.astro">
+<openlovable-file path="src/foo.astro">
 ---
 // Component script (runs at build time)
 const greeting = "Hello World";
@@ -160,34 +160,34 @@ const currentTime = new Date().toLocaleString();
   }
 </style>
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/main.tsx">
+<openlovable-file path="src/main.tsx">
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(<App />);
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/vite-env.d.ts">
+<openlovable-file path="src/vite-env.d.ts">
 /// <reference types="vite/client" />
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="tsconfig.app.json">
+<openlovable-file path="tsconfig.app.json">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="tsconfig.json">
+<openlovable-file path="tsconfig.json">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="tsconfig.node.json">
+<openlovable-file path="tsconfig.node.json">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="vite.config.ts">
+<openlovable-file path="vite.config.ts">
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -205,7 +205,7 @@ export default defineConfig(() => ({
   },
 }));
 
-</dyad-file>
+</openlovable-file>
 
 
 
@@ -219,9 +219,9 @@ message: Generate an AI_RULES.md file for this app. Describe the tech stack in 5
 
 ===
 role: assistant
-message: <dyad-write path="file1.txt">
+message: <openlovable-write path="file1.txt">
   A file (2)
-  </dyad-write>
+  </openlovable-write>
   More
   EOM
 

@@ -24,7 +24,7 @@ export const addIntegrationTool: ToolDefinition<
 
   buildXml: (args, _isComplete) => {
     if (!args.provider) return undefined;
-    return `<dyad-add-integration provider="${escapeXmlAttr(args.provider)}"></dyad-add-integration>`;
+    return `<openlovable-add-integration provider="${escapeXmlAttr(args.provider)}"></openlovable-add-integration>`;
   },
 
   execute: async (args) => {

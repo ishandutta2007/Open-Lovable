@@ -75,9 +75,9 @@ export const createChatCompletionHandler =
     // Check for upload image to codebase using lastUserMessage (which already handles both string and array content)
     if (userTextContent.includes("[[UPLOAD_IMAGE_TO_CODEBASE]]")) {
       messageContent = `Uploading image to codebase
-<dyad-write path="new/image/file.png" description="Uploaded image to codebase">
+<openlovable-write path="new/image/file.png" description="Uploaded image to codebase">
 DYAD_ATTACHMENT_0
-</dyad-write>
+</openlovable-write>
 `;
       messageContent += "\n\n" + generateDump(req);
     }
@@ -116,11 +116,11 @@ DYAD_ATTACHMENT_0
         }
       }
       messageContent = `Resolved conflicts in ${conflictPath}.
-<dyad-write path="${conflictPath}" description="Resolve merge conflicts.">
+<openlovable-write path="${conflictPath}" description="Resolve merge conflicts.">
 Line 1
 Line 2 Modified Feature
 Line 3
-</dyad-write>
+</openlovable-write>
 `;
     }
 
@@ -134,14 +134,14 @@ Line 3
     ) {
       // Fix errors in create-ts-errors.md and introduce a new error
       messageContent = `
-<dyad-write path="src/bad-file.ts" description="Fix 2 errors and introduce a new error.">
+<openlovable-write path="src/bad-file.ts" description="Fix 2 errors and introduce a new error.">
 // Import doesn't exist
 // import NonExistentClass from 'non-existent-class';
 
 
 const x = new Object();
 x.nonExistentMethod2();
-</dyad-write>
+</openlovable-write>
 
       `;
     }
@@ -154,14 +154,14 @@ x.nonExistentMethod2();
     ) {
       // Fix errors in create-ts-errors.md and introduce a new error
       messageContent = `
-<dyad-write path="src/bad-file.ts" description="Fix remaining error.">
+<openlovable-write path="src/bad-file.ts" description="Fix remaining error.">
 // Import doesn't exist
 // import NonExistentClass from 'non-existent-class';
 
 
 const x = new Object();
 x.toString(); // replaced with existing method
-</dyad-write>
+</openlovable-write>
 
       `;
     }
@@ -180,10 +180,10 @@ x.toString(); // replaced with existing method
     ) {
       messageContent = `
       Fixing the error...
-      <dyad-write path="src/pages/Index.tsx">
+      <openlovable-write path="src/pages/Index.tsx">
       
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { MadeWithOpen-Lovable } from "@/components/made-with-openlovable";
 
 const Index = () => {
   return (
@@ -191,37 +191,37 @@ const Index = () => {
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4">No more errors!</h1>
       </div>
-      <MadeWithDyad />
+      <MadeWithOpen-Lovable />
     </div>
   );
 };
 
 export default Index;
 
-      </dyad-write>
+      </openlovable-write>
       `;
     }
     if (
       lastMessage &&
       typeof lastMessage.content === "string" &&
       lastMessage.content.startsWith(
-        "There was an issue with the following `dyad-search-replace` tags.",
+        "There was an issue with the following `openlovable-search-replace` tags.",
       )
     ) {
-      if (lastMessage.content.includes("Make sure you use `dyad-read`")) {
+      if (lastMessage.content.includes("Make sure you use `openlovable-read`")) {
         // Fix errors in create-ts-errors.md and introduce a new error
         messageContent =
           `
-<dyad-read path="src/pages/Index.tsx"></dyad-read>
+<openlovable-read path="src/pages/Index.tsx"></openlovable-read>
 
-<dyad-search-replace path="src/pages/Index.tsx">
+<openlovable-search-replace path="src/pages/Index.tsx">
 <<<<<<< SEARCH
         // STILL Intentionally DO NOT MATCH ANYTHING TO TRIGGER FALLBACK
         <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
 =======
         <h1 className="text-4xl font-bold mb-4">Welcome to the UPDATED App</h1>
 >>>>>>> REPLACE
-</dyad-search-replace>
+</openlovable-search-replace>
 ` +
           "\n\n" +
           generateDump(req);
@@ -229,9 +229,9 @@ export default Index;
         // Fix errors in create-ts-errors.md and introduce a new error
         messageContent =
           `
-<dyad-write path="src/pages/Index.tsx" description="Rewrite file.">
+<openlovable-write path="src/pages/Index.tsx" description="Rewrite file.">
 // FILE IS REPLACED WITH FALLBACK WRITE.
-</dyad-write>` +
+</openlovable-write>` +
           "\n\n" +
           generateDump(req);
       }
@@ -318,7 +318,7 @@ export default Index;
       typeof lastMessage.content === "string" &&
       lastMessage.content.trim().endsWith("[[STRING_TO_BE_FINISHED]]")
     ) {
-      messageContent = `[[STRING_IS_FINISHED]]";</dyad-write>\nFinished writing file.`;
+      messageContent = `[[STRING_IS_FINISHED]]";</openlovable-write>\nFinished writing file.`;
       messageContent += "\n\n" + generateDump(req);
     }
     const isToolCall = !!(
@@ -512,7 +512,7 @@ function generateDump(req: Request) {
       "utf-8",
     );
     console.log(`* Dumped messages to: ${dumpFilePath}`);
-    return `[[dyad-dump-path=${dumpFilePath}]]`;
+    return `[[openlovable-dump-path=${dumpFilePath}]]`;
   } catch (error) {
     console.error(`* Error writing dump file: ${error}`);
     return `Error: Could not write dump file: ${error}`;

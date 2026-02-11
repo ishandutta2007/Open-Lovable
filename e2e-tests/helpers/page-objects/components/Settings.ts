@@ -174,16 +174,16 @@ export class Settings {
     await expect(this.page.getByText("test-api-key-12345")).toBeVisible();
   }
 
-  async setUpDyadProvider() {
+  async setUpOpen-LovableProvider() {
     await this.page
       .locator("div")
-      .filter({ hasText: /^DyadNeeds Setup$/ })
+      .filter({ hasText: /^Open-LovableNeeds Setup$/ })
       .nth(1)
       .click();
-    await this.page.getByRole("textbox", { name: "Set Dyad API Key" }).click();
+    await this.page.getByRole("textbox", { name: "Set Open-Lovable API Key" }).click();
     await this.page
-      .getByRole("textbox", { name: "Set Dyad API Key" })
-      .fill("testdyadkey");
+      .getByRole("textbox", { name: "Set Open-Lovable API Key" })
+      .fill("testopenlovablekey");
     await this.page.getByRole("button", { name: "Save Key" }).click();
   }
 }

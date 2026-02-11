@@ -1,4 +1,4 @@
 - paragraph: "[dump]"
-- paragraph: "[[dyad-dump-path=*]]"
+- paragraph: "[[openlovable-dump-path=*]]"
 - button "Retry":
   - img

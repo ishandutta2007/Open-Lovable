@@ -1,19 +1,19 @@
 import React, { useState, useMemo } from "react";
 import { FileCode, FileText } from "lucide-react";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadCodeSearchResultProps {
+interface Open-LovableCodeSearchResultProps {
   node?: any;
   children?: React.ReactNode;
 }
 
-export const DyadCodeSearchResult: React.FC<DyadCodeSearchResultProps> = ({
+export const Open-LovableCodeSearchResult: React.FC<Open-LovableCodeSearchResultProps> = ({
   children,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -41,23 +41,23 @@ export const DyadCodeSearchResult: React.FC<DyadCodeSearchResultProps> = ({
   }, [children]);
 
   return (
-    <DyadCard
+    <Open-LovableCard
       accentColor="indigo"
       isExpanded={isExpanded}
       onClick={() => setIsExpanded(!isExpanded)}
     >
-      <DyadCardHeader icon={<FileCode size={15} />} accentColor="indigo">
-        <DyadBadge color="indigo">Code Search Result</DyadBadge>
+      <Open-LovableCardHeader icon={<FileCode size={15} />} accentColor="indigo">
+        <Open-LovableBadge color="indigo">Code Search Result</Open-LovableBadge>
         {files.length > 0 && (
           <span className="text-xs text-muted-foreground">
             Found {files.length} file{files.length !== 1 ? "s" : ""}
           </span>
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isExpanded} />
+          <Open-LovableExpandIcon isExpanded={isExpanded} />
         </div>
-      </DyadCardHeader>
-      <DyadCardContent isExpanded={isExpanded}>
+      </Open-LovableCardHeader>
+      <Open-LovableCardContent isExpanded={isExpanded}>
         {files.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {files.map((file, index) => {
@@ -87,7 +87,7 @@ export const DyadCodeSearchResult: React.FC<DyadCodeSearchResultProps> = ({
             })}
           </div>
         )}
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

@@ -18,9 +18,9 @@ import { db } from "@/db";
 import { chats, messages } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
-import { isDyadProEnabled, isBasicAgentMode } from "@/lib/schemas";
+import { isOpen-LovableProEnabled, isBasicAgentMode } from "@/lib/schemas";
 import { readSettings } from "@/main/settings";
-import { getDyadAppPath } from "@/paths/paths";
+import { getOpen-LovableAppPath } from "@/paths/paths";
 import { getModelClient } from "@/ipc/utils/get_model_client";
 import { safeSend } from "@/ipc/utils/safe_sender";
 import { getMaxTokens, getTemperature } from "@/ipc/utils/token_utils";
@@ -209,14 +209,14 @@ export async function handleLocalAgentStream(
   {
     placeholderMessageId,
     systemPrompt,
-    dyadRequestId,
+    openlovableRequestId,
     readOnly = false,
     planModeOnly = false,
     messageOverride,
   }: {
     placeholderMessageId: number;
     systemPrompt: string;
-    dyadRequestId: string;
+    openlovableRequestId: string;
     /**
      * If true, the agent operates in read-only mode (e.g., ask mode).
      * State-modifying tools are disabled, and no commits/deploys are made.
@@ -250,7 +250,7 @@ export async function handleLocalAgentStream(
       summary && summary.trim().length > 0
         ? summary
         : "Conversation compacted.";
-    const inlineCompaction = `<dyad-compaction title="Conversation compacted" state="finished">\n${escapeXmlContent(summaryText)}\n</dyad-compaction>`;
+    const inlineCompaction = `<openlovable-compaction title="Conversation compacted" state="finished">\n${escapeXmlContent(summaryText)}\n</openlovable-compaction>`;
     const backupPathNote = backupPath
       ? `\nIf you need to retrieve earlier parts of the conversation history, you can read the backup file at: ${backupPath}\nNote: This file may be large. Read only the sections you need or use grep to search for specific content rather than reading the entire file.`
       : "";
@@ -263,11 +263,11 @@ export async function handleLocalAgentStream(
   // Check Pro status or Basic Agent mode
   // Basic Agent mode allows non-Pro users with quota (quota check is done in chat_stream_handlers)
   // Read-only mode (ask mode) is allowed for all users without Pro
-  if (!readOnly && !isDyadProEnabled(settings) && !isBasicAgentMode(settings)) {
+  if (!readOnly && !isOpen-LovableProEnabled(settings) && !isBasicAgentMode(settings)) {
     safeSend(event.sender, "chat:response:error", {
       chatId: req.chatId,
       error:
-        "Agent v2 requires Dyad Pro. Please enable Dyad Pro in Settings → Pro.",
+        "Agent v2 requires Open-Lovable Pro. Please enable Open-Lovable Pro in Settings → Pro.",
     });
     return false;
   }
@@ -296,7 +296,7 @@ export async function handleLocalAgentStream(
     hiddenMessageIdsForStreaming.add(id);
   }
 
-  const appPath = getDyadAppPath(chat.app.path);
+  const appPath = getOpen-LovableAppPath(chat.app.path);
 
   const maybePerformPendingCompaction = async (options?: {
     showOnTopOfCurrentResponse?: boolean;
@@ -319,11 +319,11 @@ export async function handleLocalAgentStream(
       event,
       req.chatId,
       appPath,
-      dyadRequestId,
+      openlovableRequestId,
       (accumulatedSummary: string) => {
         // Stream compaction summary to the frontend in real-time.
         // During mid-turn compaction, keep already streamed content visible.
-        const compactionPreview = `<dyad-compaction title="Compacting conversation">\n${escapeXmlContent(accumulatedSummary)}\n</dyad-compaction>`;
+        const compactionPreview = `<openlovable-compaction title="Compacting conversation">\n${escapeXmlContent(accumulatedSummary)}\n</openlovable-compaction>`;
         const previewContent = options?.showOnTopOfCurrentResponse
           ? `${fullResponse}${streamingPreview ? streamingPreview : ""}\n${compactionPreview}`
           : compactionPreview;
@@ -425,9 +425,9 @@ export async function handleLocalAgentStream(
       messageId: placeholderMessageId,
       isSharedModulesChanged: false,
       todos: [],
-      dyadRequestId,
+      openlovableRequestId,
       fileEditTracker,
-      isDyadPro: isDyadProEnabled(settings),
+      isOpen-LovablePro: isOpen-LovableProEnabled(settings),
       onXmlStream: (accumulatedXml: string) => {
         // Stream accumulated XML to UI without persisting
         streamingPreview = accumulatedXml;
@@ -507,9 +507,9 @@ export async function handleLocalAgentStream(
         builtinProviderId: modelClient.builtinProviderId,
       }),
       providerOptions: getProviderOptions({
-        dyadAppId: chat.app.id,
-        dyadRequestId,
-        dyadDisableFiles: true, // Local agent uses tools, not file injection
+        openlovableAppId: chat.app.id,
+        openlovableRequestId,
+        openlovableDisableFiles: true, // Local agent uses tools, not file injection
         files: [],
         mentionedAppsCodebases: [],
         builtinProviderId: modelClient.builtinProviderId,
@@ -962,7 +962,7 @@ async function getMcpTools(
               const { serverName, toolName } = parseMcpToolKey(key);
               const content = JSON.stringify(args, null, 2);
               ctx.onXmlComplete(
-                `<dyad-mcp-tool-call server="${serverName}" tool="${toolName}">\n${content}\n</dyad-mcp-tool-call>`,
+                `<openlovable-mcp-tool-call server="${serverName}" tool="${toolName}">\n${content}\n</openlovable-mcp-tool-call>`,
               );
 
               const res = await mcpTool.execute(args, execCtx);
@@ -970,7 +970,7 @@ async function getMcpTools(
                 typeof res === "string" ? res : JSON.stringify(res);
 
               ctx.onXmlComplete(
-                `<dyad-mcp-tool-result server="${serverName}" tool="${toolName}">\n${resultStr}\n</dyad-mcp-tool-result>`,
+                `<openlovable-mcp-tool-result server="${serverName}" tool="${toolName}">\n${resultStr}\n</openlovable-mcp-tool-result>`,
               );
 
               return resultStr;
@@ -980,7 +980,7 @@ async function getMcpTools(
               const errorStack =
                 error instanceof Error && error.stack ? error.stack : "";
               ctx.onXmlComplete(
-                `<dyad-output type="error" message="MCP tool '${key}' failed: ${escapeXmlAttr(errorMessage)}">${escapeXmlContent(errorStack || errorMessage)}</dyad-output>`,
+                `<openlovable-output type="error" message="MCP tool '${key}' failed: ${escapeXmlAttr(errorMessage)}">${escapeXmlContent(errorStack || errorMessage)}</openlovable-output>`,
               );
               throw error;
             }

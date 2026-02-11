@@ -15,7 +15,7 @@ import {
   UserSettings,
   AzureProviderSetting,
   VertexProviderSetting,
-  hasDyadProKey,
+  hasOpen-LovableProKey,
 } from "@/lib/schemas";
 
 import { ProviderSettingsHeader } from "./ProviderSettingsHeader";
@@ -56,20 +56,20 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
   const supportsCustomModels =
     providerData?.type === "custom" || providerData?.type === "cloud";
 
-  const isDyad = provider === "auto";
+  const isOpen-Lovable = provider === "auto";
 
   const [apiKeyInput, setApiKeyInput] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const router = useRouter();
 
-  // Use fetched data (or defaults for Dyad)
-  const providerDisplayName = isDyad
-    ? "Dyad"
+  // Use fetched data (or defaults for Open-Lovable)
+  const providerDisplayName = isOpen-Lovable
+    ? "Open-Lovable"
     : (providerData?.name ?? "Unknown Provider");
   const providerWebsiteUrl = providerData?.websiteUrl;
-  const hasFreeTier = isDyad ? false : providerData?.hasFreeTier;
-  const envVarName = isDyad ? undefined : providerData?.envVarName;
+  const hasFreeTier = isOpen-Lovable ? false : providerData?.hasFreeTier;
+  const envVarName = isOpen-Lovable ? undefined : providerData?.envVarName;
 
   // Use provider ID (which is the 'provider' prop)
   const userApiKey = settings?.providerSettings?.[provider]?.apiKey?.value;
@@ -125,8 +125,8 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
     setIsSaving(true);
     setSaveError(null);
     try {
-      // Check if this is the first time user is setting up Dyad Pro
-      const isNewDyadProSetup = isDyad && settings && !hasDyadProKey(settings);
+      // Check if this is the first time user is setting up Open-Lovable Pro
+      const isNewOpen-LovableProSetup = isOpen-Lovable && settings && !hasOpen-LovableProKey(settings);
 
       const settingsUpdate: Partial<UserSettings> = {
         providerSettings: {
@@ -139,10 +139,10 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
           },
         },
       };
-      if (isDyad) {
-        settingsUpdate.enableDyadPro = true;
+      if (isOpen-Lovable) {
+        settingsUpdate.enableOpen-LovablePro = true;
         // Set default chat mode to local-agent when user upgrades to pro
-        if (isNewDyadProSetup) {
+        if (isNewOpen-LovableProSetup) {
           settingsUpdate.defaultChatMode = "local-agent";
         }
       }
@@ -180,15 +180,15 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
     }
   };
 
-  // --- Toggle Dyad Pro Handler ---
-  const handleToggleDyadPro = async (enabled: boolean) => {
+  // --- Toggle Open-Lovable Pro Handler ---
+  const handleToggleOpen-LovablePro = async (enabled: boolean) => {
     setIsSaving(true);
     try {
       await updateSettings({
-        enableDyadPro: enabled,
+        enableOpen-LovablePro: enabled,
       });
     } catch (error: any) {
-      showError(`Error toggling Dyad Pro: ${error}`);
+      showError(`Error toggling Open-Lovable Pro: ${error}`);
     } finally {
       setIsSaving(false);
     }
@@ -247,7 +247,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
   }
 
   // Handle case where provider is not found (e.g., invalid ID in URL)
-  if (!providerData && !isDyad) {
+  if (!providerData && !isOpen-Lovable) {
     return (
       <div className="min-h-screen px-8 py-4">
         <div className="max-w-4xl mx-auto">
@@ -284,7 +284,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
           isLoading={settingsLoading}
           hasFreeTier={hasFreeTier}
           providerWebsiteUrl={providerWebsiteUrl}
-          isDyad={isDyad}
+          isOpen-Lovable={isOpen-Lovable}
           onBackClick={() => router.history.back()}
         />
 
@@ -312,23 +312,23 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
             onApiKeyInputChange={setApiKeyInput}
             onSaveKey={handleSaveKey}
             onDeleteKey={handleDeleteKey}
-            isDyad={isDyad}
+            isOpen-Lovable={isOpen-Lovable}
             updateSettings={updateSettings}
           />
         )}
 
-        {isDyad && !settingsLoading && (
+        {isOpen-Lovable && !settingsLoading && (
           <div className="mt-6 flex items-center justify-between p-4 bg-(--background-lightest) rounded-lg border">
             <div>
-              <h3 className="font-medium">Enable Dyad Pro</h3>
+              <h3 className="font-medium">Enable Open-Lovable Pro</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Toggle to enable Dyad Pro
+                Toggle to enable Open-Lovable Pro
               </p>
             </div>
             <Switch
-              aria-label="Enable Dyad Pro"
-              checked={settings?.enableDyadPro}
-              onCheckedChange={handleToggleDyadPro}
+              aria-label="Enable Open-Lovable Pro"
+              checked={settings?.enableOpen-LovablePro}
+              onCheckedChange={handleToggleOpen-LovablePro}
               disabled={isSaving}
             />
           </div>

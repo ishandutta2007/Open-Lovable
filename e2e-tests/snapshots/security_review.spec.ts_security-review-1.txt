@@ -22,16 +22,16 @@ Private API keys/tokens exposed in browser where they can be stolen
 
 # Output Format
 
-<dyad-security-finding title="Brief title" level="critical|high|medium|low">
+<openlovable-security-finding title="Brief title" level="critical|high|medium|low">
 **What**: Plain-language explanation
 **Risk**: Data exposure impact (e.g., "All customer emails could be stolen")
 **Potential Solutions**: Options ranked by how effectively they address the issue
 **Relevant Files**: Relevant file paths
-</dyad-security-finding>
+</openlovable-security-finding>
 
 # Example:
 
-<dyad-security-finding title="SQL Injection in User Lookup" level="critical">
+<openlovable-security-finding title="SQL Injection in User Lookup" level="critical">
 **What**: User input flows directly into database queries without validation, allowing attackers to execute arbitrary SQL commands
 
 **Risk**: An attacker could steal all customer data, delete your entire database, or take over admin accounts by manipulating the URL
@@ -43,7 +43,7 @@ Private API keys/tokens exposed in browser where they can be stolen
 
 **Relevant Files**: `src/api/users.ts`
 
-</dyad-security-finding>
+</openlovable-security-finding>
 
 # Severity Levels
 **critical**: Actively exploitable or trivially exploitable, leading to full system or data compromise with no mitigation in place.
@@ -63,7 +63,7 @@ Begin your security review.
 
 ===
 role: user
-message: This is my codebase. <dyad-file path=".gitignore">
+message: This is my codebase. <openlovable-file path=".gitignore">
 # Logs
 logs
 *.log
@@ -89,9 +89,9 @@ dist-ssr
 *.sln
 *.sw?
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="AI_RULES.md">
+<openlovable-file path="AI_RULES.md">
 # Tech Stack
 
 - You are building a React application.
@@ -112,23 +112,23 @@ Available packages and libraries:
 - You have ALL the necessary Radix UI components installed.
 - Use prebuilt components from the shadcn/ui library after importing them. Note that these files shouldn't be edited, so make new components if you need to change them.
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="components.json">
+<openlovable-file path="components.json">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="eslint.config.js">
+<openlovable-file path="eslint.config.js">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="index.html">
+<openlovable-file path="index.html">
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dyad-generated-app</title>
+    <title>openlovable-generated-app</title>
   </head>
 
   <body>
@@ -137,9 +137,9 @@ Available packages and libraries:
   </body>
 </html>
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="postcss.config.js">
+<openlovable-file path="postcss.config.js">
 export default {
   plugins: {
     tailwindcss: {},
@@ -147,26 +147,26 @@ export default {
   },
 };
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="public/favicon.ico">
+<openlovable-file path="public/favicon.ico">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="public/placeholder.svg">
+<openlovable-file path="public/placeholder.svg">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="public/robots.txt">
+<openlovable-file path="public/robots.txt">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="README.md">
-# Welcome to your Dyad app
+<openlovable-file path="README.md">
+# Welcome to your Open-Lovable app
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/App.css">
+<openlovable-file path="src/App.css">
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -210,9 +210,9 @@ export default {
   color: #888;
 }
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/App.tsx">
+<openlovable-file path="src/App.tsx">
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -241,223 +241,223 @@ const App = () => (
 
 export default App;
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/made-with-dyad.tsx">
-export const MadeWithDyad = () => {
+<openlovable-file path="src/components/made-with-openlovable.tsx">
+export const MadeWithOpen-Lovable = () => {
   return (
     <div className="p-4 text-center">
       <a
-        href="https://www.dyad.sh/"
+        href="https://www.openlovable.sh/"
         target="_blank"
         rel="noopener noreferrer"
         className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
       >
-        Made with Dyad
+        Made with Open-Lovable
       </a>
     </div>
   );
 };
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/accordion.tsx">
+<openlovable-file path="src/components/ui/accordion.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/alert-dialog.tsx">
+<openlovable-file path="src/components/ui/alert-dialog.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/alert.tsx">
+<openlovable-file path="src/components/ui/alert.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/aspect-ratio.tsx">
+<openlovable-file path="src/components/ui/aspect-ratio.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/avatar.tsx">
+<openlovable-file path="src/components/ui/avatar.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/badge.tsx">
+<openlovable-file path="src/components/ui/badge.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/breadcrumb.tsx">
+<openlovable-file path="src/components/ui/breadcrumb.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/button.tsx">
+<openlovable-file path="src/components/ui/button.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/calendar.tsx">
+<openlovable-file path="src/components/ui/calendar.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/card.tsx">
+<openlovable-file path="src/components/ui/card.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/carousel.tsx">
+<openlovable-file path="src/components/ui/carousel.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/chart.tsx">
+<openlovable-file path="src/components/ui/chart.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/checkbox.tsx">
+<openlovable-file path="src/components/ui/checkbox.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/collapsible.tsx">
+<openlovable-file path="src/components/ui/collapsible.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/command.tsx">
+<openlovable-file path="src/components/ui/command.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/context-menu.tsx">
+<openlovable-file path="src/components/ui/context-menu.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/dialog.tsx">
+<openlovable-file path="src/components/ui/dialog.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/drawer.tsx">
+<openlovable-file path="src/components/ui/drawer.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/dropdown-menu.tsx">
+<openlovable-file path="src/components/ui/dropdown-menu.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/form.tsx">
+<openlovable-file path="src/components/ui/form.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/hover-card.tsx">
+<openlovable-file path="src/components/ui/hover-card.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/input-otp.tsx">
+<openlovable-file path="src/components/ui/input-otp.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/input.tsx">
+<openlovable-file path="src/components/ui/input.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/label.tsx">
+<openlovable-file path="src/components/ui/label.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/menubar.tsx">
+<openlovable-file path="src/components/ui/menubar.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/navigation-menu.tsx">
+<openlovable-file path="src/components/ui/navigation-menu.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/pagination.tsx">
+<openlovable-file path="src/components/ui/pagination.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/popover.tsx">
+<openlovable-file path="src/components/ui/popover.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/progress.tsx">
+<openlovable-file path="src/components/ui/progress.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/radio-group.tsx">
+<openlovable-file path="src/components/ui/radio-group.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/resizable.tsx">
+<openlovable-file path="src/components/ui/resizable.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/scroll-area.tsx">
+<openlovable-file path="src/components/ui/scroll-area.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/select.tsx">
+<openlovable-file path="src/components/ui/select.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/separator.tsx">
+<openlovable-file path="src/components/ui/separator.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/sheet.tsx">
+<openlovable-file path="src/components/ui/sheet.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/sidebar.tsx">
+<openlovable-file path="src/components/ui/sidebar.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/skeleton.tsx">
+<openlovable-file path="src/components/ui/skeleton.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/slider.tsx">
+<openlovable-file path="src/components/ui/slider.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/sonner.tsx">
+<openlovable-file path="src/components/ui/sonner.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/switch.tsx">
+<openlovable-file path="src/components/ui/switch.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/table.tsx">
+<openlovable-file path="src/components/ui/table.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/tabs.tsx">
+<openlovable-file path="src/components/ui/tabs.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/textarea.tsx">
+<openlovable-file path="src/components/ui/textarea.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/toast.tsx">
+<openlovable-file path="src/components/ui/toast.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/toaster.tsx">
+<openlovable-file path="src/components/ui/toaster.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/toggle-group.tsx">
+<openlovable-file path="src/components/ui/toggle-group.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/toggle.tsx">
+<openlovable-file path="src/components/ui/toggle.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/tooltip.tsx">
+<openlovable-file path="src/components/ui/tooltip.tsx">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/components/ui/use-toast.ts">
+<openlovable-file path="src/components/ui/use-toast.ts">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/globals.css">
+<openlovable-file path="src/globals.css">
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -560,9 +560,9 @@ export const MadeWithDyad = () => {
   }
 }
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/hooks/use-mobile.tsx">
+<openlovable-file path="src/hooks/use-mobile.tsx">
 import * as React from "react";
 
 const MOBILE_BREAKPOINT = 768;
@@ -585,9 +585,9 @@ export function useIsMobile() {
   return !!isMobile;
 }
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/hooks/use-toast.ts">
+<openlovable-file path="src/hooks/use-toast.ts">
 import * as React from "react";
 
 import type { ToastActionElement, ToastProps } from "@/components/ui/toast";
@@ -777,9 +777,9 @@ function useToast() {
 
 export { useToast, toast };
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/lib/utils.ts">
+<openlovable-file path="src/lib/utils.ts">
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -787,21 +787,21 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/main.tsx">
+<openlovable-file path="src/main.tsx">
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./globals.css";
 
 createRoot(document.getElementById("root")!).render(<App />);
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/pages/Index.tsx">
+<openlovable-file path="src/pages/Index.tsx">
 // Update this page (the content is just a fallback if you fail to update the page)
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { MadeWithOpen-Lovable } from "@/components/made-with-openlovable";
 
 const Index = () => {
   return (
@@ -812,16 +812,16 @@ const Index = () => {
           Start building your amazing project here!
         </p>
       </div>
-      <MadeWithDyad />
+      <MadeWithOpen-Lovable />
     </div>
   );
 };
 
 export default Index;
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/pages/NotFound.tsx">
+<openlovable-file path="src/pages/NotFound.tsx">
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -850,9 +850,9 @@ const NotFound = () => {
 
 export default NotFound;
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/utils/toast.ts">
+<openlovable-file path="src/utils/toast.ts">
 import { toast } from "sonner";
 
 export const showSuccess = (message: string) => {
@@ -871,14 +871,14 @@ export const dismissToast = (toastId: string) => {
   toast.dismiss(toastId);
 };
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/vite-env.d.ts">
+<openlovable-file path="src/vite-env.d.ts">
 /// <reference types="vite/client" />
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="tailwind.config.ts">
+<openlovable-file path="tailwind.config.ts">
 import type { Config } from "tailwindcss";
 
 export default {
@@ -976,21 +976,21 @@ export default {
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="tsconfig.app.json">
+<openlovable-file path="tsconfig.app.json">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="tsconfig.json">
+<openlovable-file path="tsconfig.json">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="tsconfig.node.json">
+<openlovable-file path="tsconfig.node.json">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="vercel.json">
+<openlovable-file path="vercel.json">
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
@@ -1001,11 +1001,11 @@ export default {
   ]
 }
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="vite.config.ts">
+<openlovable-file path="vite.config.ts">
 import { defineConfig } from "vite";
-import dyadComponentTagger from "@dyad-sh/react-vite-component-tagger";
+import openlovableComponentTagger from "@openlovable-sh/react-vite-component-tagger";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
@@ -1014,7 +1014,7 @@ export default defineConfig(() => ({
     host: "::",
     port: 8080,
   },
-  plugins: [dyadComponentTagger(), react()],
+  plugins: [openlovableComponentTagger(), react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -1022,7 +1022,7 @@ export default defineConfig(() => ({
   },
 }));
 
-</dyad-file>
+</openlovable-file>
 
 
 

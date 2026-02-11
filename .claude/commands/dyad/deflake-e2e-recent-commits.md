@@ -136,7 +136,7 @@ Automatically gather flaky E2E tests from recent CI runs on the main branch and 
 
 8. **Create PR with fixes:**
 
-   If any fixes were made, run `/dyad:pr-push` to commit, lint, test, and push the changes as a PR.
+   If any fixes were made, run `/openlovable:pr-push` to commit, lint, test, and push the changes as a PR.
 
    Use a branch name like `deflake-e2e-<date>` (e.g., `deflake-e2e-2025-01-15`).
 

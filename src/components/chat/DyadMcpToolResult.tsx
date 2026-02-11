@@ -2,19 +2,19 @@ import React, { useMemo, useState } from "react";
 import { CheckCircle } from "lucide-react";
 import { CodeHighlight } from "./CodeHighlight";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadMcpToolResultProps {
+interface Open-LovableMcpToolResultProps {
   node?: any;
   children?: React.ReactNode;
 }
 
-export const DyadMcpToolResult: React.FC<DyadMcpToolResultProps> = ({
+export const Open-LovableMcpToolResult: React.FC<Open-LovableMcpToolResultProps> = ({
   node,
   children,
 }) => {
@@ -30,19 +30,19 @@ export const DyadMcpToolResult: React.FC<DyadMcpToolResultProps> = ({
       const parsed = JSON.parse(raw);
       return JSON.stringify(parsed, null, 2);
     } catch (e) {
-      console.error("Error parsing JSON for dyad-mcp-tool-result", e);
+      console.error("Error parsing JSON for openlovable-mcp-tool-result", e);
       return raw;
     }
   }, [expanded, raw]);
 
   return (
-    <DyadCard
+    <Open-LovableCard
       accentColor="emerald"
       isExpanded={expanded}
       onClick={() => setExpanded((v) => !v)}
     >
-      <DyadCardHeader icon={<CheckCircle size={15} />} accentColor="emerald">
-        <DyadBadge color="emerald">Tool Result</DyadBadge>
+      <Open-LovableCardHeader icon={<CheckCircle size={15} />} accentColor="emerald">
+        <Open-LovableBadge color="emerald">Tool Result</Open-LovableBadge>
         {serverName && (
           <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 ring-1 ring-inset ring-emerald-200 dark:ring-emerald-800">
             {serverName}
@@ -54,12 +54,12 @@ export const DyadMcpToolResult: React.FC<DyadMcpToolResultProps> = ({
           </span>
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={expanded} />
+          <Open-LovableExpandIcon isExpanded={expanded} />
         </div>
-      </DyadCardHeader>
-      <DyadCardContent isExpanded={expanded}>
+      </Open-LovableCardHeader>
+      <Open-LovableCardContent isExpanded={expanded}>
         <CodeHighlight className="language-json">{prettyJson}</CodeHighlight>
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

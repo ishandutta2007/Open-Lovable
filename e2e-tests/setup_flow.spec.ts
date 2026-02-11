@@ -9,9 +9,9 @@ testSetup.describe("Setup Flow", () => {
   testSetup(
     "setup banner shows correct state when node.js is installed",
     async ({ po }) => {
-      // Verify the "Setup Dyad" heading is visible
+      // Verify the "Setup Open-Lovable" heading is visible
       await expect(
-        po.page.getByText("Setup Dyad", { exact: true }),
+        po.page.getByText("Setup Open-Lovable", { exact: true }),
       ).toBeVisible();
 
       // Verify both accordion sections are visible
@@ -43,7 +43,7 @@ testSetup.describe("Setup Flow", () => {
 
     // Verify setup banner and install button are visible
     await expect(
-      po.page.getByText("Setup Dyad", { exact: true }),
+      po.page.getByText("Setup Open-Lovable", { exact: true }),
     ).toBeVisible();
     await expect(
       po.page.getByRole("button", { name: "Install Node.js Runtime" }),
@@ -84,7 +84,7 @@ testSetup.describe("Setup Flow", () => {
   testSetup("ai provider setup flow", async ({ po }) => {
     // Verify setup banner is visible
     await expect(
-      po.page.getByText("Setup Dyad", { exact: true }),
+      po.page.getByText("Setup Open-Lovable", { exact: true }),
     ).toBeVisible();
 
     // Dismiss telemetry consent if present
@@ -129,7 +129,7 @@ testSetup.describe("Setup Flow", () => {
 
     // After configuring a provider, the setup banner should be gone
     await expect(
-      po.page.getByText("Setup Dyad", { exact: true }),
+      po.page.getByText("Setup Open-Lovable", { exact: true }),
     ).not.toBeVisible();
     await expect(po.page.getByText("Build a new app")).toBeVisible();
   });

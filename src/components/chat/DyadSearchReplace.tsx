@@ -6,24 +6,24 @@ import { CodeHighlight } from "./CodeHighlight";
 import { CustomTagState } from "./stateTypes";
 import { parseSearchReplaceBlocks } from "@/pro/shared/search_replace_parser";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadStateIndicator,
-  DyadFilePath,
-  DyadDescription,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableStateIndicator,
+  Open-LovableFilePath,
+  Open-LovableDescription,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadSearchReplaceProps {
+interface Open-LovableSearchReplaceProps {
   children?: ReactNode;
   node?: any;
   path?: string;
   description?: string;
 }
 
-export const DyadSearchReplace: React.FC<DyadSearchReplaceProps> = ({
+export const Open-LovableSearchReplace: React.FC<Open-LovableSearchReplaceProps> = ({
   children,
   node,
   path: pathProp,
@@ -45,41 +45,41 @@ export const DyadSearchReplace: React.FC<DyadSearchReplaceProps> = ({
   const fileName = path ? path.split("/").pop() : "";
 
   return (
-    <DyadCard
+    <Open-LovableCard
       state={state}
       accentColor="violet"
       isExpanded={isContentVisible}
       onClick={() => setIsContentVisible(!isContentVisible)}
-      data-testid="dyad-search-replace"
+      data-testid="openlovable-search-replace"
     >
-      <DyadCardHeader icon={<Search size={15} />} accentColor="violet">
-        <DyadBadge color="violet">Search & Replace</DyadBadge>
+      <Open-LovableCardHeader icon={<Search size={15} />} accentColor="violet">
+        <Open-LovableBadge color="violet">Search & Replace</Open-LovableBadge>
         {fileName && (
           <span className="font-medium text-sm text-foreground truncate">
             {fileName}
           </span>
         )}
         {inProgress && (
-          <DyadStateIndicator
+          <Open-LovableStateIndicator
             state="pending"
             pendingLabel="Applying changes..."
           />
         )}
         {aborted && (
-          <DyadStateIndicator state="aborted" abortedLabel="Did not finish" />
+          <Open-LovableStateIndicator state="aborted" abortedLabel="Did not finish" />
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isContentVisible} />
+          <Open-LovableExpandIcon isExpanded={isContentVisible} />
         </div>
-      </DyadCardHeader>
-      <DyadFilePath path={path} />
+      </Open-LovableCardHeader>
+      <Open-LovableFilePath path={path} />
       {description && (
-        <DyadDescription>
+        <Open-LovableDescription>
           <span className="font-medium">Summary: </span>
           {description}
-        </DyadDescription>
+        </Open-LovableDescription>
       )}
-      <DyadCardContent isExpanded={isContentVisible}>
+      <Open-LovableCardContent isExpanded={isContentVisible}>
         <div
           className="text-xs cursor-text"
           onClick={(e) => e.stopPropagation()}
@@ -127,7 +127,7 @@ export const DyadSearchReplace: React.FC<DyadSearchReplaceProps> = ({
             </div>
           )}
         </div>
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

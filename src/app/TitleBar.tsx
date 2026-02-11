@@ -10,7 +10,7 @@ import { providerSettingsRoute } from "@/routes/settings/providers/$provider";
 import { cn } from "@/lib/utils";
 import { useDeepLink } from "@/contexts/DeepLinkContext";
 import { useCallback, useEffect, useState } from "react";
-import { DyadProSuccessDialog } from "@/components/DyadProSuccessDialog";
+import { Open-LovableProSuccessDialog } from "@/components/Open-LovableProSuccessDialog";
 import { useTheme } from "@/contexts/ThemeContext";
 import { ipc } from "@/ipc/types";
 import { useSystemPlatform } from "@/hooks/useSystemPlatform";
@@ -43,16 +43,16 @@ export const TitleBar = () => {
   const platform = useSystemPlatform();
   const showWindowControls = platform !== null && platform !== "darwin";
 
-  const showDyadProSuccessDialog = () => {
+  const showOpen-LovableProSuccessDialog = () => {
     setIsSuccessDialogOpen(true);
   };
 
   const { lastDeepLink, clearLastDeepLink } = useDeepLink();
   useEffect(() => {
     const handleDeepLink = async () => {
-      if (lastDeepLink?.type === "dyad-pro-return") {
+      if (lastDeepLink?.type === "openlovable-pro-return") {
         await refreshSettings();
-        showDyadProSuccessDialog();
+        showOpen-LovableProSuccessDialog();
         clearLastDeepLink();
       }
     };
@@ -71,15 +71,15 @@ export const TitleBar = () => {
     }
   };
 
-  const isDyadPro = !!settings?.providerSettings?.auto?.apiKey?.value;
-  const isDyadProEnabled = Boolean(settings?.enableDyadPro);
+  const isOpen-LovablePro = !!settings?.providerSettings?.auto?.apiKey?.value;
+  const isOpen-LovableProEnabled = Boolean(settings?.enableOpen-LovablePro);
 
   return (
     <>
       <div className="@container z-11 w-full h-11 bg-(--sidebar) absolute top-0 left-0 app-region-drag flex items-center">
         <div className={`${showWindowControls ? "pl-2" : "pl-18"}`}></div>
 
-        <img src={logo} alt="Dyad Logo" className="w-6 h-6 mr-0.5" />
+        <img src={logo} alt="Open-Lovable Logo" className="w-6 h-6 mr-0.5" />
         <Button
           data-testid="title-bar-app-name-button"
           variant="outline"
@@ -91,7 +91,7 @@ export const TitleBar = () => {
         >
           {displayText}
         </Button>
-        {isDyadPro && <DyadProButton isDyadProEnabled={isDyadProEnabled} />}
+        {isOpen-LovablePro && <Open-LovableProButton isOpen-LovableProEnabled={isOpen-LovableProEnabled} />}
 
         {/* Spacer to push window controls to the right */}
         <div className="flex-1" />
@@ -101,7 +101,7 @@ export const TitleBar = () => {
         {showWindowControls && <WindowsControls />}
       </div>
 
-      <DyadProSuccessDialog
+      <Open-LovableProSuccessDialog
         isOpen={isSuccessDialogOpen}
         onClose={() => setIsSuccessDialogOpen(false)}
       />
@@ -253,16 +253,16 @@ function TitleBarActions() {
   );
 }
 
-export function DyadProButton({
-  isDyadProEnabled,
+export function Open-LovableProButton({
+  isOpen-LovableProEnabled,
 }: {
-  isDyadProEnabled: boolean;
+  isOpen-LovableProEnabled: boolean;
 }) {
   const { navigate } = useRouter();
   const { userBudget } = useUserBudgetInfo();
   return (
     <Button
-      data-testid="title-bar-dyad-pro-button"
+      data-testid="title-bar-openlovable-pro-button"
       onClick={() => {
         navigate({
           to: providerSettingsRoute.id,
@@ -272,16 +272,16 @@ export function DyadProButton({
       variant="outline"
       className={cn(
         "hidden @2xl:block ml-1 no-app-region-drag h-7 bg-indigo-600 text-white dark:bg-indigo-600 dark:text-white text-xs px-2 pt-1 pb-1",
-        !isDyadProEnabled && "bg-zinc-600 dark:bg-zinc-600",
+        !isOpen-LovableProEnabled && "bg-zinc-600 dark:bg-zinc-600",
       )}
       size="sm"
     >
-      {isDyadProEnabled
+      {isOpen-LovableProEnabled
         ? userBudget?.isTrial
           ? "Pro Trial"
           : "Pro"
         : "Pro (off)"}
-      {userBudget && isDyadProEnabled && (
+      {userBudget && isOpen-LovableProEnabled && (
         <AICreditStatus userBudget={userBudget} />
       )}
     </Button>

@@ -40,7 +40,7 @@ export const getSupabaseTableSchemaTool: ToolDefinition<
       ? ` table="${escapeXmlAttr(args.tableName)}"`
       : "";
     ctx.onXmlStream(
-      `<dyad-supabase-table-schema${tableAttr}></dyad-supabase-table-schema>`,
+      `<openlovable-supabase-table-schema${tableAttr}></openlovable-supabase-table-schema>`,
     );
 
     const schema = await getSupabaseTableSchema({
@@ -50,7 +50,7 @@ export const getSupabaseTableSchemaTool: ToolDefinition<
     });
 
     ctx.onXmlComplete(
-      `<dyad-supabase-table-schema${tableAttr}>\n${escapeXmlContent(schema)}\n</dyad-supabase-table-schema>`,
+      `<openlovable-supabase-table-schema${tableAttr}>\n${escapeXmlContent(schema)}\n</openlovable-supabase-table-schema>`,
     );
 
     return schema;

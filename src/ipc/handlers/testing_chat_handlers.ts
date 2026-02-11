@@ -1,43 +1,43 @@
 import { safeSend } from "../utils/safe_sender";
 import { cleanFullResponse } from "../utils/cleanFullResponse";
 
-// e.g. [dyad-qa=add-dep]
+// e.g. [openlovable-qa=add-dep]
 // Canned responses for test prompts
 const TEST_RESPONSES: Record<string, string> = {
   "ts-error": `This will get a TypeScript error.
   
-  <dyad-write path="src/bad-file.ts" description="This will get a TypeScript error.">
+  <openlovable-write path="src/bad-file.ts" description="This will get a TypeScript error.">
   import NonExistentClass from 'non-existent-class';
 
   const x = new Object();
   x.nonExistentMethod();
-  </dyad-write>
+  </openlovable-write>
   
   EOM`,
   "add-dep": `I'll add that dependency for you.
   
-  <dyad-add-dependency packages="deno"></dyad-add-dependency>
+  <openlovable-add-dependency packages="deno"></openlovable-add-dependency>
   
   EOM`,
   "add-non-existing-dep": `I'll add that dependency for you.
   
-  <dyad-add-dependency packages="@angular/does-not-exist"></dyad-add-dependency>
+  <openlovable-add-dependency packages="@angular/does-not-exist"></openlovable-add-dependency>
   
   EOM`,
   "add-multiple-deps": `I'll add that dependency for you.
   
-  <dyad-add-dependency packages="react-router-dom react-query"></dyad-add-dependency>
+  <openlovable-add-dependency packages="react-router-dom react-query"></openlovable-add-dependency>
   
   EOM`,
   write: `Hello world
-  <dyad-write path="src/hello.ts" content="Hello world">
+  <openlovable-write path="src/hello.ts" content="Hello world">
   console.log("Hello world");
-  </dyad-write>
+  </openlovable-write>
   EOM`,
   "string-literal-leak": `BEFORE TAG
-  <dyad-write path="src/pages/locations/neighborhoods/louisville/Highlands.tsx" description="Updating Highlands neighborhood page to use <a> tags.">
+  <openlovable-write path="src/pages/locations/neighborhoods/louisville/Highlands.tsx" description="Updating Highlands neighborhood page to use <a> tags.">
 import React from 'react';
-</dyad-write>
+</openlovable-write>
 AFTER TAG
 `,
 };
@@ -48,7 +48,7 @@ AFTER TAG
  * @returns The canned response if it's a test prompt, null otherwise
  */
 export function getTestResponse(prompt: string): string | null {
-  const match = prompt.match(/\[dyad-qa=([^\]]+)\]/);
+  const match = prompt.match(/\[openlovable-qa=([^\]]+)\]/);
   if (match) {
     const testKey = match[1];
     return TEST_RESPONSES[testKey] || null;

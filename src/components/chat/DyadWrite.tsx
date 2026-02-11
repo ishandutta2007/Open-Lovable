@@ -8,22 +8,22 @@ import { FileEditor } from "../preview_panel/FileEditor";
 import { useAtomValue } from "jotai";
 import { selectedAppIdAtom } from "@/atoms/appAtoms";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadExpandIcon,
-  DyadStateIndicator,
-  DyadDescription,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableExpandIcon,
+  Open-LovableStateIndicator,
+  Open-LovableDescription,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadWriteProps {
+interface Open-LovableWriteProps {
   children?: ReactNode;
   node?: any;
   path?: string;
   description?: string;
 }
 
-export const DyadWrite: React.FC<DyadWriteProps> = ({
+export const Open-LovableWrite: React.FC<Open-LovableWriteProps> = ({
   children,
   node,
   path: pathProp,
@@ -52,13 +52,13 @@ export const DyadWrite: React.FC<DyadWriteProps> = ({
   const fileName = path ? path.split("/").pop() : "";
 
   return (
-    <DyadCard
+    <Open-LovableCard
       state={state}
       accentColor="blue"
       onClick={() => setIsContentVisible(!isContentVisible)}
       isExpanded={isContentVisible}
     >
-      <DyadCardHeader icon={<Pencil size={15} />} accentColor="blue">
+      <Open-LovableCardHeader icon={<Pencil size={15} />} accentColor="blue">
         <div className="min-w-0 truncate">
           {fileName && (
             <span className="font-medium text-sm text-foreground truncate block">
@@ -72,10 +72,10 @@ export const DyadWrite: React.FC<DyadWriteProps> = ({
           )}
         </div>
         {inProgress && (
-          <DyadStateIndicator state="pending" pendingLabel="Writing..." />
+          <Open-LovableStateIndicator state="pending" pendingLabel="Writing..." />
         )}
         {aborted && (
-          <DyadStateIndicator state="aborted" abortedLabel="Did not finish" />
+          <Open-LovableStateIndicator state="aborted" abortedLabel="Did not finish" />
         )}
         <div className="ml-auto flex items-center gap-1">
           {!inProgress && (
@@ -105,18 +105,18 @@ export const DyadWrite: React.FC<DyadWriteProps> = ({
               )}
             </>
           )}
-          <DyadExpandIcon isExpanded={isContentVisible} />
+          <Open-LovableExpandIcon isExpanded={isContentVisible} />
         </div>
-      </DyadCardHeader>
+      </Open-LovableCardHeader>
       {description && (
-        <DyadDescription>
+        <Open-LovableDescription>
           <span className={!isContentVisible ? "line-clamp-2" : undefined}>
             <span className="font-medium">Summary: </span>
             {description}
           </span>
-        </DyadDescription>
+        </Open-LovableDescription>
       )}
-      <DyadCardContent isExpanded={isContentVisible}>
+      <Open-LovableCardContent isExpanded={isContentVisible}>
         <div
           className="text-xs cursor-text"
           onClick={(e) => e.stopPropagation()}
@@ -131,7 +131,7 @@ export const DyadWrite: React.FC<DyadWriteProps> = ({
             </CodeHighlight>
           )}
         </div>
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

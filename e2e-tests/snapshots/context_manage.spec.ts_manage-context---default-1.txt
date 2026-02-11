@@ -14,7 +14,7 @@ tell them that they need to add supabase to their app.
 
 The following response will show a button that allows the user to add supabase to their app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 # Examples
 
@@ -28,7 +28,7 @@ I want to use supabase in my app.
 
 You need to first add Supabase to your app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 ## Example 2: User wants to add auth to their app
 
@@ -40,31 +40,31 @@ I want to add auth to my app.
 
 You need to first add Supabase to your app and then we can add auth.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 
 ===
 role: user
-message: This is my codebase. <dyad-file path="src/components/ui/helper.ts">
+message: This is my codebase. <openlovable-file path="src/components/ui/helper.ts">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/foo.ts">
+<openlovable-file path="src/foo.ts">
 // foo.ts
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/sub/sub1.ts">
+<openlovable-file path="src/sub/sub1.ts">
 // sub/sub1.ts
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/sub/sub2.tsx">
+<openlovable-file path="src/sub/sub2.tsx">
 // sub/sub2.tsx
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/very-large-file.ts">
+<openlovable-file path="src/very-large-file.ts">
 // very-large-file.ts
 
 // 1234567890
@@ -158,7 +158,7 @@ message: This is my codebase. <dyad-file path="src/components/ui/helper.ts">
 // 1234567890
 // 1234567890
 
-</dyad-file>
+</openlovable-file>
 
 
 

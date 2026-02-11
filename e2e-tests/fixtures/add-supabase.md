@@ -1,2 +1,2 @@
 Adding supabase...
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>

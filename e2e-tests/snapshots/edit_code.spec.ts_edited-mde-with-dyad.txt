@@ -108,7 +108,7 @@ export default tseslint.config(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dyad-generated-app</title>
+    <title>openlovable-generated-app</title>
   </head>
 
   <body>
@@ -183,7 +183,7 @@ export default tseslint.config(
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@dyad-sh/react-vite-component-tagger": "^0.8.0",
+    "@openlovable-sh/react-vite-component-tagger": "^0.8.0",
     "@eslint/js": "^9.9.0",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^22.5.5",
@@ -237,7 +237,7 @@ Allow: /
 
 
 === README.md ===
-# Welcome to your Dyad app
+# Welcome to your Open-Lovable app
 
 
 === src/App.css ===
@@ -315,13 +315,13 @@ const App = () => (
 export default App;
 
 
-=== src/components/made-with-dyad.tsx ===
-export const MadeWithDyad = ;        href="https://www.dyad.sh/"
+=== src/components/made-with-openlovable.tsx ===
+export const MadeWithOpen-Lovable = ;        href="https://www.openlovable.sh/"
         target="_blank"
         rel="noopener noreferrer"
         className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
       >
-        Made with Dyad
+        Made with Open-Lovable
       </a>
     </div>
   );
@@ -5585,7 +5585,7 @@ createRoot(document.getElementById("root")!).render(<App />);
 === src/pages/Index.tsx ===
 // Update this page (the content is just a fallback if you fail to update the page)
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { MadeWithOpen-Lovable } from "@/components/made-with-openlovable";
 
 const Index = () => {
   return (
@@ -5596,7 +5596,7 @@ const Index = () => {
           Start building your amazing project here!
         </p>
       </div>
-      <MadeWithDyad />
+      <MadeWithOpen-Lovable />
     </div>
   );
 };
@@ -5839,7 +5839,7 @@ export default {
 
 === vite.config.ts ===
 import { defineConfig } from "vite";
-import dyadComponentTagger from "@dyad-sh/react-vite-component-tagger";
+import openlovableComponentTagger from "@openlovable-sh/react-vite-component-tagger";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
@@ -5848,7 +5848,7 @@ export default defineConfig(() => ({
     host: "::",
     port: 8080,
   },
-  plugins: [dyadComponentTagger(), react()],
+  plugins: [openlovableComponentTagger(), react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

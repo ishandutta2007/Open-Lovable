@@ -1,6 +1,6 @@
-<dyad-rename from="src/App.tsx" to="src/Renamed.tsx">
-</dyad-rename>
+<openlovable-rename from="src/App.tsx" to="src/Renamed.tsx">
+</openlovable-rename>
 
-<dyad-write path="src/Renamed.tsx">
+<openlovable-write path="src/Renamed.tsx">
 // newly added content to renamed file should exist
-</dyad-write>
+</openlovable-write>

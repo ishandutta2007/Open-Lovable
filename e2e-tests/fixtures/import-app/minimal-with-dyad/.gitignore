@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-# Dyad internal directory
-.dyad/
+# Open-Lovable internal directory
+.openlovable/

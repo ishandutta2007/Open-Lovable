@@ -3,20 +3,20 @@ import { useState, type ReactNode } from "react";
 import { Globe } from "lucide-react";
 import { CustomTagState } from "./stateTypes";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadStateIndicator,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableStateIndicator,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadWebSearchProps {
+interface Open-LovableWebSearchProps {
   children?: ReactNode;
   node?: any;
 }
 
-export const DyadWebSearch: React.FC<DyadWebSearchProps> = ({
+export const Open-LovableWebSearch: React.FC<Open-LovableWebSearchProps> = ({
   children,
   node,
 }) => {
@@ -27,27 +27,27 @@ export const DyadWebSearch: React.FC<DyadWebSearchProps> = ({
   const inProgress = state === "pending";
 
   return (
-    <DyadCard
+    <Open-LovableCard
       state={state}
       accentColor="blue"
       isExpanded={isExpanded}
       onClick={() => setIsExpanded(!isExpanded)}
     >
-      <DyadCardHeader icon={<Globe size={15} />} accentColor="blue">
-        <DyadBadge color="blue">Web Search</DyadBadge>
+      <Open-LovableCardHeader icon={<Globe size={15} />} accentColor="blue">
+        <Open-LovableBadge color="blue">Web Search</Open-LovableBadge>
         {!isExpanded && query && (
           <span className="text-sm text-muted-foreground italic truncate">
             {query}
           </span>
         )}
         {inProgress && (
-          <DyadStateIndicator state="pending" pendingLabel="Searching..." />
+          <Open-LovableStateIndicator state="pending" pendingLabel="Searching..." />
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isExpanded} />
+          <Open-LovableExpandIcon isExpanded={isExpanded} />
         </div>
-      </DyadCardHeader>
-      <DyadCardContent isExpanded={isExpanded}>
+      </Open-LovableCardHeader>
+      <Open-LovableCardContent isExpanded={isExpanded}>
         <div className="text-sm text-muted-foreground space-y-2">
           {query && (
             <div>
@@ -66,7 +66,7 @@ export const DyadWebSearch: React.FC<DyadWebSearchProps> = ({
             </div>
           )}
         </div>
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 };

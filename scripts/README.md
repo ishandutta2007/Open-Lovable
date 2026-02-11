@@ -48,12 +48,12 @@ node scripts/verify-release-assets.js
 
 The script verifies the presence of these 7 assets for each release:
 
-1. `dyad-{version}-1.x86_64.rpm` (Linux RPM)
-2. `dyad-{version}-full.nupkg` (Windows NuGet package)
-3. `dyad-{version}.Setup.exe` (Windows installer)
-4. `dyad-darwin-arm64-{version}.zip` (macOS Apple Silicon)
-5. `dyad-darwin-x64-{version}.zip` (macOS Intel)
-6. `dyad_{version}_amd64.deb` (Linux DEB)
+1. `openlovable-{version}-1.x86_64.rpm` (Linux RPM)
+2. `openlovable-{version}-full.nupkg` (Windows NuGet package)
+3. `openlovable-{version}.Setup.exe` (Windows installer)
+4. `openlovable-darwin-arm64-{version}.zip` (macOS Apple Silicon)
+5. `openlovable-darwin-x64-{version}.zip` (macOS Intel)
+6. `openlovable_{version}_amd64.deb` (Linux DEB)
 7. `RELEASES` (Windows update manifest)
 
 ### Features

@@ -2,13 +2,13 @@ import React from "react";
 import { CustomTagState } from "./stateTypes";
 import { Database } from "lucide-react";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadStateIndicator,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableStateIndicator,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadDatabaseSchemaProps {
+interface Open-LovableDatabaseSchemaProps {
   node: {
     properties: {
       state?: CustomTagState;
@@ -17,20 +17,20 @@ interface DyadDatabaseSchemaProps {
   children: React.ReactNode;
 }
 
-export function DyadDatabaseSchema({
+export function Open-LovableDatabaseSchema({
   node,
   children,
-}: DyadDatabaseSchemaProps) {
+}: Open-LovableDatabaseSchemaProps) {
   const { state } = node.properties;
   const isLoading = state === "pending";
   const content = typeof children === "string" ? children : "";
 
   return (
-    <DyadCard state={state} accentColor="teal">
-      <DyadCardHeader icon={<Database size={15} />} accentColor="teal">
-        <DyadBadge color="teal">Database Schema</DyadBadge>
-        {isLoading && <DyadStateIndicator state="pending" />}
-      </DyadCardHeader>
+    <Open-LovableCard state={state} accentColor="teal">
+      <Open-LovableCardHeader icon={<Database size={15} />} accentColor="teal">
+        <Open-LovableBadge color="teal">Database Schema</Open-LovableBadge>
+        {isLoading && <Open-LovableStateIndicator state="pending" />}
+      </Open-LovableCardHeader>
       {content && (
         <div className="px-3 pb-3">
           <div className="p-3 text-xs font-mono whitespace-pre-wrap max-h-60 overflow-y-auto bg-muted/20 rounded-lg">
@@ -38,6 +38,6 @@ export function DyadDatabaseSchema({
           </div>
         </div>
       )}
-    </DyadCard>
+    </Open-LovableCard>
   );
 }

@@ -1,15 +1,15 @@
 {
-  "name": "@dyad-sh/react-vite-component-tagger",
+  "name": "@openlovable-sh/react-vite-component-tagger",
   "version": "0.8.0",
   "description": "A Vite plugin that automatically adds data attributes to your React components.",
   "keywords": [
-    "dyad",
+    "openlovable",
     "react",
     "vite",
     "vite-plugin"
   ],
   "license": "Apache-2.0",
-  "author": "Dyad",
+  "author": "Open-Lovable",
   "files": [
     "dist"
   ],

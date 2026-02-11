@@ -2,25 +2,25 @@ import { cleanFullResponse } from "@/ipc/utils/cleanFullResponse";
 import { describe, it, expect } from "vitest";
 
 describe("cleanFullResponse", () => {
-  it("should replace < characters in dyad-write attributes", () => {
-    const input = `<dyad-write path="src/file.tsx" description="Testing <a> tags.">content</dyad-write>`;
-    const expected = `<dyad-write path="src/file.tsx" description="Testing ＜a＞ tags.">content</dyad-write>`;
+  it("should replace < characters in openlovable-write attributes", () => {
+    const input = `<openlovable-write path="src/file.tsx" description="Testing <a> tags.">content</openlovable-write>`;
+    const expected = `<openlovable-write path="src/file.tsx" description="Testing ＜a＞ tags.">content</openlovable-write>`;
 
     const result = cleanFullResponse(input);
     expect(result).toBe(expected);
   });
 
   it("should replace < characters in multiple attributes", () => {
-    const input = `<dyad-write path="src/<component>.tsx" description="Testing <div> tags.">content</dyad-write>`;
-    const expected = `<dyad-write path="src/＜component＞.tsx" description="Testing ＜div＞ tags.">content</dyad-write>`;
+    const input = `<openlovable-write path="src/<component>.tsx" description="Testing <div> tags.">content</openlovable-write>`;
+    const expected = `<openlovable-write path="src/＜component＞.tsx" description="Testing ＜div＞ tags.">content</openlovable-write>`;
 
     const result = cleanFullResponse(input);
     expect(result).toBe(expected);
   });
 
   it("should handle multiple nested HTML tags in a single attribute", () => {
-    const input = `<dyad-write path="src/file.tsx" description="Testing <div> and <span> and <a> tags.">content</dyad-write>`;
-    const expected = `<dyad-write path="src/file.tsx" description="Testing ＜div＞ and ＜span＞ and ＜a＞ tags.">content</dyad-write>`;
+    const input = `<openlovable-write path="src/file.tsx" description="Testing <div> and <span> and <a> tags.">content</openlovable-write>`;
+    const expected = `<openlovable-write path="src/file.tsx" description="Testing ＜div＞ and ＜span＞ and ＜a＞ tags.">content</openlovable-write>`;
 
     const result = cleanFullResponse(input);
     expect(result).toBe(expected);
@@ -29,17 +29,17 @@ describe("cleanFullResponse", () => {
   it("should handle complex example with mixed content", () => {
     const input = `
       BEFORE TAG
-  <dyad-write path="src/pages/locations/neighborhoods/louisville/Highlands.tsx" description="Updating Highlands neighborhood page to use <a> tags.">
+  <openlovable-write path="src/pages/locations/neighborhoods/louisville/Highlands.tsx" description="Updating Highlands neighborhood page to use <a> tags.">
 import React from 'react';
-</dyad-write>
+</openlovable-write>
 AFTER TAG
     `;
 
     const expected = `
       BEFORE TAG
-  <dyad-write path="src/pages/locations/neighborhoods/louisville/Highlands.tsx" description="Updating Highlands neighborhood page to use ＜a＞ tags.">
+  <openlovable-write path="src/pages/locations/neighborhoods/louisville/Highlands.tsx" description="Updating Highlands neighborhood page to use ＜a＞ tags.">
 import React from 'react';
-</dyad-write>
+</openlovable-write>
 AFTER TAG
     `;
 
@@ -47,41 +47,41 @@ AFTER TAG
     expect(result).toBe(expected);
   });
 
-  it("should handle other dyad tag types", () => {
-    const input = `<dyad-rename from="src/<old>.tsx" to="src/<new>.tsx"></dyad-rename>`;
-    const expected = `<dyad-rename from="src/＜old＞.tsx" to="src/＜new＞.tsx"></dyad-rename>`;
+  it("should handle other openlovable tag types", () => {
+    const input = `<openlovable-rename from="src/<old>.tsx" to="src/<new>.tsx"></openlovable-rename>`;
+    const expected = `<openlovable-rename from="src/＜old＞.tsx" to="src/＜new＞.tsx"></openlovable-rename>`;
 
     const result = cleanFullResponse(input);
     expect(result).toBe(expected);
   });
 
-  it("should handle dyad-delete tags", () => {
-    const input = `<dyad-delete path="src/<component>.tsx"></dyad-delete>`;
-    const expected = `<dyad-delete path="src/＜component＞.tsx"></dyad-delete>`;
+  it("should handle openlovable-delete tags", () => {
+    const input = `<openlovable-delete path="src/<component>.tsx"></openlovable-delete>`;
+    const expected = `<openlovable-delete path="src/＜component＞.tsx"></openlovable-delete>`;
 
     const result = cleanFullResponse(input);
     expect(result).toBe(expected);
   });
 
-  it("should not affect content outside dyad tags", () => {
-    const input = `Some text with <regular> HTML tags. <dyad-write path="test.tsx" description="With <nested> tags.">content</dyad-write> More <html> here.`;
-    const expected = `Some text with <regular> HTML tags. <dyad-write path="test.tsx" description="With ＜nested＞ tags.">content</dyad-write> More <html> here.`;
+  it("should not affect content outside openlovable tags", () => {
+    const input = `Some text with <regular> HTML tags. <openlovable-write path="test.tsx" description="With <nested> tags.">content</openlovable-write> More <html> here.`;
+    const expected = `Some text with <regular> HTML tags. <openlovable-write path="test.tsx" description="With ＜nested＞ tags.">content</openlovable-write> More <html> here.`;
 
     const result = cleanFullResponse(input);
     expect(result).toBe(expected);
   });
 
   it("should handle empty attributes", () => {
-    const input = `<dyad-write path="src/file.tsx">content</dyad-write>`;
-    const expected = `<dyad-write path="src/file.tsx">content</dyad-write>`;
+    const input = `<openlovable-write path="src/file.tsx">content</openlovable-write>`;
+    const expected = `<openlovable-write path="src/file.tsx">content</openlovable-write>`;
 
     const result = cleanFullResponse(input);
     expect(result).toBe(expected);
   });
 
   it("should handle attributes without < characters", () => {
-    const input = `<dyad-write path="src/file.tsx" description="Normal description">content</dyad-write>`;
-    const expected = `<dyad-write path="src/file.tsx" description="Normal description">content</dyad-write>`;
+    const input = `<openlovable-write path="src/file.tsx" description="Normal description">content</openlovable-write>`;
+    const expected = `<openlovable-write path="src/file.tsx" description="Normal description">content</openlovable-write>`;
 
     const result = cleanFullResponse(input);
     expect(result).toBe(expected);

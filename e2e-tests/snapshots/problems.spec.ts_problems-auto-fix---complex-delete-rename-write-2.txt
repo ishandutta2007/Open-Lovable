@@ -16,7 +16,7 @@ tell them that they need to add supabase to their app.
 
 The following response will show a button that allows the user to add supabase to their app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 # Examples
 
@@ -30,7 +30,7 @@ I want to use supabase in my app.
 
 You need to first add Supabase to your app.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 ## Example 2: User wants to add auth to their app
 
@@ -42,12 +42,12 @@ I want to add auth to my app.
 
 You need to first add Supabase to your app and then we can add auth.
 
-<dyad-add-integration provider="supabase"></dyad-add-integration>
+<openlovable-add-integration provider="supabase"></openlovable-add-integration>
 
 
 ===
 role: user
-message: This is my codebase. <dyad-file path=".gitignore">
+message: This is my codebase. <openlovable-file path=".gitignore">
 # Logs
 logs
 *.log
@@ -73,22 +73,22 @@ dist-ssr
 *.sln
 *.sw?
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="AI_RULES.md">
+<openlovable-file path="AI_RULES.md">
 [[beginning of AI_RULES.md]]
 There's already AI rules...
 [[end of AI_RULES.md]]
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="index.html">
+<openlovable-file path="index.html">
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dyad-generated-app</title>
+    <title>openlovable-generated-app</title>
   </head>
 
   <body>
@@ -97,39 +97,39 @@ There's already AI rules...
   </body>
 </html>
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/bad-file.ts">
+<openlovable-file path="src/bad-file.ts">
 // Import doesn't exist
 // import NonExistentClass from 'non-existent-class';
 
 
 const x = new Object();
 x.toString(); // replaced with existing method
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/main.tsx">
+<openlovable-file path="src/main.tsx">
 finalMainTsxFileWithError();
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="src/vite-env.d.ts">
+<openlovable-file path="src/vite-env.d.ts">
 /// <reference types="vite/client" />
 
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="tsconfig.app.json">
+<openlovable-file path="tsconfig.app.json">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="tsconfig.json">
+<openlovable-file path="tsconfig.json">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="tsconfig.node.json">
+<openlovable-file path="tsconfig.node.json">
 // File contents excluded from context
-</dyad-file>
+</openlovable-file>
 
-<dyad-file path="vite.config.ts">
+<openlovable-file path="vite.config.ts">
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -147,7 +147,7 @@ export default defineConfig(() => ({
   },
 }));
 
-</dyad-file>
+</openlovable-file>
 
 
 
@@ -162,13 +162,13 @@ message: tc=create-ts-errors-complex
 ===
 role: assistant
 message: Tests delete-rename-write order
-<dyad-delete path="src/main.tsx">
-</dyad-delete>
-<dyad-rename from="src/App.tsx" to="src/main.tsx">
-</dyad-rename>
-<dyad-write path="src/main.tsx" description="final main.tsx file.">
+<openlovable-delete path="src/main.tsx">
+</openlovable-delete>
+<openlovable-rename from="src/App.tsx" to="src/main.tsx">
+</openlovable-rename>
+<openlovable-write path="src/main.tsx" description="final main.tsx file.">
 finalMainTsxFileWithError();
-</dyad-write>
+</openlovable-write>
 EOM
 
 ===
@@ -185,18 +185,18 @@ Please fix all errors in a concise way.
 
 ===
 role: assistant
-message: <dyad-write path="src/bad-file.ts" description="Fix remaining error.">
+message: <openlovable-write path="src/bad-file.ts" description="Fix remaining error.">
 // Import doesn't exist
 // import NonExistentClass from 'non-existent-class';
 
 
 const x = new Object();
 x.toString(); // replaced with existing method
-</dyad-write>
+</openlovable-write>
 
       
 
-[[dyad-dump-path=*]]
+[[openlovable-dump-path=*]]
 
 ===
 role: user

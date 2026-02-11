@@ -1,5 +1,5 @@
 (() => {
-  const OVERLAY_CLASS = "__dyad_overlay__";
+  const OVERLAY_CLASS = "__openlovable_overlay__";
   let overlays = [];
   let hoverOverlay = null;
   let hoverLabel = null;
@@ -109,8 +109,8 @@
     });
     css(hoverLabel, { background: "#7f22fe" });
     while (hoverLabel.firstChild) hoverLabel.removeChild(hoverLabel.firstChild);
-    const name = el.dataset.dyadName || "<unknown>";
-    const file = (el.dataset.dyadId || "").split(":")[0];
+    const name = el.dataset.openlovableName || "<unknown>";
+    const file = (el.dataset.openlovableId || "").split(":")[0];
     const nameEl = document.createElement("div");
     nameEl.textContent = name;
     hoverLabel.appendChild(nameEl);
@@ -163,7 +163,7 @@
         const rect = highlightedItem.el.getBoundingClientRect();
         window.parent.postMessage(
           {
-            type: "dyad-component-coordinates-updated",
+            type: "openlovable-component-coordinates-updated",
             coordinates: {
               top: rect.top,
               left: rect.left,
@@ -195,7 +195,7 @@
     // Remove all overlays with the same componentId
     const indicesToRemove = [];
     overlays.forEach((item, index) => {
-      if (item.el.dataset.dyadId === componentId) {
+      if (item.el.dataset.openlovableId === componentId) {
         indicesToRemove.push(index);
       }
     });
@@ -209,7 +209,7 @@
 
     if (
       highlightedElement &&
-      highlightedElement.dataset.dyadId === componentId
+      highlightedElement.dataset.openlovableId === componentId
     ) {
       highlightedElement = null;
     }
@@ -294,8 +294,8 @@
     label.appendChild(editLine);
 
     // Add component name and file
-    const name = el.dataset.dyadName || "<unknown>";
-    const file = (el.dataset.dyadId || "").split(":")[0];
+    const name = el.dataset.openlovableName || "<unknown>";
+    const file = (el.dataset.openlovableId || "").split(":")[0];
     const nameEl = document.createElement("div");
     nameEl.textContent = name;
     label.appendChild(nameEl);
@@ -327,7 +327,7 @@
     }
 
     let el = e.target;
-    while (el && !el.dataset.dyadId) el = el.parentElement;
+    while (el && !el.dataset.openlovableId) el = el.parentElement;
 
     const hoveredItem = overlays.find((item) => item.el === el);
 
@@ -397,7 +397,7 @@
     e.preventDefault();
     e.stopPropagation();
 
-    const clickedComponentId = state.element.dataset.dyadId;
+    const clickedComponentId = state.element.dataset.openlovableId;
     const selectedItem = overlays.find((item) => item.el === state.element);
 
     // If clicking on the currently highlighted component, deselect it
@@ -413,7 +413,7 @@
       // Only post message once for all elements with the same ID
       window.parent.postMessage(
         {
-          type: "dyad-component-deselected",
+          type: "openlovable-component-deselected",
           componentId: clickedComponentId,
         },
         "*",
@@ -449,18 +449,18 @@
     }
 
     // Assign a unique runtime ID to this element if it doesn't have one
-    if (!state.element.dataset.dyadRuntimeId) {
-      state.element.dataset.dyadRuntimeId = `dyad-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    if (!state.element.dataset.openlovableRuntimeId) {
+      state.element.dataset.openlovableRuntimeId = `openlovable-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     }
 
     const rect = state.element.getBoundingClientRect();
     window.parent.postMessage(
       {
-        type: "dyad-component-selected",
+        type: "openlovable-component-selected",
         component: {
           id: clickedComponentId,
-          name: state.element.dataset.dyadName,
-          runtimeId: state.element.dataset.dyadRuntimeId,
+          name: state.element.dataset.openlovableName,
+          runtimeId: state.element.dataset.openlovableRuntimeId,
         },
         coordinates: {
           top: rect.top,
@@ -491,7 +491,7 @@
       e.preventDefault();
       window.parent.postMessage(
         {
-          type: "dyad-select-component-shortcut",
+          type: "openlovable-select-component-shortcut",
         },
         "*",
       );
@@ -526,20 +526,20 @@
   /* ---------- message bridge -------------------------------------------- */
   window.addEventListener("message", (e) => {
     if (e.source !== window.parent) return;
-    if (e.data.type === "dyad-pro-mode") {
+    if (e.data.type === "openlovable-pro-mode") {
       isProMode = e.data.enabled;
     }
-    if (e.data.type === "activate-dyad-component-selector") activate();
-    if (e.data.type === "deactivate-dyad-component-selector") deactivate();
-    if (e.data.type === "activate-dyad-visual-editing") {
+    if (e.data.type === "activate-openlovable-component-selector") activate();
+    if (e.data.type === "deactivate-openlovable-component-selector") deactivate();
+    if (e.data.type === "activate-openlovable-visual-editing") {
       activate();
     }
-    if (e.data.type === "deactivate-dyad-visual-editing") {
+    if (e.data.type === "deactivate-openlovable-visual-editing") {
       deactivate();
       clearOverlays();
     }
-    if (e.data.type === "clear-dyad-component-overlays") clearOverlays();
-    if (e.data.type === "update-dyad-overlay-positions") {
+    if (e.data.type === "clear-openlovable-component-overlays") clearOverlays();
+    if (e.data.type === "update-openlovable-overlay-positions") {
       updateAllOverlayPositions();
     }
     if (e.data.type === "update-component-coordinates") {
@@ -547,8 +547,8 @@
       componentCoordinates = e.data.coordinates;
     }
     if (
-      e.data.type === "remove-dyad-component-overlay" ||
-      e.data.type === "deselect-dyad-component"
+      e.data.type === "remove-openlovable-component-overlay" ||
+      e.data.type === "deselect-openlovable-component"
     ) {
       if (e.data.componentId) {
         removeOverlayById(e.data.componentId);
@@ -571,7 +571,7 @@
   function initializeComponentSelector() {
     if (!document.body) {
       console.error(
-        "Dyad component selector initialization failed: document.body not found.",
+        "Open-Lovable component selector initialization failed: document.body not found.",
       );
       return;
     }
@@ -580,13 +580,13 @@
     // supabase auth loading), it can take a while and thus we use a timeout/observer
     // to wait for tagged elements to appear.
     //
-    // see: https://github.com/dyad-sh/dyad/issues/2231
+    // see: https://github.com/openlovable-sh/openlovable/issues/2231
     const INIT_TIMEOUT_MS = 60_000; // Wait up to 60 seconds for tagged elements
     let observer = null;
     let timeoutId = null;
 
     function checkForTaggedElements() {
-      if (document.body.querySelector("[data-dyad-id]")) {
+      if (document.body.querySelector("[data-openlovable-id]")) {
         // Clean up observer and timeout
         if (observer) {
           observer.disconnect();
@@ -599,11 +599,11 @@
 
         window.parent.postMessage(
           {
-            type: "dyad-component-selector-initialized",
+            type: "openlovable-component-selector-initialized",
           },
           "*",
         );
-        console.debug("Dyad component selector initialized");
+        console.debug("Open-Lovable component selector initialized");
         return true;
       }
       return false;
@@ -617,23 +617,23 @@
 
       // If not found, set up MutationObserver to watch for tagged elements
       console.debug(
-        "Dyad component selector waiting for tagged elements to appear...",
+        "Open-Lovable component selector waiting for tagged elements to appear...",
       );
 
       observer = new MutationObserver((mutations) => {
         // Filter mutations to only process relevant changes
         const hasRelevantMutation = mutations.some((mutation) => {
-          // Attribute mutation on data-dyad-id (already filtered by attributeFilter)
+          // Attribute mutation on data-openlovable-id (already filtered by attributeFilter)
           if (mutation.type === "attributes") {
             return true;
           }
-          // Check if any added nodes have data-dyad-id
+          // Check if any added nodes have data-openlovable-id
           if (mutation.type === "childList") {
             for (const node of mutation.addedNodes) {
               if (node.nodeType === Node.ELEMENT_NODE) {
                 if (
-                  node.hasAttribute("data-dyad-id") ||
-                  node.querySelector("[data-dyad-id]")
+                  node.hasAttribute("data-openlovable-id") ||
+                  node.querySelector("[data-openlovable-id]")
                 ) {
                   return true;
                 }
@@ -652,7 +652,7 @@
         childList: true,
         subtree: true,
         attributes: true,
-        attributeFilter: ["data-dyad-id"],
+        attributeFilter: ["data-openlovable-id"],
       });
 
       // Set a timeout to give up after INIT_TIMEOUT_MS
@@ -662,9 +662,9 @@
           observer = null;
         }
         // Only warn if we never found tagged elements
-        if (!document.body.querySelector("[data-dyad-id]")) {
+        if (!document.body.querySelector("[data-openlovable-id]")) {
           console.warn(
-            "Dyad component selector not initialized because no DOM elements were tagged",
+            "Open-Lovable component selector not initialized because no DOM elements were tagged",
           );
         }
       }, INIT_TIMEOUT_MS);

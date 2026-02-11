@@ -3,25 +3,25 @@ import { Button } from "@/components/ui/button";
 import { Sparkles, Check, Zap, Wand2, Cpu } from "lucide-react";
 import { ipc } from "@/ipc/types";
 
-interface DyadProTrialDialogProps {
+interface Open-LovableProTrialDialogProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export function DyadProTrialDialog({
+export function Open-LovableProTrialDialog({
   isOpen,
   onClose,
-}: DyadProTrialDialogProps) {
+}: Open-LovableProTrialDialogProps) {
   const handleStartTrial = () => {
     ipc.system.openExternalUrl(
-      "https://academy.dyad.sh/redirect-to-checkout?trialCode=1PRO30&utm_source=dyad-app&utm_medium=app&utm_campaign=setup-dialog-v2",
+      "https://academy.openlovable.sh/redirect-to-checkout?trialCode=1PRO30&utm_source=openlovable-app&utm_medium=app&utm_campaign=setup-dialog-v2",
     );
     onClose();
   };
 
   const handleLearnMore = () => {
     ipc.system.openExternalUrl(
-      "https://www.dyad.sh/pro?utm_source=dyad-app&utm_medium=app&utm_campaign=setup-dialog-v2",
+      "https://www.openlovable.sh/pro?utm_source=openlovable-app&utm_medium=app&utm_campaign=setup-dialog-v2",
     );
   };
 
@@ -54,7 +54,7 @@ export function DyadProTrialDialog({
           {/* Title */}
           <div className="text-center">
             <h2 className="text-xl font-semibold tracking-tight text-foreground">
-              Unlock Dyad Pro
+              Unlock Open-Lovable Pro
             </h2>
             <p className="mt-1 text-sm text-muted-foreground">
               Start your free 3-day trial today

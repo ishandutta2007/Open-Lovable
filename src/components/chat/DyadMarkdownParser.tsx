@@ -2,83 +2,83 @@ import React, { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { DyadWrite } from "./DyadWrite";
-import { DyadRename } from "./DyadRename";
-import { DyadDelete } from "./DyadDelete";
-import { DyadAddDependency } from "./DyadAddDependency";
-import { DyadExecuteSql } from "./DyadExecuteSql";
-import { DyadLogs } from "./DyadLogs";
-import { DyadGrep } from "./DyadGrep";
-import { DyadAddIntegration } from "./DyadAddIntegration";
-import { DyadEdit } from "./DyadEdit";
-import { DyadSearchReplace } from "./DyadSearchReplace";
-import { DyadCodebaseContext } from "./DyadCodebaseContext";
-import { DyadThink } from "./DyadThink";
+import { Open-LovableWrite } from "./Open-LovableWrite";
+import { Open-LovableRename } from "./Open-LovableRename";
+import { Open-LovableDelete } from "./Open-LovableDelete";
+import { Open-LovableAddDependency } from "./Open-LovableAddDependency";
+import { Open-LovableExecuteSql } from "./Open-LovableExecuteSql";
+import { Open-LovableLogs } from "./Open-LovableLogs";
+import { Open-LovableGrep } from "./Open-LovableGrep";
+import { Open-LovableAddIntegration } from "./Open-LovableAddIntegration";
+import { Open-LovableEdit } from "./Open-LovableEdit";
+import { Open-LovableSearchReplace } from "./Open-LovableSearchReplace";
+import { Open-LovableCodebaseContext } from "./Open-LovableCodebaseContext";
+import { Open-LovableThink } from "./Open-LovableThink";
 import { CodeHighlight } from "./CodeHighlight";
 import { useAtomValue } from "jotai";
 import { isStreamingByIdAtom, selectedChatIdAtom } from "@/atoms/chatAtoms";
 import { CustomTagState } from "./stateTypes";
-import { DyadOutput } from "./DyadOutput";
-import { DyadProblemSummary } from "./DyadProblemSummary";
+import { Open-LovableOutput } from "./Open-LovableOutput";
+import { Open-LovableProblemSummary } from "./Open-LovableProblemSummary";
 import { ipc } from "@/ipc/types";
-import { DyadMcpToolCall } from "./DyadMcpToolCall";
-import { DyadMcpToolResult } from "./DyadMcpToolResult";
-import { DyadWebSearchResult } from "./DyadWebSearchResult";
-import { DyadWebSearch } from "./DyadWebSearch";
-import { DyadWebCrawl } from "./DyadWebCrawl";
-import { DyadCodeSearchResult } from "./DyadCodeSearchResult";
-import { DyadCodeSearch } from "./DyadCodeSearch";
-import { DyadRead } from "./DyadRead";
-import { DyadListFiles } from "./DyadListFiles";
-import { DyadDatabaseSchema } from "./DyadDatabaseSchema";
-import { DyadSupabaseTableSchema } from "./DyadSupabaseTableSchema";
-import { DyadSupabaseProjectInfo } from "./DyadSupabaseProjectInfo";
-import { DyadStatus } from "./DyadStatus";
-import { DyadCompaction } from "./DyadCompaction";
-import { DyadWritePlan } from "./DyadWritePlan";
-import { DyadExitPlan } from "./DyadExitPlan";
+import { Open-LovableMcpToolCall } from "./Open-LovableMcpToolCall";
+import { Open-LovableMcpToolResult } from "./Open-LovableMcpToolResult";
+import { Open-LovableWebSearchResult } from "./Open-LovableWebSearchResult";
+import { Open-LovableWebSearch } from "./Open-LovableWebSearch";
+import { Open-LovableWebCrawl } from "./Open-LovableWebCrawl";
+import { Open-LovableCodeSearchResult } from "./Open-LovableCodeSearchResult";
+import { Open-LovableCodeSearch } from "./Open-LovableCodeSearch";
+import { Open-LovableRead } from "./Open-LovableRead";
+import { Open-LovableListFiles } from "./Open-LovableListFiles";
+import { Open-LovableDatabaseSchema } from "./Open-LovableDatabaseSchema";
+import { Open-LovableSupabaseTableSchema } from "./Open-LovableSupabaseTableSchema";
+import { Open-LovableSupabaseProjectInfo } from "./Open-LovableSupabaseProjectInfo";
+import { Open-LovableStatus } from "./Open-LovableStatus";
+import { Open-LovableCompaction } from "./Open-LovableCompaction";
+import { Open-LovableWritePlan } from "./Open-LovableWritePlan";
+import { Open-LovableExitPlan } from "./Open-LovableExitPlan";
 import { mapActionToButton } from "./ChatInput";
 import { SuggestedAction } from "@/lib/schemas";
 import { FixAllErrorsButton } from "./FixAllErrorsButton";
 import { unescapeXmlAttr, unescapeXmlContent } from "../../../shared/xmlEscape";
 
 const DYAD_CUSTOM_TAGS = [
-  "dyad-write",
-  "dyad-rename",
-  "dyad-delete",
-  "dyad-add-dependency",
-  "dyad-execute-sql",
-  "dyad-read-logs",
-  "dyad-add-integration",
-  "dyad-output",
-  "dyad-problem-report",
-  "dyad-chat-summary",
-  "dyad-edit",
-  "dyad-grep",
-  "dyad-search-replace",
-  "dyad-codebase-context",
-  "dyad-web-search-result",
-  "dyad-web-search",
-  "dyad-web-crawl",
-  "dyad-code-search-result",
-  "dyad-code-search",
-  "dyad-read",
+  "openlovable-write",
+  "openlovable-rename",
+  "openlovable-delete",
+  "openlovable-add-dependency",
+  "openlovable-execute-sql",
+  "openlovable-read-logs",
+  "openlovable-add-integration",
+  "openlovable-output",
+  "openlovable-problem-report",
+  "openlovable-chat-summary",
+  "openlovable-edit",
+  "openlovable-grep",
+  "openlovable-search-replace",
+  "openlovable-codebase-context",
+  "openlovable-web-search-result",
+  "openlovable-web-search",
+  "openlovable-web-crawl",
+  "openlovable-code-search-result",
+  "openlovable-code-search",
+  "openlovable-read",
   "think",
-  "dyad-command",
-  "dyad-mcp-tool-call",
-  "dyad-mcp-tool-result",
-  "dyad-list-files",
-  "dyad-database-schema",
-  "dyad-supabase-table-schema",
-  "dyad-supabase-project-info",
-  "dyad-status",
-  "dyad-compaction",
+  "openlovable-command",
+  "openlovable-mcp-tool-call",
+  "openlovable-mcp-tool-result",
+  "openlovable-list-files",
+  "openlovable-database-schema",
+  "openlovable-supabase-table-schema",
+  "openlovable-supabase-project-info",
+  "openlovable-status",
+  "openlovable-compaction",
   // Plan mode tags
-  "dyad-write-plan",
-  "dyad-exit-plan",
+  "openlovable-write-plan",
+  "openlovable-exit-plan",
 ];
 
-interface DyadMarkdownParserProps {
+interface Open-LovableMarkdownParserProps {
   content: string;
 }
 
@@ -128,9 +128,9 @@ export const VanillaMarkdownParser = ({ content }: { content: string }) => {
 };
 
 /**
- * Custom component to parse markdown content with Dyad-specific tags
+ * Custom component to parse markdown content with Open-Lovable-specific tags
  */
-export const DyadMarkdownParser: React.FC<DyadMarkdownParserProps> = ({
+export const Open-LovableMarkdownParser: React.FC<Open-LovableMarkdownParserProps> = ({
   content,
 }) => {
   const chatId = useAtomValue(selectedChatIdAtom);
@@ -149,7 +149,7 @@ export const DyadMarkdownParser: React.FC<DyadMarkdownParserProps> = ({
     contentPieces.forEach((piece, index) => {
       if (
         piece.type === "custom-tag" &&
-        piece.tagInfo.tag === "dyad-output" &&
+        piece.tagInfo.tag === "openlovable-output" &&
         piece.tagInfo.attributes.type === "error"
       ) {
         const errorMessage = piece.tagInfo.attributes.message;
@@ -346,9 +346,9 @@ function renderCustomTag(
   const { tag, attributes, content, inProgress } = tagInfo;
 
   switch (tag) {
-    case "dyad-read":
+    case "openlovable-read":
       return (
-        <DyadRead
+        <Open-LovableRead
           node={{
             properties: {
               path: attributes.path || "",
@@ -358,11 +358,11 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadRead>
+        </Open-LovableRead>
       );
-    case "dyad-web-search":
+    case "openlovable-web-search":
       return (
-        <DyadWebSearch
+        <Open-LovableWebSearch
           node={{
             properties: {
               query: attributes.query || "",
@@ -371,21 +371,21 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadWebSearch>
+        </Open-LovableWebSearch>
       );
-    case "dyad-web-crawl":
+    case "openlovable-web-crawl":
       return (
-        <DyadWebCrawl
+        <Open-LovableWebCrawl
           node={{
             properties: {},
           }}
         >
           {content}
-        </DyadWebCrawl>
+        </Open-LovableWebCrawl>
       );
-    case "dyad-code-search":
+    case "openlovable-code-search":
       return (
-        <DyadCodeSearch
+        <Open-LovableCodeSearch
           node={{
             properties: {
               query: attributes.query || "",
@@ -394,21 +394,21 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadCodeSearch>
+        </Open-LovableCodeSearch>
       );
-    case "dyad-code-search-result":
+    case "openlovable-code-search-result":
       return (
-        <DyadCodeSearchResult
+        <Open-LovableCodeSearchResult
           node={{
             properties: {},
           }}
         >
           {content}
-        </DyadCodeSearchResult>
+        </Open-LovableCodeSearchResult>
       );
-    case "dyad-web-search-result":
+    case "openlovable-web-search-result":
       return (
-        <DyadWebSearchResult
+        <Open-LovableWebSearchResult
           node={{
             properties: {
               state: getState({ isStreaming, inProgress }),
@@ -416,11 +416,11 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadWebSearchResult>
+        </Open-LovableWebSearchResult>
       );
     case "think":
       return (
-        <DyadThink
+        <Open-LovableThink
           node={{
             properties: {
               state: getState({ isStreaming, inProgress }),
@@ -428,11 +428,11 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadThink>
+        </Open-LovableThink>
       );
-    case "dyad-write":
+    case "openlovable-write":
       return (
-        <DyadWrite
+        <Open-LovableWrite
           node={{
             properties: {
               path: attributes.path || "",
@@ -442,12 +442,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadWrite>
+        </Open-LovableWrite>
       );
 
-    case "dyad-rename":
+    case "openlovable-rename":
       return (
-        <DyadRename
+        <Open-LovableRename
           node={{
             properties: {
               from: attributes.from || "",
@@ -456,12 +456,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadRename>
+        </Open-LovableRename>
       );
 
-    case "dyad-delete":
+    case "openlovable-delete":
       return (
-        <DyadDelete
+        <Open-LovableDelete
           node={{
             properties: {
               path: attributes.path || "",
@@ -469,12 +469,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadDelete>
+        </Open-LovableDelete>
       );
 
-    case "dyad-add-dependency":
+    case "openlovable-add-dependency":
       return (
-        <DyadAddDependency
+        <Open-LovableAddDependency
           node={{
             properties: {
               packages: attributes.packages || "",
@@ -482,12 +482,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadAddDependency>
+        </Open-LovableAddDependency>
       );
 
-    case "dyad-execute-sql":
+    case "openlovable-execute-sql":
       return (
-        <DyadExecuteSql
+        <Open-LovableExecuteSql
           node={{
             properties: {
               state: getState({ isStreaming, inProgress }),
@@ -496,12 +496,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadExecuteSql>
+        </Open-LovableExecuteSql>
       );
 
-    case "dyad-read-logs":
+    case "openlovable-read-logs":
       return (
-        <DyadLogs
+        <Open-LovableLogs
           node={{
             properties: {
               state: getState({ isStreaming, inProgress }),
@@ -513,12 +513,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadLogs>
+        </Open-LovableLogs>
       );
 
-    case "dyad-grep":
+    case "openlovable-grep":
       return (
-        <DyadGrep
+        <Open-LovableGrep
           node={{
             properties: {
               state: getState({ isStreaming, inProgress }),
@@ -533,12 +533,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadGrep>
+        </Open-LovableGrep>
       );
 
-    case "dyad-add-integration":
+    case "openlovable-add-integration":
       return (
-        <DyadAddIntegration
+        <Open-LovableAddIntegration
           node={{
             properties: {
               provider: attributes.provider || "",
@@ -546,12 +546,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadAddIntegration>
+        </Open-LovableAddIntegration>
       );
 
-    case "dyad-edit":
+    case "openlovable-edit":
       return (
-        <DyadEdit
+        <Open-LovableEdit
           node={{
             properties: {
               path: attributes.path || "",
@@ -561,12 +561,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadEdit>
+        </Open-LovableEdit>
       );
 
-    case "dyad-search-replace":
+    case "openlovable-search-replace":
       return (
-        <DyadSearchReplace
+        <Open-LovableSearchReplace
           node={{
             properties: {
               path: attributes.path || "",
@@ -576,12 +576,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadSearchReplace>
+        </Open-LovableSearchReplace>
       );
 
-    case "dyad-codebase-context":
+    case "openlovable-codebase-context":
       return (
-        <DyadCodebaseContext
+        <Open-LovableCodebaseContext
           node={{
             properties: {
               files: attributes.files || "",
@@ -590,12 +590,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadCodebaseContext>
+        </Open-LovableCodebaseContext>
       );
 
-    case "dyad-mcp-tool-call":
+    case "openlovable-mcp-tool-call":
       return (
-        <DyadMcpToolCall
+        <Open-LovableMcpToolCall
           node={{
             properties: {
               serverName: attributes.server || "",
@@ -604,12 +604,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadMcpToolCall>
+        </Open-LovableMcpToolCall>
       );
 
-    case "dyad-mcp-tool-result":
+    case "openlovable-mcp-tool-result":
       return (
-        <DyadMcpToolResult
+        <Open-LovableMcpToolResult
           node={{
             properties: {
               serverName: attributes.server || "",
@@ -618,31 +618,31 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadMcpToolResult>
+        </Open-LovableMcpToolResult>
       );
 
-    case "dyad-output":
+    case "openlovable-output":
       return (
-        <DyadOutput
+        <Open-LovableOutput
           type={attributes.type as "warning" | "error"}
           message={attributes.message}
         >
           {content}
-        </DyadOutput>
+        </Open-LovableOutput>
       );
 
-    case "dyad-problem-report":
+    case "openlovable-problem-report":
       return (
-        <DyadProblemSummary summary={attributes.summary}>
+        <Open-LovableProblemSummary summary={attributes.summary}>
           {content}
-        </DyadProblemSummary>
+        </Open-LovableProblemSummary>
       );
 
-    case "dyad-chat-summary":
-      // Don't render anything for dyad-chat-summary
+    case "openlovable-chat-summary":
+      // Don't render anything for openlovable-chat-summary
       return null;
 
-    case "dyad-command":
+    case "openlovable-command":
       if (attributes.type) {
         const action = {
           id: attributes.type,
@@ -651,9 +651,9 @@ function renderCustomTag(
       }
       return null;
 
-    case "dyad-list-files":
+    case "openlovable-list-files":
       return (
-        <DyadListFiles
+        <Open-LovableListFiles
           node={{
             properties: {
               directory: attributes.directory || "",
@@ -664,12 +664,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadListFiles>
+        </Open-LovableListFiles>
       );
 
-    case "dyad-database-schema":
+    case "openlovable-database-schema":
       return (
-        <DyadDatabaseSchema
+        <Open-LovableDatabaseSchema
           node={{
             properties: {
               state: getState({ isStreaming, inProgress }),
@@ -677,12 +677,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadDatabaseSchema>
+        </Open-LovableDatabaseSchema>
       );
 
-    case "dyad-supabase-table-schema":
+    case "openlovable-supabase-table-schema":
       return (
-        <DyadSupabaseTableSchema
+        <Open-LovableSupabaseTableSchema
           node={{
             properties: {
               table: attributes.table || "",
@@ -691,12 +691,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadSupabaseTableSchema>
+        </Open-LovableSupabaseTableSchema>
       );
 
-    case "dyad-supabase-project-info":
+    case "openlovable-supabase-project-info":
       return (
-        <DyadSupabaseProjectInfo
+        <Open-LovableSupabaseProjectInfo
           node={{
             properties: {
               state: getState({ isStreaming, inProgress }),
@@ -704,12 +704,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadSupabaseProjectInfo>
+        </Open-LovableSupabaseProjectInfo>
       );
 
-    case "dyad-status":
+    case "openlovable-status":
       return (
-        <DyadStatus
+        <Open-LovableStatus
           node={{
             properties: {
               title: attributes.title || "Processing...",
@@ -718,12 +718,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadStatus>
+        </Open-LovableStatus>
       );
 
-    case "dyad-compaction":
+    case "openlovable-compaction":
       return (
-        <DyadCompaction
+        <Open-LovableCompaction
           node={{
             properties: {
               title: attributes.title || "Compacting conversation",
@@ -732,12 +732,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadCompaction>
+        </Open-LovableCompaction>
       );
 
-    case "dyad-write-plan":
+    case "openlovable-write-plan":
       return (
-        <DyadWritePlan
+        <Open-LovableWritePlan
           node={{
             properties: {
               title: attributes.title || "Implementation Plan",
@@ -748,12 +748,12 @@ function renderCustomTag(
           }}
         >
           {content}
-        </DyadWritePlan>
+        </Open-LovableWritePlan>
       );
 
-    case "dyad-exit-plan":
+    case "openlovable-exit-plan":
       return (
-        <DyadExitPlan
+        <Open-LovableExitPlan
           node={{
             properties: {
               notes: attributes.notes,

@@ -19,14 +19,14 @@ export interface VersionedFiles {
   hasExternalChanges: boolean;
 }
 
-interface DyadEngineProviderOptions {
+interface Open-LovableEngineProviderOptions {
   sourceCommitHash: string | null;
   commitHash: string | null;
 }
 
 /**
  * Parse file paths from assistant message content.
- * Extracts files from <dyad-read> and <dyad-code-search-result> tags.
+ * Extracts files from <openlovable-read> and <openlovable-code-search-result> tags.
  */
 export function parseFilesFromMessage(content: string): string[] {
   const filePaths: string[] = [];
@@ -39,10 +39,10 @@ export function parseFilesFromMessage(content: string): string[] {
   }
   const matches: TagMatch[] = [];
 
-  // Parse <dyad-read path="$filePath"></dyad-read>
-  const dyadReadRegex = /<dyad-read\s+path="([^"]+)"[^>]*><\/dyad-read>/gs;
+  // Parse <openlovable-read path="$filePath"></openlovable-read>
+  const openlovableReadRegex = /<openlovable-read\s+path="([^"]+)"[^>]*><\/openlovable-read>/gs;
   let match: RegExpExecArray | null;
-  while ((match = dyadReadRegex.exec(content)) !== null) {
+  while ((match = openlovableReadRegex.exec(content)) !== null) {
     const filePath = normalizePath(match[1].trim());
     if (filePath) {
       matches.push({
@@ -52,9 +52,9 @@ export function parseFilesFromMessage(content: string): string[] {
     }
   }
 
-  // Parse <dyad-code-search-result>...</dyad-code-search-result>
+  // Parse <openlovable-code-search-result>...</openlovable-code-search-result>
   const codeSearchRegex =
-    /<dyad-code-search-result>(.*?)<\/dyad-code-search-result>/gs;
+    /<openlovable-code-search-result>(.*?)<\/openlovable-code-search-result>/gs;
   while ((match = codeSearchRegex.exec(content)) !== null) {
     const innerContent = match[1];
     const paths: string[] = [];
@@ -139,8 +139,8 @@ export async function processChatMessagesWithVersionedFiles({
 
     // Extract sourceCommitHash from providerOptions
     const engineOptions = message.providerOptions?.[
-      "dyad-engine"
-    ] as unknown as DyadEngineProviderOptions;
+      "openlovable-engine"
+    ] as unknown as Open-LovableEngineProviderOptions;
     const sourceCommitHash = engineOptions?.sourceCommitHash;
 
     // Skip messages without sourceCommitHash
@@ -225,8 +225,8 @@ export async function processChatMessagesWithVersionedFiles({
     const message = chatMessages[i];
     if (message.role === "assistant") {
       const engineOptions = message.providerOptions?.[
-        "dyad-engine"
-      ] as unknown as DyadEngineProviderOptions;
+        "openlovable-engine"
+      ] as unknown as Open-LovableEngineProviderOptions;
       if (engineOptions?.commitHash) {
         latestCommitHash = engineOptions.commitHash;
         break;

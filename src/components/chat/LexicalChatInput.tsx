@@ -271,7 +271,7 @@ export function LexicalChatInput({
   onSubmit,
   onPaste,
   excludeCurrentApp,
-  placeholder = "Ask Dyad to build...",
+  placeholder = "Ask Open-Lovable to build...",
   disabled = false,
   disableSendButton,
   messageHistory = [],

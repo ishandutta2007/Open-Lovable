@@ -1,15 +1,15 @@
-# @dyad-sh/nextjs-webpack-component-tagger
+# @openlovable-sh/nextjs-webpack-component-tagger
 
-A webpack loader for Next.js that automatically adds `data-dyad-id` and `data-dyad-name` attributes to your React components. This is useful for identifying components in the DOM, for example for testing or analytics.
+A webpack loader for Next.js that automatically adds `data-openlovable-id` and `data-openlovable-name` attributes to your React components. This is useful for identifying components in the DOM, for example for testing or analytics.
 
 ## Installation
 
 ```bash
-npm install @dyad-sh/nextjs-webpack-component-tagger
+npm install @openlovable-sh/nextjs-webpack-component-tagger
 # or
-yarn add @dyad-sh/nextjs-webpack-component-tagger
+yarn add @openlovable-sh/nextjs-webpack-component-tagger
 # or
-pnpm add @dyad-sh/nextjs-webpack-component-tagger
+pnpm add @openlovable-sh/nextjs-webpack-component-tagger
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
         test: /\.(jsx|tsx)$/,
         exclude: /node_modules/,
         enforce: "pre",
-        use: "@dyad-sh/nextjs-webpack-component-tagger",
+        use: "@openlovable-sh/nextjs-webpack-component-tagger",
       });
     }
     return config;
@@ -36,20 +36,20 @@ const nextConfig: NextConfig = {
 export default nextConfig;
 ```
 
-The loader will automatically add `data-dyad-id` and `data-dyad-name` to all your React components.
+The loader will automatically add `data-openlovable-id` and `data-openlovable-name` to all your React components.
 
-The `data-dyad-id` will be a unique identifier for each component instance, in the format `path/to/file.tsx:line:column`.
+The `data-openlovable-id` will be a unique identifier for each component instance, in the format `path/to/file.tsx:line:column`.
 
-The `data-dyad-name` will be the name of the component.
+The `data-openlovable-name` will be the name of the component.
 
 ## Testing & Publishing
 
-Bump it to an alpha version and test in Dyad app, eg. `"version": "0.0.1-alpha.0",`
+Bump it to an alpha version and test in Open-Lovable app, eg. `"version": "0.0.1-alpha.0",`
 
 Then publish it:
 
 ```sh
-cd packages/@dyad-sh/nextjs-webpack-component-tagger/ && npm run prepublishOnly && npm publish
+cd packages/@openlovable-sh/nextjs-webpack-component-tagger/ && npm run prepublishOnly && npm publish
 ```
 
 Update the package version in the nextjs-template repo in your personal fork.
@@ -62,4 +62,4 @@ githubUrl: "https://github.com/wwwillchen/nextjs-template",
 
 Run the E2E tests and make sure it passes.
 
-Then, bump to a normal version, e.g. "0.1.0" and then re-publish. We'll try to match the main Dyad app version where possible.
+Then, bump to a normal version, e.g. "0.1.0" and then re-publish. We'll try to match the main Open-Lovable app version where possible.

@@ -41,7 +41,7 @@ This applies to simple apps like:
 - **Never write HTML, CSS, JavaScript, TypeScript, or any programming code**
 - **Do not create component examples or code snippets**  
 - **Do not provide implementation details or syntax**
-- **Do not use <dyad-write>, <dyad-edit>, <dyad-add-dependency> OR ANY OTHER <dyad-*> tags**
+- **Do not use <openlovable-write>, <openlovable-edit>, <openlovable-add-dependency> OR ANY OTHER <openlovable-*> tags**
 - Your job ends with information gathering and requirement analysis
 - All actual development happens in the next phase
 
@@ -58,18 +58,18 @@ message: [call_tool=calculator_add]
 
 ===
 role: assistant
-message: <dyad-mcp-tool-call server="testing-mcp-server" tool="calculator_add">
+message: <openlovable-mcp-tool-call server="testing-mcp-server" tool="calculator_add">
 {"a":1,"b":2}
-</dyad-mcp-tool-call>
+</openlovable-mcp-tool-call>
 
-  <dyad-write path="file1.txt">
+  <openlovable-write path="file1.txt">
   A file (2)
-  </dyad-write>
+  </openlovable-write>
   More
   EOM
-  <dyad-write path="file1.txt">
+  <openlovable-write path="file1.txt">
   A file (2)
-  </dyad-write>
+  </openlovable-write>
   More
   EOM
 

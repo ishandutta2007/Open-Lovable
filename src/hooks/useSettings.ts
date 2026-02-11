@@ -3,13 +3,13 @@ import { useAtom } from "jotai";
 import { userSettingsAtom, envVarsAtom } from "@/atoms/appAtoms";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ipc } from "@/ipc/types";
-import { type UserSettings, hasDyadProKey } from "@/lib/schemas";
+import { type UserSettings, hasOpen-LovableProKey } from "@/lib/schemas";
 import { usePostHog } from "posthog-js/react";
 import { useAppVersion } from "./useAppVersion";
 import { queryKeys } from "@/lib/queryKeys";
 
-const TELEMETRY_CONSENT_KEY = "dyadTelemetryConsent";
-const TELEMETRY_USER_ID_KEY = "dyadTelemetryUserId";
+const TELEMETRY_CONSENT_KEY = "openlovableTelemetryConsent";
+const TELEMETRY_USER_ID_KEY = "openlovableTelemetryUserId";
 
 export function isTelemetryOptedIn() {
   return window.localStorage.getItem(TELEMETRY_CONSENT_KEY) === "opted_in";
@@ -44,7 +44,7 @@ export function useSettings() {
   useEffect(() => {
     if (settingsQuery.data) {
       processSettingsForTelemetry(settingsQuery.data);
-      const isPro = hasDyadProKey(settingsQuery.data);
+      const isPro = hasOpen-LovableProKey(settingsQuery.data);
       posthog.people.set({ isPro });
       if (!isInitialLoad && appVersion) {
         posthog.capture("app:initial-load", {
@@ -72,7 +72,7 @@ export function useSettings() {
     onSuccess: (updatedSettings) => {
       queryClient.setQueryData(queryKeys.settings.user, updatedSettings);
       processSettingsForTelemetry(updatedSettings);
-      posthog.people.set({ isPro: hasDyadProKey(updatedSettings) });
+      posthog.people.set({ isPro: hasOpen-LovableProKey(updatedSettings) });
       setSettingsAtom(updatedSettings);
     },
     meta: { showErrorToast: true },

@@ -72,7 +72,7 @@ function sanitizeKeywords(keywords: string): string {
 }
 
 // Directory for storing temporary theme images
-const THEME_IMAGES_TEMP_DIR = path.join(os.tmpdir(), "dyad-theme-images");
+const THEME_IMAGES_TEMP_DIR = path.join(os.tmpdir(), "openlovable-theme-images");
 
 // Ensure temp directory exists
 if (!fs.existsSync(THEME_IMAGES_TEMP_DIR)) {
@@ -579,9 +579,9 @@ Modern dark theme with purple accents for testing.
         };
       }
 
-      if (!settings.enableDyadPro) {
+      if (!settings.enableOpen-LovablePro) {
         throw new Error(
-          "Dyad Pro is required for AI theme generation. Please enable Dyad Pro in Settings.",
+          "Open-Lovable Pro is required for AI theme generation. Please enable Open-Lovable Pro in Settings.",
         );
       }
 
@@ -707,9 +707,9 @@ Modern theme extracted from website for testing.
         };
       }
 
-      if (!settings.enableDyadPro) {
+      if (!settings.enableOpen-LovablePro) {
         throw new Error(
-          "Dyad Pro is required for AI theme generation. Please enable Dyad Pro in Settings.",
+          "Open-Lovable Pro is required for AI theme generation. Please enable Open-Lovable Pro in Settings.",
         );
       }
 
@@ -760,17 +760,17 @@ Modern theme extracted from website for testing.
         throw new Error("Invalid model selection");
       }
 
-      // Get API key for Dyad Engine
+      // Get API key for Open-Lovable Engine
       const apiKey = settings.providerSettings?.auto?.apiKey?.value;
       if (!apiKey) {
-        throw new Error("Dyad Pro API key is required");
+        throw new Error("Open-Lovable Pro API key is required");
       }
 
       // Crawl the website
       logger.log(`Crawling website for theme: ${params.url}`);
 
       const DYAD_ENGINE_URL =
-        process.env.DYAD_ENGINE_URL ?? "https://engine.dyad.sh/v1";
+        process.env.DYAD_ENGINE_URL ?? "https://engine.openlovable.sh/v1";
 
       // Create AbortController for timeout
       const controller = new AbortController();
@@ -786,7 +786,7 @@ Modern theme extracted from website for testing.
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${apiKey}`,
-            "X-Dyad-Request-Id": `theme-crawl-${uuidv4()}`,
+            "X-Open-Lovable-Request-Id": `theme-crawl-${uuidv4()}`,
           },
           body: JSON.stringify({ url: params.url }),
           signal: controller.signal,

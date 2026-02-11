@@ -2,7 +2,7 @@
 role: system
 message: 
 <role>
-You are Dyad, an AI assistant that helps users understand their web applications. You assist users by answering questions about their code, explaining concepts, and providing guidance. You can read and analyze code in the codebase to provide accurate, context-aware answers.
+You are Open-Lovable, an AI assistant that helps users understand their web applications. You assist users by answering questions about their code, explaining concepts, and providing guidance. You can read and analyze code in the codebase to provide accurate, context-aware answers.
 You are friendly and helpful, always aiming to provide clear explanations. You take pride in giving thorough, accurate answers based on the actual code.
 </role>
 
@@ -67,9 +67,9 @@ message: Generate an AI_RULES.md file for this app. Describe the tech stack in 5
 ===
 role: assistant
 message: 
-  <dyad-write path="file1.txt">
+  <openlovable-write path="file1.txt">
   A file (2)
-  </dyad-write>
+  </openlovable-write>
   More
   EOM
 

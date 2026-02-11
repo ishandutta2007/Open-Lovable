@@ -45,7 +45,7 @@ export function HelpDialog({ isOpen, onClose }: HelpDialogProps) {
   const selectedChatId = useAtomValue(selectedChatIdAtom);
   const { settings } = useSettings();
   const { userBudget } = useUserBudgetInfo();
-  const isDyadProUser = settings?.providerSettings?.["auto"]?.apiKey?.value;
+  const isOpen-LovableProUser = settings?.providerSettings?.["auto"]?.apiKey?.value;
 
   // Function to reset all dialog state
   const resetDialogState = () => {
@@ -86,7 +86,7 @@ export function HelpDialog({ isOpen, onClose }: HelpDialogProps) {
 <!-- Screenshot of the bug -->
 
 ## System Information
-- Dyad Version: ${debugInfo.dyadVersion}
+- Open-Lovable Version: ${debugInfo.openlovableVersion}
 - Platform: ${debugInfo.platform}
 - Architecture: ${debugInfo.architecture}
 - Node Version: ${debugInfo.nodeVersion || "n/a"}
@@ -106,17 +106,17 @@ ${debugInfo.logs.slice(-3_500) || "No logs available"}
       const encodedBody = encodeURIComponent(issueBody);
       const encodedTitle = encodeURIComponent("[bug] <WRITE TITLE HERE>");
       const labels = ["bug"];
-      if (isDyadProUser) {
+      if (isOpen-LovableProUser) {
         labels.push("pro");
       }
-      const githubIssueUrl = `https://github.com/dyad-sh/dyad/issues/new?title=${encodedTitle}&labels=${labels}&body=${encodedBody}`;
+      const githubIssueUrl = `https://github.com/openlovable-sh/openlovable/issues/new?title=${encodedTitle}&labels=${labels}&body=${encodedBody}`;
 
       // Open the pre-filled GitHub issue page
       ipc.system.openExternalUrl(githubIssueUrl);
     } catch (error) {
       console.error("Failed to prepare bug report:", error);
       // Fallback to opening the regular GitHub issue page
-      ipc.system.openExternalUrl("https://github.com/dyad-sh/dyad/issues/new");
+      ipc.system.openExternalUrl("https://github.com/openlovable-sh/openlovable/issues/new");
     } finally {
       setIsLoading(false);
     }
@@ -160,7 +160,7 @@ ${debugInfo.logs.slice(-3_500) || "No logs available"}
 
       // Get signed URL
       const response = await fetch(
-        "https://upload-logs.dyad.sh/generate-upload-url",
+        "https://upload-logs.openlovable.sh/generate-upload-url",
         {
           method: "POST",
           headers: {
@@ -225,10 +225,10 @@ Pro User ID: ${userBudget?.redactedUserId || "n/a"}
     const encodedBody = encodeURIComponent(issueBody);
     const encodedTitle = encodeURIComponent("[session report] <add title>");
     const labels = ["support"];
-    if (isDyadProUser) {
+    if (isOpen-LovableProUser) {
       labels.push("pro");
     }
-    const githubIssueUrl = `https://github.com/dyad-sh/dyad/issues/new?title=${encodedTitle}&labels=${labels}&body=${encodedBody}`;
+    const githubIssueUrl = `https://github.com/openlovable-sh/openlovable/issues/new?title=${encodedTitle}&labels=${labels}&body=${encodedBody}`;
 
     ipc.system.openExternalUrl(githubIssueUrl);
     handleClose();
@@ -330,7 +330,7 @@ Pro User ID: ${userBudget?.redactedUserId || "n/a"}
             <div className="border rounded-md p-3">
               <h3 className="font-medium mb-2">System Information</h3>
               <div className="text-sm bg-slate-50 dark:bg-slate-900 rounded p-2 max-h-32 overflow-y-auto">
-                <p>Dyad Version: {chatLogsData.debugInfo.dyadVersion}</p>
+                <p>Open-Lovable Version: {chatLogsData.debugInfo.openlovableVersion}</p>
                 <p>Platform: {chatLogsData.debugInfo.platform}</p>
                 <p>Architecture: {chatLogsData.debugInfo.architecture}</p>
                 <p>
@@ -372,13 +372,13 @@ Pro User ID: ${userBudget?.redactedUserId || "n/a"}
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Need help with Dyad?</DialogTitle>
+          <DialogTitle>Need help with Open-Lovable?</DialogTitle>
         </DialogHeader>
         <DialogDescription className="">
           If you need help or want to report an issue, here are some options:
         </DialogDescription>
         <div className="flex flex-col space-y-4 w-full">
-          {isDyadProUser ? (
+          {isOpen-LovableProUser ? (
             <div className="flex flex-col space-y-2">
               <Button
                 variant="default"
@@ -387,11 +387,11 @@ Pro User ID: ${userBudget?.redactedUserId || "n/a"}
                 }}
                 className="w-full py-6 border-primary/50 shadow-sm shadow-primary/10 transition-all hover:shadow-md hover:shadow-primary/15"
               >
-                <SparklesIcon className="mr-2 h-5 w-5" /> Chat with Dyad help
+                <SparklesIcon className="mr-2 h-5 w-5" /> Chat with Open-Lovable help
                 bot (Pro)
               </Button>
               <p className="text-sm text-muted-foreground px-2">
-                Opens an in-app help chat assistant that searches through Dyad's
+                Opens an in-app help chat assistant that searches through Open-Lovable's
                 docs.
               </p>
             </div>
@@ -400,7 +400,7 @@ Pro User ID: ${userBudget?.redactedUserId || "n/a"}
               <Button
                 variant="outline"
                 onClick={() => {
-                  ipc.system.openExternalUrl("https://www.dyad.sh/docs");
+                  ipc.system.openExternalUrl("https://www.openlovable.sh/docs");
                 }}
                 className="w-full py-6 bg-(--background-lightest)"
               >

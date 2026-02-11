@@ -36,12 +36,12 @@ let rememberedOrigin = null; // e.g. "http://localhost:5173"
 /* ---------- optional resources for HTML injection ---------------------- */
 
 let stacktraceJsContent = null;
-let dyadShimContent = null;
-let dyadComponentSelectorClientContent = null;
-let dyadScreenshotClientContent = null;
+let openlovableShimContent = null;
+let openlovableComponentSelectorClientContent = null;
+let openlovableScreenshotClientContent = null;
 let htmlToImageContent = null;
-let dyadVisualEditorClientContent = null;
-let dyadLogsContent = null;
+let openlovableVisualEditorClientContent = null;
+let openlovableLogsContent = null;
 
 try {
   const htmlToImagePath = path.join(
@@ -80,98 +80,98 @@ try {
 }
 
 try {
-  const dyadShimPath = path.join(__dirname, "dyad-shim.js");
-  dyadShimContent = fs.readFileSync(dyadShimPath, "utf-8");
-  parentPort?.postMessage("[proxy-worker] dyad-shim.js loaded.");
+  const openlovableShimPath = path.join(__dirname, "openlovable-shim.js");
+  openlovableShimContent = fs.readFileSync(openlovableShimPath, "utf-8");
+  parentPort?.postMessage("[proxy-worker] openlovable-shim.js loaded.");
 } catch (error) {
   parentPort?.postMessage(
-    `[proxy-worker] Failed to read dyad-shim.js: ${error.message}`,
+    `[proxy-worker] Failed to read openlovable-shim.js: ${error.message}`,
   );
 }
 
 try {
-  const dyadComponentSelectorClientPath = path.join(
+  const openlovableComponentSelectorClientPath = path.join(
     __dirname,
-    "dyad-component-selector-client.js",
+    "openlovable-component-selector-client.js",
   );
-  dyadComponentSelectorClientContent = fs.readFileSync(
-    dyadComponentSelectorClientPath,
+  openlovableComponentSelectorClientContent = fs.readFileSync(
+    openlovableComponentSelectorClientPath,
     "utf-8",
   );
   parentPort?.postMessage(
-    "[proxy-worker] dyad-component-selector-client.js loaded.",
+    "[proxy-worker] openlovable-component-selector-client.js loaded.",
   );
 } catch (error) {
   parentPort?.postMessage(
-    `[proxy-worker] Failed to read dyad-component-selector-client.js: ${error.message}`,
+    `[proxy-worker] Failed to read openlovable-component-selector-client.js: ${error.message}`,
   );
 }
 
 try {
-  const dyadScreenshotClientPath = path.join(
+  const openlovableScreenshotClientPath = path.join(
     __dirname,
-    "dyad-screenshot-client.js",
+    "openlovable-screenshot-client.js",
   );
-  dyadScreenshotClientContent = fs.readFileSync(
-    dyadScreenshotClientPath,
+  openlovableScreenshotClientContent = fs.readFileSync(
+    openlovableScreenshotClientPath,
     "utf-8",
   );
-  parentPort?.postMessage("[proxy-worker] dyad-screenshot-client.js loaded.");
+  parentPort?.postMessage("[proxy-worker] openlovable-screenshot-client.js loaded.");
 } catch (error) {
   parentPort?.postMessage(
-    `[proxy-worker] Failed to read dyad-screenshot-client.js: ${error.message}`,
+    `[proxy-worker] Failed to read openlovable-screenshot-client.js: ${error.message}`,
   );
 }
 
 try {
-  const dyadVisualEditorClientPath = path.join(
+  const openlovableVisualEditorClientPath = path.join(
     __dirname,
-    "dyad-visual-editor-client.js",
+    "openlovable-visual-editor-client.js",
   );
-  dyadVisualEditorClientContent = fs.readFileSync(
-    dyadVisualEditorClientPath,
+  openlovableVisualEditorClientContent = fs.readFileSync(
+    openlovableVisualEditorClientPath,
     "utf-8",
   );
   parentPort?.postMessage(
-    "[proxy-worker] dyad-visual-editor-client.js loaded.",
+    "[proxy-worker] openlovable-visual-editor-client.js loaded.",
   );
 } catch (error) {
   parentPort?.postMessage(
-    `[proxy-worker] Failed to read dyad-visual-editor-client.js: ${error.message}`,
+    `[proxy-worker] Failed to read openlovable-visual-editor-client.js: ${error.message}`,
   );
 }
 
 try {
-  const dyadLogsPath = path.join(__dirname, "dyad_logs.js");
-  dyadLogsContent = fs.readFileSync(dyadLogsPath, "utf-8");
-  parentPort?.postMessage("[proxy-worker] dyad_logs.js loaded.");
+  const openlovableLogsPath = path.join(__dirname, "openlovable_logs.js");
+  openlovableLogsContent = fs.readFileSync(openlovableLogsPath, "utf-8");
+  parentPort?.postMessage("[proxy-worker] openlovable_logs.js loaded.");
 } catch (error) {
   parentPort?.postMessage(
-    `[proxy-worker] Failed to read dyad_logs.js: ${error.message}`,
+    `[proxy-worker] Failed to read openlovable_logs.js: ${error.message}`,
   );
 }
 
 // Load Service Worker files
-let dyadSwContent = null;
-let dyadSwRegisterContent = null;
+let openlovableSwContent = null;
+let openlovableSwRegisterContent = null;
 
 try {
-  const dyadSwPath = path.join(__dirname, "dyad-sw.js");
-  dyadSwContent = fs.readFileSync(dyadSwPath, "utf-8");
-  parentPort?.postMessage("[proxy-worker] dyad-sw.js loaded.");
+  const openlovableSwPath = path.join(__dirname, "openlovable-sw.js");
+  openlovableSwContent = fs.readFileSync(openlovableSwPath, "utf-8");
+  parentPort?.postMessage("[proxy-worker] openlovable-sw.js loaded.");
 } catch (error) {
   parentPort?.postMessage(
-    `[proxy-worker] Failed to read dyad-sw.js: ${error.message}`,
+    `[proxy-worker] Failed to read openlovable-sw.js: ${error.message}`,
   );
 }
 
 try {
-  const dyadSwRegisterPath = path.join(__dirname, "dyad-sw-register.js");
-  dyadSwRegisterContent = fs.readFileSync(dyadSwRegisterPath, "utf-8");
-  parentPort?.postMessage("[proxy-worker] dyad-sw-register.js loaded.");
+  const openlovableSwRegisterPath = path.join(__dirname, "openlovable-sw-register.js");
+  openlovableSwRegisterContent = fs.readFileSync(openlovableSwRegisterPath, "utf-8");
+  parentPort?.postMessage("[proxy-worker] openlovable-sw-register.js loaded.");
 } catch (error) {
   parentPort?.postMessage(
-    `[proxy-worker] Failed to read dyad-sw-register.js: ${error.message}`,
+    `[proxy-worker] Failed to read openlovable-sw-register.js: ${error.message}`,
   );
 }
 
@@ -184,8 +184,8 @@ function needsInjection(pathname) {
 
 function injectHTML(buf) {
   let txt = buf.toString("utf8");
-  // These are strings that were used since the first version of the dyad shim.
-  // If the dyad shim is used from legacy apps which came pre-baked with the shim
+  // These are strings that were used since the first version of the openlovable shim.
+  // If the openlovable shim is used from legacy apps which came pre-baked with the shim
   // as a vite plugin, then do not inject the shim twice to avoid weird behaviors.
   const legacyAppWithShim =
     txt.includes("window-error") && txt.includes("unhandled-rejection");
@@ -201,19 +201,19 @@ function injectHTML(buf) {
       );
     }
 
-    if (dyadShimContent) {
-      scripts.push(`<script>${dyadShimContent}</script>`);
+    if (openlovableShimContent) {
+      scripts.push(`<script>${openlovableShimContent}</script>`);
     } else {
       scripts.push(
-        '<script>console.warn("[proxy-worker] dyad shim was not injected.");</script>',
+        '<script>console.warn("[proxy-worker] openlovable shim was not injected.");</script>',
       );
     }
   }
-  if (dyadComponentSelectorClientContent) {
-    scripts.push(`<script>${dyadComponentSelectorClientContent}</script>`);
+  if (openlovableComponentSelectorClientContent) {
+    scripts.push(`<script>${openlovableComponentSelectorClientContent}</script>`);
   } else {
     scripts.push(
-      '<script>console.warn("[proxy-worker] dyad component selector client was not injected.");</script>',
+      '<script>console.warn("[proxy-worker] openlovable component selector client was not injected.");</script>',
     );
   }
   if (htmlToImageContent) {
@@ -229,32 +229,32 @@ function injectHTML(buf) {
       "[proxy-worker] WARNING: html-to-image not injected!",
     );
   }
-  if (dyadScreenshotClientContent) {
-    scripts.push(`<script>${dyadScreenshotClientContent}</script>`);
+  if (openlovableScreenshotClientContent) {
+    scripts.push(`<script>${openlovableScreenshotClientContent}</script>`);
   } else {
     scripts.push(
-      '<script>console.warn("[proxy-worker] dyad screenshot client was not injected.");</script>',
+      '<script>console.warn("[proxy-worker] openlovable screenshot client was not injected.");</script>',
     );
   }
-  if (dyadVisualEditorClientContent) {
-    scripts.push(`<script>${dyadVisualEditorClientContent}</script>`);
+  if (openlovableVisualEditorClientContent) {
+    scripts.push(`<script>${openlovableVisualEditorClientContent}</script>`);
   } else {
     scripts.push(
-      '<script>console.warn("[proxy-worker] dyad visual editor client was not injected.");</script>',
+      '<script>console.warn("[proxy-worker] openlovable visual editor client was not injected.");</script>',
     );
   }
-  if (dyadLogsContent) {
-    scripts.push(`<script>${dyadLogsContent}</script>`);
+  if (openlovableLogsContent) {
+    scripts.push(`<script>${openlovableLogsContent}</script>`);
   } else {
     scripts.push(
-      '<script>console.warn("[proxy-worker] dyad_logs.js was not injected.");</script>',
+      '<script>console.warn("[proxy-worker] openlovable_logs.js was not injected.");</script>',
     );
   }
-  if (dyadSwRegisterContent) {
-    scripts.push(`<script>${dyadSwRegisterContent}</script>`);
+  if (openlovableSwRegisterContent) {
+    scripts.push(`<script>${openlovableSwRegisterContent}</script>`);
   } else {
     scripts.push(
-      '<script>console.warn("[proxy-worker] dyad-sw-register.js was not injected.");</script>',
+      '<script>console.warn("[proxy-worker] openlovable-sw-register.js was not injected.");</script>',
     );
   }
   const allScripts = scripts.join("\n");
@@ -285,14 +285,14 @@ function buildTargetURL(clientReq) {
 
 const server = http.createServer((clientReq, clientRes) => {
   // Special handling for Service Worker file
-  if (clientReq.url === "/dyad-sw.js") {
-    if (dyadSwContent) {
+  if (clientReq.url === "/openlovable-sw.js") {
+    if (openlovableSwContent) {
       clientRes.writeHead(200, {
         "content-type": "application/javascript",
         "service-worker-allowed": "/",
         "cache-control": "no-cache",
       });
-      clientRes.end(dyadSwContent);
+      clientRes.end(openlovableSwContent);
       return;
     } else {
       clientRes.writeHead(404, { "content-type": "text/plain" });

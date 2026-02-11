@@ -22,7 +22,7 @@ export const addDependencyTool: ToolDefinition<
 
   buildXml: (args, _isComplete) => {
     if (!args.packages || args.packages.length === 0) return undefined;
-    return `<dyad-add-dependency packages="${escapeXmlAttr(args.packages.join(" "))}"></dyad-add-dependency>`;
+    return `<openlovable-add-dependency packages="${escapeXmlAttr(args.packages.join(" "))}"></openlovable-add-dependency>`;
   },
 
   execute: async (args, ctx: AgentContext) => {

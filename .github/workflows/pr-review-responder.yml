@@ -217,7 +217,7 @@ jobs:
       - name: Configure push remote for fork PRs
         if: steps.pr-info.outputs.should_continue == 'true'
         run: |
-          # claude-code-action overwrites origin's fetch URL to point to dyad-sh/dyad
+          # claude-code-action overwrites origin's fetch URL to point to openlovable-sh/openlovable
           # (using GITHUB_REPOSITORY which is always the base repo in workflow_run events).
           # Setting pushurl separately ensures git push still targets the fork,
           # because git uses pushurl over url when both are configured.
@@ -248,7 +248,7 @@ jobs:
           prompt: |
             Run the following skill end-to-end. Execute every step sequentially. Do not skip, summarize, or stop early.
 
-            /dyad:pr-fix ${{ steps.pr-info.outputs.pr_number }}
+            /openlovable:pr-fix ${{ steps.pr-info.outputs.pr_number }}
 
       - name: Check if commits were pushed
         # Use always() to ensure we detect commits even if Claude Code fails partway through.

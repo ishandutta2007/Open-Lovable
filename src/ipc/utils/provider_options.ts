@@ -11,9 +11,9 @@ export interface MentionedAppCodebase {
 }
 
 export interface GetProviderOptionsParams {
-  dyadAppId: number;
-  dyadRequestId?: string;
-  dyadDisableFiles?: boolean;
+  openlovableAppId: number;
+  openlovableRequestId?: string;
+  openlovableDisableFiles?: boolean;
   smartContextMode?: SmartContextMode;
   files: CodebaseFile[];
   versionedFiles?: VersionedFiles;
@@ -27,9 +27,9 @@ export interface GetProviderOptionsParams {
  * Handles provider-specific configuration including thinking configs for Google/Vertex.
  */
 export function getProviderOptions({
-  dyadAppId,
-  dyadRequestId,
-  dyadDisableFiles,
+  openlovableAppId,
+  openlovableRequestId,
+  openlovableDisableFiles,
   smartContextMode,
   files,
   versionedFiles,
@@ -38,19 +38,19 @@ export function getProviderOptions({
   settings,
 }: GetProviderOptionsParams): Record<string, any> {
   const providerOptions: Record<string, any> = {
-    "dyad-engine": {
-      dyadAppId,
-      dyadRequestId,
-      dyadDisableFiles,
-      dyadSmartContextMode: smartContextMode,
-      dyadFiles: versionedFiles ? undefined : files,
-      dyadVersionedFiles: versionedFiles,
-      dyadMentionedApps: mentionedAppsCodebases.map(({ files, appName }) => ({
+    "openlovable-engine": {
+      openlovableAppId,
+      openlovableRequestId,
+      openlovableDisableFiles,
+      openlovableSmartContextMode: smartContextMode,
+      openlovableFiles: versionedFiles ? undefined : files,
+      openlovableVersionedFiles: versionedFiles,
+      openlovableMentionedApps: mentionedAppsCodebases.map(({ files, appName }) => ({
         appName,
         files,
       })),
     },
-    "dyad-gateway": getExtraProviderOptions(builtinProviderId, settings),
+    "openlovable-gateway": getExtraProviderOptions(builtinProviderId, settings),
     openai: {
       reasoningSummary: "auto",
     } satisfies OpenAIResponsesProviderOptions,

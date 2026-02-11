@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { CustomTagState } from "./stateTypes";
 import { Table2 } from "lucide-react";
 import {
-  DyadCard,
-  DyadCardHeader,
-  DyadBadge,
-  DyadExpandIcon,
-  DyadStateIndicator,
-  DyadCardContent,
-} from "./DyadCardPrimitives";
+  Open-LovableCard,
+  Open-LovableCardHeader,
+  Open-LovableBadge,
+  Open-LovableExpandIcon,
+  Open-LovableStateIndicator,
+  Open-LovableCardContent,
+} from "./Open-LovableCardPrimitives";
 
-interface DyadSupabaseTableSchemaProps {
+interface Open-LovableSupabaseTableSchemaProps {
   node: {
     properties: {
       table?: string;
@@ -20,10 +20,10 @@ interface DyadSupabaseTableSchemaProps {
   children: React.ReactNode;
 }
 
-export function DyadSupabaseTableSchema({
+export function Open-LovableSupabaseTableSchema({
   node,
   children,
-}: DyadSupabaseTableSchemaProps) {
+}: Open-LovableSupabaseTableSchemaProps) {
   const [isContentVisible, setIsContentVisible] = useState(false);
   const { table, state } = node.properties;
   const isLoading = state === "pending";
@@ -31,38 +31,38 @@ export function DyadSupabaseTableSchema({
   const content = typeof children === "string" ? children : "";
 
   return (
-    <DyadCard
+    <Open-LovableCard
       state={state}
       accentColor="teal"
       onClick={() => setIsContentVisible(!isContentVisible)}
       isExpanded={isContentVisible}
     >
-      <DyadCardHeader icon={<Table2 size={15} />} accentColor="teal">
-        <DyadBadge color="teal">
+      <Open-LovableCardHeader icon={<Table2 size={15} />} accentColor="teal">
+        <Open-LovableBadge color="teal">
           {table ? "Table Schema" : "Supabase Table Schema"}
-        </DyadBadge>
+        </Open-LovableBadge>
         {table && (
           <span className="font-medium text-sm text-foreground truncate">
             {table}
           </span>
         )}
         {isLoading && (
-          <DyadStateIndicator state="pending" pendingLabel="Fetching..." />
+          <Open-LovableStateIndicator state="pending" pendingLabel="Fetching..." />
         )}
         {isAborted && (
-          <DyadStateIndicator state="aborted" abortedLabel="Did not finish" />
+          <Open-LovableStateIndicator state="aborted" abortedLabel="Did not finish" />
         )}
         <div className="ml-auto">
-          <DyadExpandIcon isExpanded={isContentVisible} />
+          <Open-LovableExpandIcon isExpanded={isContentVisible} />
         </div>
-      </DyadCardHeader>
-      <DyadCardContent isExpanded={isContentVisible}>
+      </Open-LovableCardHeader>
+      <Open-LovableCardContent isExpanded={isContentVisible}>
         {content && (
           <div className="p-3 text-xs font-mono whitespace-pre-wrap max-h-80 overflow-y-auto bg-muted/20 rounded-lg">
             {content}
           </div>
         )}
-      </DyadCardContent>
-    </DyadCard>
+      </Open-LovableCardContent>
+    </Open-LovableCard>
   );
 }
