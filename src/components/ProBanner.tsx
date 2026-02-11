@@ -11,7 +11,7 @@ import { ArrowUpRight, KeyRound, Wallet } from "lucide-react";
 
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-import { hasOpen-LovableProKey } from "@/lib/schemas";
+import { hasOpenLovableProKey } from "@/lib/schemas";
 import { useSettings } from "@/hooks/useSettings";
 
 export function ProBanner() {
@@ -22,7 +22,7 @@ export function ProBanner() {
     return options[Math.floor(Math.random() * options.length)];
   });
 
-  if (settings && hasOpen-LovableProKey(settings)) {
+  if (settings && hasOpenLovableProKey(settings)) {
     return null;
   }
 
@@ -39,7 +39,7 @@ export function ProBanner() {
   );
 }
 
-export function ManageOpen-LovableProButton({ className }: { className?: string }) {
+export function ManageOpenLovableProButton({ className }: { className?: string }) {
   const { t } = useTranslation("home");
   return (
     <Button
@@ -54,7 +54,7 @@ export function ManageOpen-LovableProButton({ className }: { className?: string 
       }}
     >
       <Wallet aria-hidden="true" className="w-5 h-5" />
-      {t("proBanner.manageOpen-LovablePro")}
+      {t("proBanner.manageOpenLovablePro")}
       <ArrowUpRight aria-hidden="true" className="w-5 h-5" />
     </Button>
   );

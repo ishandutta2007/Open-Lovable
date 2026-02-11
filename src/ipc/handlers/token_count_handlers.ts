@@ -10,7 +10,7 @@ import {
   getSupabaseAvailableSystemPrompt,
   SUPABASE_NOT_AVAILABLE_SYSTEM_PROMPT,
 } from "../../prompts/supabase_prompt";
-import { getOpen-LovableAppPath } from "../../paths/paths";
+import { getOpenLovableAppPath } from "../../paths/paths";
 import log from "electron-log";
 import { extractCodebase } from "../../utils/codebase";
 import {
@@ -66,7 +66,7 @@ export function registerTokenCountHandlers() {
       // Count system prompt tokens
       const themePrompt = await getThemePromptById(chat.app?.themeId ?? null);
       let systemPrompt = constructSystemPrompt({
-        aiRules: await readAiRules(getOpen-LovableAppPath(chat.app.path)),
+        aiRules: await readAiRules(getOpenLovableAppPath(chat.app.path)),
         chatMode:
           settings.selectedChatMode === "agent" ||
           settings.selectedChatMode === "local-agent"
@@ -102,13 +102,13 @@ export function registerTokenCountHandlers() {
       let codebaseTokens = 0;
 
       if (chat.app) {
-        const appPath = getOpen-LovableAppPath(chat.app.path);
+        const appPath = getOpenLovableAppPath(chat.app.path);
         const { formattedOutput, files } = await extractCodebase({
           appPath,
           chatContext: validateChatContext(chat.app.chatContext),
         });
         codebaseInfo = formattedOutput;
-        if (settings.enableOpen-LovablePro && settings.enableProSmartFilesContextMode) {
+        if (settings.enableOpenLovablePro && settings.enableProSmartFilesContextMode) {
           codebaseTokens = estimateTokens(
             files
               // It doesn't need to be the exact format but it's just to get a token estimate

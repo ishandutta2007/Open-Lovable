@@ -62,7 +62,7 @@ Creates a chat model for text generation.
   responses(modelId: ExampleChatModelId, chatParams: ChatParams): LanguageModel;
 }
 
-export function createOpen-LovableEngine(
+export function createOpenLovableEngine(
   options: ExampleProviderSettings,
 ): Open-LovableEngineProvider {
   const baseURL = withoutTrailingSlash(options.baseURL);
@@ -101,7 +101,7 @@ export function createOpen-LovableEngine(
   });
 
   // Custom fetch implementation that adds openlovable-specific options to the request
-  const createOpen-LovableFetch = ({
+  const createOpenLovableFetch = ({
     providerId,
   }: {
     providerId: string;
@@ -200,7 +200,7 @@ export function createOpen-LovableEngine(
   ) => {
     const config = {
       ...getCommonModelConfig(),
-      fetch: createOpen-LovableFetch({ providerId: chatParams.providerId }),
+      fetch: createOpenLovableFetch({ providerId: chatParams.providerId }),
     };
 
     return new OpenAICompatibleChatLanguageModel(modelId, config);
@@ -212,7 +212,7 @@ export function createOpen-LovableEngine(
   ) => {
     const config = {
       ...getCommonModelConfig(),
-      fetch: createOpen-LovableFetch({ providerId: chatParams.providerId }),
+      fetch: createOpenLovableFetch({ providerId: chatParams.providerId }),
     };
 
     return new OpenAIResponsesLanguageModel(modelId, config);

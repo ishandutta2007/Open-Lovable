@@ -27,7 +27,7 @@ import {
   getSupabaseAvailableSystemPrompt,
   SUPABASE_NOT_AVAILABLE_SYSTEM_PROMPT,
 } from "../../prompts/supabase_prompt";
-import { getOpen-LovableAppPath } from "../../paths/paths";
+import { getOpenLovableAppPath } from "../../paths/paths";
 import { readSettings } from "../../main/settings";
 import type { ChatResponseEnd, ChatStreamParams } from "@/ipc/types";
 import {
@@ -196,14 +196,14 @@ async function processStreamChunks({
         inThinkingBlock = true;
       }
 
-      chunk += escapeOpen-LovableTags(part.text);
+      chunk += escapeOpenLovableTags(part.text);
     } else if (part.type === "tool-call") {
       const { serverName, toolName } = parseMcpToolKey(part.toolName);
-      const content = escapeOpen-LovableTags(JSON.stringify(part.input));
+      const content = escapeOpenLovableTags(JSON.stringify(part.input));
       chunk = `<openlovable-mcp-tool-call server="${serverName}" tool="${toolName}">\n${content}\n</openlovable-mcp-tool-call>\n`;
     } else if (part.type === "tool-result") {
       const { serverName, toolName } = parseMcpToolKey(part.toolName);
-      const content = escapeOpen-LovableTags(part.output);
+      const content = escapeOpenLovableTags(part.output);
       chunk = `<openlovable-mcp-tool-result server="${serverName}" tool="${toolName}">\n${content}\n</openlovable-mcp-tool-result>\n`;
     }
 
@@ -378,7 +378,7 @@ export function registerChatStreamHandlers() {
           implementPlanDisplayPrompt = userPrompt;
           const planSlug = implementPlanMatch[1];
           validatePlanId(planSlug);
-          const appPath = getOpen-LovableAppPath(chat.app.path);
+          const appPath = getOpenLovableAppPath(chat.app.path);
           const planFilePath = path.join(
             appPath,
             ".openlovable",
@@ -413,7 +413,7 @@ You may update the plan at \`${planPath}\` to mark your progress.`;
           let componentSnippet = "[component snippet not available]";
           try {
             const componentFileContent = await readFile(
-              path.join(getOpen-LovableAppPath(chat.app.path), component.relativePath),
+              path.join(getOpenLovableAppPath(chat.app.path), component.relativePath),
               "utf8",
             );
             const lines = componentFileContent.split(/\r?\n/);
@@ -459,7 +459,7 @@ ${componentSnippet}
       const userMessageId = insertedUserMessage.id;
       const settings = readSettings();
       // Only Open-Lovable Pro requests have request ids.
-      if (settings.enableOpen-LovablePro) {
+      if (settings.enableOpenLovablePro) {
         // Generate requestId early so it can be saved with the message
         openlovableRequestId = uuidv4();
       }
@@ -474,7 +474,7 @@ ${componentSnippet}
           requestId: openlovableRequestId,
           model: settings.selectedModel.name,
           sourceCommitHash: await getCurrentCommitHash({
-            path: getOpen-LovableAppPath(chat.app.path),
+            path: getOpenLovableAppPath(chat.app.path),
           }),
         })
         .returning();
@@ -520,7 +520,7 @@ ${componentSnippet}
         const { modelClient, isEngineEnabled, isSmartContextEnabled } =
           await getModelClient(settings.selectedModel, settings);
 
-        const appPath = getOpen-LovableAppPath(updatedChat.app.path);
+        const appPath = getOpenLovableAppPath(updatedChat.app.path);
         // When we don't have smart context enabled, we
         // only include the selected components' files for codebase context.
         //
@@ -675,7 +675,7 @@ ${componentSnippet}
           );
         }
 
-        const aiRules = await readAiRules(getOpen-LovableAppPath(updatedChat.app.path));
+        const aiRules = await readAiRules(getOpenLovableAppPath(updatedChat.app.path));
 
         // Get theme prompt for the app (null themeId means "no theme")
         const themePrompt = await getThemePromptById(updatedChat.app.themeId);
@@ -708,7 +708,7 @@ ${componentSnippet}
         if (isSecurityReviewIntent) {
           systemPrompt = SECURITY_REVIEW_SYSTEM_PROMPT;
           try {
-            const appPath = getOpen-LovableAppPath(updatedChat.app.path);
+            const appPath = getOpenLovableAppPath(updatedChat.app.path);
             const rulesPath = path.join(appPath, "SECURITY_RULES.md");
             let securityRules = "";
 
@@ -859,7 +859,7 @@ This conversation includes one or more image attachments. When the user uploads 
           // and eats up extra tokens.
           content:
             settings.selectedChatMode === "ask"
-              ? removeOpen-LovableTags(removeNonEssentialTags(msg.content))
+              ? removeOpenLovableTags(removeNonEssentialTags(msg.content))
               : removeNonEssentialTags(msg.content),
           providerOptions: {
             "openlovable-engine": {
@@ -1228,7 +1228,7 @@ This conversation includes one or more image attachments. When the user uploads 
               },
               systemPromptOverride: constructSystemPrompt({
                 aiRules: await readAiRules(
-                  getOpen-LovableAppPath(updatedChat.app.path),
+                  getOpenLovableAppPath(updatedChat.app.path),
                 ),
                 chatMode: "agent",
                 enableTurboEditsV2: false,
@@ -1280,7 +1280,7 @@ This conversation includes one or more image attachments. When the user uploads 
           ) {
             let issues = await dryRunSearchReplace({
               fullResponse,
-              appPath: getOpen-LovableAppPath(updatedChat.app.path),
+              appPath: getOpenLovableAppPath(updatedChat.app.path),
             });
             sendTelemetryEvent("search_replace:fix", {
               attemptNumber: 0,
@@ -1359,7 +1359,7 @@ ${formattedSearchReplaceIssues}`,
               // Re-check for issues after the fix attempt
               issues = await dryRunSearchReplace({
                 fullResponse: result.incrementalResponse,
-                appPath: getOpen-LovableAppPath(updatedChat.app.path),
+                appPath: getOpenLovableAppPath(updatedChat.app.path),
               });
 
               sendTelemetryEvent("search_replace:fix", {
@@ -1428,7 +1428,7 @@ ${formattedSearchReplaceIssues}`,
               // IF auto-fix is enabled
               let problemReport = await generateProblemReport({
                 fullResponse,
-                appPath: getOpen-LovableAppPath(updatedChat.app.path),
+                appPath: getOpenLovableAppPath(updatedChat.app.path),
               });
 
               let autoFixAttempts = 0;
@@ -1455,7 +1455,7 @@ ${problemReport.problems
                 const problemFixPrompt = createProblemFixPrompt(problemReport);
 
                 const virtualFileSystem = new AsyncVirtualFileSystem(
-                  getOpen-LovableAppPath(updatedChat.app.path),
+                  getOpenLovableAppPath(updatedChat.app.path),
                   {
                     fileExists: (fileName: string) => fileExists(fileName),
                     readFile: (fileName: string) => readFileWithCache(fileName),
@@ -1526,7 +1526,7 @@ ${problemReport.problems
 
                 problemReport = await generateProblemReport({
                   fullResponse,
-                  appPath: getOpen-LovableAppPath(updatedChat.app.path),
+                  appPath: getOpenLovableAppPath(updatedChat.app.path),
                 });
               }
             } catch (error) {
@@ -1855,7 +1855,7 @@ export function removeProblemReportTags(text: string): string {
   return text.replace(problemReportRegex, "").trim();
 }
 
-export function removeOpen-LovableTags(text: string): string {
+export function removeOpenLovableTags(text: string): string {
   const openlovableRegex = /<openlovable-[^>]*>[\s\S]*?<\/openlovable-[^>]*>/g;
   return text.replace(openlovableRegex, "").trim();
 }
@@ -1882,7 +1882,7 @@ export function hasUnclosedOpen-LovableWrite(text: string): boolean {
   return !hasClosingTag;
 }
 
-function escapeOpen-LovableTags(text: string): string {
+function escapeOpenLovableTags(text: string): string {
   // Escape openlovable tags in reasoning content
   // We are replacing the opening tag with a look-alike character
   // to avoid issues where thinking content includes openlovable tags

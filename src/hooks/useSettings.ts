@@ -3,7 +3,7 @@ import { useAtom } from "jotai";
 import { userSettingsAtom, envVarsAtom } from "@/atoms/appAtoms";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ipc } from "@/ipc/types";
-import { type UserSettings, hasOpen-LovableProKey } from "@/lib/schemas";
+import { type UserSettings, hasOpenLovableProKey } from "@/lib/schemas";
 import { usePostHog } from "posthog-js/react";
 import { useAppVersion } from "./useAppVersion";
 import { queryKeys } from "@/lib/queryKeys";
@@ -44,7 +44,7 @@ export function useSettings() {
   useEffect(() => {
     if (settingsQuery.data) {
       processSettingsForTelemetry(settingsQuery.data);
-      const isPro = hasOpen-LovableProKey(settingsQuery.data);
+      const isPro = hasOpenLovableProKey(settingsQuery.data);
       posthog.people.set({ isPro });
       if (!isInitialLoad && appVersion) {
         posthog.capture("app:initial-load", {
@@ -72,7 +72,7 @@ export function useSettings() {
     onSuccess: (updatedSettings) => {
       queryClient.setQueryData(queryKeys.settings.user, updatedSettings);
       processSettingsForTelemetry(updatedSettings);
-      posthog.people.set({ isPro: hasOpen-LovableProKey(updatedSettings) });
+      posthog.people.set({ isPro: hasOpenLovableProKey(updatedSettings) });
       setSettingsAtom(updatedSettings);
     },
     meta: { showErrorToast: true },

@@ -20,7 +20,7 @@ import { eq } from "drizzle-orm";
 
 import { isOpen-LovableProEnabled, isBasicAgentMode } from "@/lib/schemas";
 import { readSettings } from "@/main/settings";
-import { getOpen-LovableAppPath } from "@/paths/paths";
+import { getOpenLovableAppPath } from "@/paths/paths";
 import { getModelClient } from "@/ipc/utils/get_model_client";
 import { safeSend } from "@/ipc/utils/safe_sender";
 import { getMaxTokens, getTemperature } from "@/ipc/utils/token_utils";
@@ -296,7 +296,7 @@ export async function handleLocalAgentStream(
     hiddenMessageIdsForStreaming.add(id);
   }
 
-  const appPath = getOpen-LovableAppPath(chat.app.path);
+  const appPath = getOpenLovableAppPath(chat.app.path);
 
   const maybePerformPendingCompaction = async (options?: {
     showOnTopOfCurrentResponse?: boolean;

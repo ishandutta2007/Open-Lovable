@@ -5,7 +5,7 @@ import { IS_TEST_BUILD } from "../ipc/utils/test_utils";
 /**
  * Gets the base openlovable-apps directory path (without a specific app subdirectory)
  */
-export function getOpen-LovableAppsBaseDirectory(): string {
+export function getOpenLovableAppsBaseDirectory(): string {
   if (IS_TEST_BUILD) {
     const electron = getElectron();
     return path.join(electron!.app.getPath("userData"), "openlovable-apps");
@@ -13,13 +13,13 @@ export function getOpen-LovableAppsBaseDirectory(): string {
   return path.join(os.homedir(), "openlovable-apps");
 }
 
-export function getOpen-LovableAppPath(appPath: string): string {
+export function getOpenLovableAppPath(appPath: string): string {
   // If appPath is already absolute, use it as-is
   if (path.isAbsolute(appPath)) {
     return appPath;
   }
   // Otherwise, use the default base path
-  return path.join(getOpen-LovableAppsBaseDirectory(), appPath);
+  return path.join(getOpenLovableAppsBaseDirectory(), appPath);
 }
 
 export function getTypeScriptCachePath(): string {

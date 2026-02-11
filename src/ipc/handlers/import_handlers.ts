@@ -3,7 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 import { createLoggedHandler } from "./safe_handle";
 import log from "electron-log";
-import { getOpen-LovableAppPath } from "../../paths/paths";
+import { getOpenLovableAppPath } from "../../paths/paths";
 import { apps } from "@/db/schema";
 import { db } from "@/db";
 import { chats } from "@/db/schema";
@@ -53,7 +53,7 @@ export function registerImportHandlers() {
     ) => {
       // Only check filesystem if we're copying to openlovable-apps
       if (!skipCopy) {
-        const appPath = getOpen-LovableAppPath(appName);
+        const appPath = getOpenLovableAppPath(appName);
         try {
           await fs.access(appPath);
           return { exists: true };
@@ -92,7 +92,7 @@ export function registerImportHandlers() {
       }
 
       // Determine the app path based on skipCopy
-      const appPath = skipCopy ? sourcePath : getOpen-LovableAppPath(appName);
+      const appPath = skipCopy ? sourcePath : getOpenLovableAppPath(appName);
 
       if (!skipCopy) {
         // Check if the app already exists in openlovable-apps

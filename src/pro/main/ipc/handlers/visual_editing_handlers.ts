@@ -5,7 +5,7 @@ import path from "path";
 import { db } from "../../../../db";
 import { apps } from "../../../../db/schema";
 import { eq } from "drizzle-orm";
-import { getOpen-LovableAppPath } from "../../../../paths/paths";
+import { getOpenLovableAppPath } from "../../../../paths/paths";
 import {
   stylesToTailwind,
   extractClassPrefixes,
@@ -39,7 +39,7 @@ export function registerVisualEditingHandlers() {
           throw new Error(`App not found: ${appId}`);
         }
 
-        const appPath = getOpen-LovableAppPath(app.path);
+        const appPath = getOpenLovableAppPath(app.path);
         const fileChanges = new Map<
           string,
           Map<
@@ -112,7 +112,7 @@ export function registerVisualEditingHandlers() {
           throw new Error(`App not found: ${appId}`);
         }
 
-        const appPath = getOpen-LovableAppPath(app.path);
+        const appPath = getOpenLovableAppPath(app.path);
         const fullPath = safeJoin(appPath, filePath);
         const content = await fsPromises.readFile(fullPath, "utf-8");
         return analyzeComponent(content, line);

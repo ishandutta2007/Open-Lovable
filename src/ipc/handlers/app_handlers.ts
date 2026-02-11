@@ -9,7 +9,7 @@ import { miscContracts } from "../types/misc";
 import { systemContracts } from "../types/system";
 import fs from "node:fs";
 import path from "node:path";
-import { getOpen-LovableAppPath, getUserDataPath } from "../../paths/paths";
+import { getOpenLovableAppPath, getUserDataPath } from "../../paths/paths";
 import { ChildProcess, spawn } from "node:child_process";
 import { promises as fsPromises } from "node:fs";
 
@@ -764,7 +764,7 @@ export function registerAppHandlers() {
 
   createTypedHandler(appContracts.createApp, async (_, params) => {
     const appPath = params.name;
-    const fullAppPath = getOpen-LovableAppPath(appPath);
+    const fullAppPath = getOpenLovableAppPath(appPath);
     if (fs.existsSync(fullAppPath)) {
       throw new Error(`App already exists at: ${fullAppPath}`);
     }
@@ -838,8 +838,8 @@ export function registerAppHandlers() {
       throw new Error("Original app not found.");
     }
 
-    const originalAppPath = getOpen-LovableAppPath(originalApp.path);
-    const newAppPath = getOpen-LovableAppPath(newAppName);
+    const originalAppPath = getOpenLovableAppPath(originalApp.path);
+    const newAppPath = getOpenLovableAppPath(newAppName);
 
     // 3. Copy the app folder
     try {
@@ -903,7 +903,7 @@ export function registerAppHandlers() {
     }
 
     // Get app files
-    const appPath = getOpen-LovableAppPath(app.path);
+    const appPath = getOpenLovableAppPath(app.path);
     let files: string[] = [];
 
     try {
@@ -951,7 +951,7 @@ export function registerAppHandlers() {
     });
     const appsWithResolvedPath = allApps.map((app) => ({
       ...app,
-      resolvedPath: getOpen-LovableAppPath(app.path),
+      resolvedPath: getOpenLovableAppPath(app.path),
     }));
     return {
       apps: appsWithResolvedPath,
@@ -968,7 +968,7 @@ export function registerAppHandlers() {
       throw new Error("App not found");
     }
 
-    const appPath = getOpen-LovableAppPath(app.path);
+    const appPath = getOpenLovableAppPath(app.path);
     const fullPath = path.join(appPath, filePath);
 
     // Check if the path is within the app directory (security check)
@@ -1020,7 +1020,7 @@ export function registerAppHandlers() {
 
       logger.debug(`Starting app ${appId} in path ${app.path}`);
 
-      const appPath = getOpen-LovableAppPath(app.path);
+      const appPath = getOpenLovableAppPath(app.path);
       try {
         // There may have been a previous run that left a process on this port.
         await cleanUpPort(getAppPort(appId));
@@ -1125,7 +1125,7 @@ export function registerAppHandlers() {
           throw new Error("App not found");
         }
 
-        const appPath = getOpen-LovableAppPath(app.path);
+        const appPath = getOpenLovableAppPath(app.path);
 
         // Remove node_modules if requested
         if (removeNodeModules) {
@@ -1198,7 +1198,7 @@ export function registerAppHandlers() {
       throw new Error("App not found");
     }
 
-    const appPath = getOpen-LovableAppPath(app.path);
+    const appPath = getOpenLovableAppPath(app.path);
     const fullPath = path.join(appPath, filePath);
 
     // Check if the path is within the app directory (security check)
@@ -1329,7 +1329,7 @@ export function registerAppHandlers() {
       }
 
       // Delete app files
-      const appPath = getOpen-LovableAppPath(app.path);
+      const appPath = getOpenLovableAppPath(app.path);
       try {
         await fsPromises.rm(appPath, { recursive: true, force: true });
       } catch (error: any) {
@@ -1431,10 +1431,10 @@ export function registerAppHandlers() {
 
       // If the current path is absolute, preserve the directory and only change the folder name
       // Otherwise, resolve the new path using the default base path
-      const currentResolvedPath = getOpen-LovableAppPath(app.path);
+      const currentResolvedPath = getOpenLovableAppPath(app.path);
       const newAppPath = path.isAbsolute(app.path)
         ? path.join(path.dirname(app.path), appPath)
-        : getOpen-LovableAppPath(appPath);
+        : getOpenLovableAppPath(appPath);
 
       let hasPathConflict = false;
       if (pathChanged) {
@@ -1443,7 +1443,7 @@ export function registerAppHandlers() {
           if (existingApp.id === appId) {
             return false;
           }
-          return getOpen-LovableAppPath(existingApp.path) === newAppPath;
+          return getOpenLovableAppPath(existingApp.path) === newAppPath;
         });
       }
 
@@ -1597,7 +1597,7 @@ export function registerAppHandlers() {
     // Doing this last because it's the most time-consuming and the least important
     // in terms of resetting the app state.
     logger.log("removing all app files...");
-    const openlovableAppPath = getOpen-LovableAppPath(".");
+    const openlovableAppPath = getOpenLovableAppPath(".");
     if (fs.existsSync(openlovableAppPath)) {
       await fsPromises.rm(openlovableAppPath, { recursive: true, force: true });
       // Recreate the base directory
@@ -1624,7 +1624,7 @@ export function registerAppHandlers() {
       throw new Error("App not found");
     }
 
-    const appPath = getOpen-LovableAppPath(app.path);
+    const appPath = getOpenLovableAppPath(app.path);
 
     return withLock(appId, async () => {
       try {
@@ -1706,7 +1706,7 @@ export function registerAppHandlers() {
       throw new Error("App not found");
     }
 
-    const appPath = getOpen-LovableAppPath(appRecord.path);
+    const appPath = getOpenLovableAppPath(appRecord.path);
 
     // Search file contents with ripgrep
     const contentMatches = await searchAppFilesWithRipgrep({
@@ -1888,7 +1888,7 @@ export function registerAppHandlers() {
         throw new Error("App not found");
       }
 
-      const currentResolvedPath = getOpen-LovableAppPath(app.path);
+      const currentResolvedPath = getOpenLovableAppPath(app.path);
       // Extract app folder name from current path (works for both absolute and relative paths)
       const appFolderName = path.basename(
         path.isAbsolute(app.path) ? app.path : currentResolvedPath,
@@ -1912,7 +1912,7 @@ export function registerAppHandlers() {
       const conflict = allApps.some(
         (existingApp) =>
           existingApp.id !== appId &&
-          getOpen-LovableAppPath(existingApp.path) === nextResolvedPath,
+          getOpenLovableAppPath(existingApp.path) === nextResolvedPath,
       );
 
       if (conflict) {

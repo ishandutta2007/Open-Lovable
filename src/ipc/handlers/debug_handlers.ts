@@ -14,7 +14,7 @@ import { extractCodebase } from "../../utils/codebase";
 import { db } from "../../db";
 import { chats, apps } from "../../db/schema";
 import { eq } from "drizzle-orm";
-import { getOpen-LovableAppPath } from "../../paths/paths";
+import { getOpenLovableAppPath } from "../../paths/paths";
 import { LargeLanguageModel } from "@/lib/schemas";
 import { validateChatContext } from "../utils/context_paths_utils";
 
@@ -173,7 +173,7 @@ export function registerDebugHandlers() {
       }
 
       // Extract codebase
-      const appPath = getOpen-LovableAppPath(app.path);
+      const appPath = getOpenLovableAppPath(app.path);
       const codebase = (
         await extractCodebase({
           appPath,

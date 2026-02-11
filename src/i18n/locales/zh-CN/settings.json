@@ -78,8 +78,8 @@
     "errorLoadingSettings": "加载设置出错",
     "couldNotLoadProvider": "无法加载提供商数据：{{message}}",
     "couldNotLoadSettings": "无法加载配置数据：{{message}}",
-    "enableOpen-LovablePro": "启用 Open-Lovable Pro",
-    "toggleOpen-LovablePro": "切换以启用 Open-Lovable Pro",
+    "enableOpenLovablePro": "启用 Open-Lovable Pro",
+    "toggleOpenLovablePro": "切换以启用 Open-Lovable Pro",
     "apiKeyEmpty": "API 密钥不能为空。",
     "errorTogglingPro": "切换 Open-Lovable Pro 时出错：{{error}}",
     "failedSaveApiKey": "保存 API 密钥失败。",
@@ -255,6 +255,6 @@
     "updateProvider": "更新提供商",
     "failedCreate": "创建自定义提供商失败"
   },
-  "manageOpen-LovablePro": "管理 Open-Lovable Pro 订阅",
+  "manageOpenLovablePro": "管理 Open-Lovable Pro 订阅",
   "setupOpen-LovablePro": "设置 Open-Lovable Pro 订阅"
 }

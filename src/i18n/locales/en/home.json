@@ -59,7 +59,7 @@
   "deleteItemTitle": "Delete {{itemType}}",
   "deleteItemConfirmation": "Are you sure you want to delete \"{{itemName}}\"? This action cannot be undone.",
   "proBanner": {
-    "manageOpen-LovablePro": "Manage Open-Lovable Pro",
+    "manageOpenLovablePro": "Manage Open-Lovable Pro",
     "alreadyHavePro": "Already have Open-Lovable Pro? Add your key",
     "accessLeadingModels": "Access leading AI models with one plan",
     "getOpen-LovablePro": "Get Open-Lovable Pro",

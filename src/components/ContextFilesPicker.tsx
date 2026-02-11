@@ -116,7 +116,7 @@ export function ContextFilesPicker() {
   };
 
   const isSmartContextEnabled =
-    settings?.enableOpen-LovablePro && settings?.enableProSmartFilesContextMode;
+    settings?.enableOpenLovablePro && settings?.enableProSmartFilesContextMode;
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>

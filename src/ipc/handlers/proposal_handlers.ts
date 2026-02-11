@@ -28,7 +28,7 @@ import {
   getContextWindow,
 } from "../utils/token_utils";
 import { extractCodebase } from "../../utils/codebase";
-import { getOpen-LovableAppPath } from "../../paths/paths";
+import { getOpenLovableAppPath } from "../../paths/paths";
 import { withLock } from "../utils/lock_utils";
 import { createLoggedHandler } from "./safe_handle";
 import { ApproveProposalResult } from "@/ipc/types";
@@ -102,7 +102,7 @@ async function getCodebaseTokenCount(
   logger.log(`Calculating codebase token count for chatId: ${chatId}`);
   const codebase = (
     await extractCodebase({
-      appPath: getOpen-LovableAppPath(appPath),
+      appPath: getOpenLovableAppPath(appPath),
       chatContext: validateChatContext(chatContext),
     })
   ).formattedOutput;

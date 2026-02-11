@@ -89,7 +89,7 @@ function buildTestChat(
  */
 function buildTestSettings(
   overrides: {
-    enableOpen-LovablePro?: boolean;
+    enableOpenLovablePro?: boolean;
     hasApiKey?: boolean;
     selectedModel?: string;
     enableContextCompaction?: boolean;
@@ -100,10 +100,10 @@ function buildTestSettings(
     enableContextCompaction: overrides.enableContextCompaction ?? true,
   };
 
-  if (overrides.enableOpen-LovablePro && overrides.hasApiKey !== false) {
+  if (overrides.enableOpenLovablePro && overrides.hasApiKey !== false) {
     return {
       ...baseSettings,
-      enableOpen-LovablePro: true,
+      enableOpenLovablePro: true,
       providerSettings: {
         auto: {
           apiKey: { value: "test-api-key" },
@@ -212,7 +212,7 @@ vi.mock("@/main/settings", () => ({
 }));
 
 vi.mock("@/paths/paths", () => ({
-  getOpen-LovableAppPath: vi.fn((appPath: string) => `/mock/apps/${appPath}`),
+  getOpenLovableAppPath: vi.fn((appPath: string) => `/mock/apps/${appPath}`),
 }));
 
 // Track IPC messages sent via safeSend
@@ -325,7 +325,7 @@ describe("handleLocalAgentStream", () => {
     it("should send error when Open-Lovable Pro is not enabled", async () => {
       // Arrange
       const { event, getMessagesByChannel } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: false });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: false });
 
       // Act
       await handleLocalAgentStream(
@@ -352,7 +352,7 @@ describe("handleLocalAgentStream", () => {
       // Arrange
       const { event, getMessagesByChannel } = createFakeEvent();
       mockSettings = buildTestSettings({
-        enableOpen-LovablePro: true,
+        enableOpenLovablePro: true,
         hasApiKey: false,
       });
 
@@ -378,7 +378,7 @@ describe("handleLocalAgentStream", () => {
     it("should throw error when chat is not found", async () => {
       // Arrange
       const { event } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: true });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: true });
       mockChatData = null; // Chat not found
 
       // Act & Assert
@@ -399,7 +399,7 @@ describe("handleLocalAgentStream", () => {
     it("should throw error when chat has no associated app", async () => {
       // Arrange
       const { event } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: true });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: true });
       mockChatData = { ...buildTestChat(), app: null } as any;
 
       // Act & Assert
@@ -423,7 +423,7 @@ describe("handleLocalAgentStream", () => {
       // Arrange
       const { event } = createFakeEvent();
       mockSettings = buildTestSettings({
-        enableOpen-LovablePro: true,
+        enableOpenLovablePro: true,
         enableContextCompaction: false,
       });
       mockChatData = buildTestChat();
@@ -451,7 +451,7 @@ describe("handleLocalAgentStream", () => {
     it("should compact between steps when token usage crosses threshold", async () => {
       // Arrange
       const { event, getMessagesByChannel } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: true });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: true });
       mockChatData = buildTestChat({
         messages: [
           { id: 1, role: "user", content: "old context user" },
@@ -606,7 +606,7 @@ describe("handleLocalAgentStream", () => {
     it("should persist post-compaction response messages without reshaping", async () => {
       // Arrange
       const { event } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: true });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: true });
       mockChatData = buildTestChat({
         messages: [
           { id: 1, role: "user", content: "old context user" },
@@ -781,7 +781,7 @@ describe("handleLocalAgentStream", () => {
     it("should accumulate text-delta parts and update database", async () => {
       // Arrange
       const { event, getMessagesByChannel } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: true });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: true });
       mockChatData = buildTestChat({
         messages: [{ id: 1, role: "user", content: "Hello" }],
       });
@@ -830,7 +830,7 @@ describe("handleLocalAgentStream", () => {
     it("should wrap reasoning content in think tags", async () => {
       // Arrange
       const { event } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: true });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: true });
       mockChatData = buildTestChat();
       mockStreamResult = createFakeStream([
         { type: "reasoning-start" },
@@ -868,7 +868,7 @@ describe("handleLocalAgentStream", () => {
     it("should close thinking block when transitioning to text", async () => {
       // Arrange
       const { event } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: true });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: true });
       mockChatData = buildTestChat();
       // Simulate reasoning-delta without explicit reasoning-end before text
       mockStreamResult = createFakeStream([
@@ -910,7 +910,7 @@ describe("handleLocalAgentStream", () => {
     it("should stop processing stream chunks when abort signal is triggered", async () => {
       // Arrange
       const { event } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: true });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: true });
       mockChatData = buildTestChat();
 
       const abortController = new AbortController();
@@ -958,7 +958,7 @@ describe("handleLocalAgentStream", () => {
     it("should save partial response with cancellation note when aborted", async () => {
       // Arrange
       const { event } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: true });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: true });
       mockChatData = buildTestChat();
 
       const abortController = new AbortController();
@@ -1000,7 +1000,7 @@ describe("handleLocalAgentStream", () => {
     it("should save commit hash after successful stream", async () => {
       // Arrange
       const { event } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: true });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: true });
       mockChatData = buildTestChat();
       mockStreamResult = createFakeStream([
         { type: "text-delta", text: "Done" },
@@ -1029,7 +1029,7 @@ describe("handleLocalAgentStream", () => {
     it("should set approval state to approved after completion", async () => {
       // Arrange
       const { event } = createFakeEvent();
-      mockSettings = buildTestSettings({ enableOpen-LovablePro: true });
+      mockSettings = buildTestSettings({ enableOpenLovablePro: true });
       mockChatData = buildTestChat();
       mockStreamResult = createFakeStream([
         { type: "text-delta", text: "Done" },

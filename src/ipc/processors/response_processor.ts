@@ -2,7 +2,7 @@ import { db } from "../../db";
 import { chats, messages } from "../../db/schema";
 import { and, eq } from "drizzle-orm";
 import fs from "node:fs";
-import { getOpen-LovableAppPath } from "../../paths/paths";
+import { getOpenLovableAppPath } from "../../paths/paths";
 import path from "node:path";
 import { safeJoin } from "../utils/path_utils";
 
@@ -144,7 +144,7 @@ export async function processFullResponseActions(
   }
 
   const settings: UserSettings = readSettings();
-  const appPath = getOpen-LovableAppPath(chatWithApp.app.path);
+  const appPath = getOpenLovableAppPath(chatWithApp.app.path);
   const writtenFiles: string[] = [];
   const renamedFiles: string[] = [];
   const deletedFiles: string[] = [];

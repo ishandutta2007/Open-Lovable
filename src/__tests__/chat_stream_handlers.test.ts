@@ -9,7 +9,7 @@ import {
 
 import { processFullResponseActions } from "../ipc/processors/response_processor";
 import {
-  removeOpen-LovableTags,
+  removeOpenLovableTags,
   hasUnclosedOpen-LovableWrite,
 } from "../ipc/handlers/chat_stream_handlers";
 import fs from "node:fs";
@@ -58,9 +58,9 @@ vi.mock("../ipc/utils/git_utils", () => ({
   getGitUncommittedFiles: vi.fn().mockResolvedValue([]),
 }));
 
-// Mock paths module to control getOpen-LovableAppPath
+// Mock paths module to control getOpenLovableAppPath
 vi.mock("../paths/paths", () => ({
-  getOpen-LovableAppPath: vi.fn().mockImplementation((appPath) => {
+  getOpenLovableAppPath: vi.fn().mockImplementation((appPath) => {
     return `/mock/user/data/path/${appPath}`;
   }),
   getUserDataPath: vi.fn().mockReturnValue("/mock/user/data/path"),
@@ -973,39 +973,39 @@ describe("processFullResponse", () => {
   });
 });
 
-describe("removeOpen-LovableTags", () => {
+describe("removeOpenLovableTags", () => {
   it("should return empty string when input is empty", () => {
-    const result = removeOpen-LovableTags("");
+    const result = removeOpenLovableTags("");
     expect(result).toBe("");
   });
 
   it("should return the same text when no openlovable tags are present", () => {
     const text = "This is a regular text without any openlovable tags.";
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe(text);
   });
 
   it("should remove a single openlovable-write tag", () => {
     const text = `Before text <openlovable-write path="src/file.js">console.log('hello');</openlovable-write> After text`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe("Before text  After text");
   });
 
   it("should remove a single openlovable-delete tag", () => {
     const text = `Before text <openlovable-delete path="src/file.js"></openlovable-delete> After text`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe("Before text  After text");
   });
 
   it("should remove a single openlovable-rename tag", () => {
     const text = `Before text <openlovable-rename from="old.js" to="new.js"></openlovable-rename> After text`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe("Before text  After text");
   });
 
   it("should remove multiple different openlovable tags", () => {
     const text = `Start <openlovable-write path="file1.js">code here</openlovable-write> middle <openlovable-delete path="file2.js"></openlovable-delete> end <openlovable-rename from="old.js" to="new.js"></openlovable-rename> finish`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe("Start  middle  end  finish");
   });
 
@@ -1021,19 +1021,19 @@ const Component = () => {
 export default Component;
 </openlovable-write>
 After`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe("Before\n\nAfter");
   });
 
   it("should handle openlovable tags with complex attributes", () => {
     const text = `Text <openlovable-write path="src/file.js" description="Complex component with quotes" version="1.0">const x = "hello world";</openlovable-write> more text`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe("Text  more text");
   });
 
   it("should remove openlovable tags and trim whitespace", () => {
     const text = `  <openlovable-write path="file.js">code</openlovable-write>  `;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe("");
   });
 
@@ -1042,19 +1042,19 @@ After`;
 const html = '<div>Hello</div>';
 const component = <Component />;
 </openlovable-write>`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe("");
   });
 
   it("should handle self-closing openlovable tags", () => {
     const text = `Before <openlovable-delete path="file.js" /> After`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe('Before <openlovable-delete path="file.js" /> After');
   });
 
   it("should handle malformed openlovable tags gracefully", () => {
     const text = `Before <openlovable-write path="file.js">unclosed tag After`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe('Before <openlovable-write path="file.js">unclosed tag After');
   });
 
@@ -1063,19 +1063,19 @@ const component = <Component />;
 const regex = /<div[^>]*>.*?</div>/g;
 const special = "Special chars: @#$%^&*()[]{}|\\";
 </openlovable-write>`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe("");
   });
 
   it("should handle multiple openlovable tags of the same type", () => {
     const text = `<openlovable-write path="file1.js">code1</openlovable-write> between <openlovable-write path="file2.js">code2</openlovable-write>`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe("between");
   });
 
   it("should handle openlovable tags with custom tag names", () => {
     const text = `Before <openlovable-custom-action param="value">content</openlovable-custom-action> After`;
-    const result = removeOpen-LovableTags(text);
+    const result = removeOpenLovableTags(text);
     expect(result).toBe("Before  After");
   });
 });

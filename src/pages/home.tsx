@@ -37,10 +37,10 @@ import { NEON_TEMPLATE_IDS } from "@/shared/templates";
 import { neonTemplateHook } from "@/client_logic/template_hook";
 import {
   ProBanner,
-  ManageOpen-LovableProButton,
+  ManageOpenLovableProButton,
   SetupOpen-LovableProButton,
 } from "@/components/ProBanner";
-import { hasOpen-LovableProKey, getEffectiveDefaultChatMode } from "@/lib/schemas";
+import { hasOpenLovableProKey, getEffectiveDefaultChatMode } from "@/lib/schemas";
 import { useFreeAgentQuota } from "@/hooks/useFreeAgentQuota";
 
 // Adding an export for attachments
@@ -240,8 +240,8 @@ export default function HomePage() {
   return (
     <div className="flex flex-col items-center justify-center max-w-3xl w-full m-auto p-8 relative">
       <div className="fixed top-16 right-8 z-50">
-        {settings && hasOpen-LovableProKey(settings) ? (
-          <ManageOpen-LovableProButton className="mt-0 w-auto h-9 px-3 text-base shadow-sm bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:bg-white dark:hover:bg-gray-800" />
+        {settings && hasOpenLovableProKey(settings) ? (
+          <ManageOpenLovableProButton className="mt-0 w-auto h-9 px-3 text-base shadow-sm bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:bg-white dark:hover:bg-gray-800" />
         ) : (
           <SetupOpen-LovableProButton />
         )}

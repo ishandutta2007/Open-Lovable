@@ -10,7 +10,7 @@ import {
 import { estimateTokens } from "../utils/token_utils";
 import { createLoggedHandler } from "./safe_handle";
 import log from "electron-log";
-import { getOpen-LovableAppPath } from "@/paths/paths";
+import { getOpenLovableAppPath } from "@/paths/paths";
 import { extractCodebase } from "@/utils/codebase";
 import { validateChatContext } from "../utils/context_paths_utils";
 
@@ -34,7 +34,7 @@ export function registerContextPathsHandlers() {
       if (!app.path) {
         throw new Error("App path not set");
       }
-      const appPath = getOpen-LovableAppPath(app.path);
+      const appPath = getOpenLovableAppPath(app.path);
 
       const results: ContextPathResults = {
         contextPaths: [],

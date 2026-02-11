@@ -78,8 +78,8 @@
     "errorLoadingSettings": "Erro ao Carregar Configurações",
     "couldNotLoadProvider": "Não foi possível carregar os dados do provedor: {{message}}",
     "couldNotLoadSettings": "Não foi possível carregar os dados de configuração: {{message}}",
-    "enableOpen-LovablePro": "Ativar Open-Lovable Pro",
-    "toggleOpen-LovablePro": "Alternar para ativar o Open-Lovable Pro",
+    "enableOpenLovablePro": "Ativar Open-Lovable Pro",
+    "toggleOpenLovablePro": "Alternar para ativar o Open-Lovable Pro",
     "apiKeyEmpty": "A Chave de API não pode estar vazia.",
     "errorTogglingPro": "Erro ao alternar Open-Lovable Pro: {{error}}",
     "failedSaveApiKey": "Falha ao salvar a chave de API.",
@@ -255,6 +255,6 @@
     "updateProvider": "Atualizar Provedor",
     "failedCreate": "Falha ao criar provedor personalizado"
   },
-  "manageOpen-LovablePro": "Gerenciar Assinatura Open-Lovable Pro",
+  "manageOpenLovablePro": "Gerenciar Assinatura Open-Lovable Pro",
   "setupOpen-LovablePro": "Configurar Assinatura Open-Lovable Pro"
 }

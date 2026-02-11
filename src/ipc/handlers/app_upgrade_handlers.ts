@@ -4,7 +4,7 @@ import { AppUpgrade } from "@/ipc/types";
 import { db } from "../../db";
 import { apps } from "../../db/schema";
 import { eq } from "drizzle-orm";
-import { getOpen-LovableAppPath } from "../../paths/paths";
+import { getOpenLovableAppPath } from "../../paths/paths";
 import fs from "node:fs";
 import path from "node:path";
 import { spawn } from "node:child_process";
@@ -253,7 +253,7 @@ export function registerAppUpgradeHandlers() {
     "get-app-upgrades",
     async (_, { appId }: { appId: number }): Promise<AppUpgrade[]> => {
       const app = await getApp(appId);
-      const appPath = getOpen-LovableAppPath(app.path);
+      const appPath = getOpenLovableAppPath(app.path);
 
       const upgradesWithStatus = availableUpgrades.map((upgrade) => {
         let isNeeded = false;
@@ -277,7 +277,7 @@ export function registerAppUpgradeHandlers() {
       }
 
       const app = await getApp(appId);
-      const appPath = getOpen-LovableAppPath(app.path);
+      const appPath = getOpenLovableAppPath(app.path);
 
       if (upgradeId === "component-tagger") {
         await applyComponentTagger(appPath);

@@ -72,7 +72,7 @@ export const TitleBar = () => {
   };
 
   const isOpen-LovablePro = !!settings?.providerSettings?.auto?.apiKey?.value;
-  const isOpen-LovableProEnabled = Boolean(settings?.enableOpen-LovablePro);
+  const isOpen-LovableProEnabled = Boolean(settings?.enableOpenLovablePro);
 
   return (
     <>

@@ -59,7 +59,7 @@
   "deleteItemTitle": "删除{{itemType}}",
   "deleteItemConfirmation": "确定要删除「{{itemName}}」吗？此操作无法撤销。",
   "proBanner": {
-    "manageOpen-LovablePro": "管理 Open-Lovable Pro",
+    "manageOpenLovablePro": "管理 Open-Lovable Pro",
     "alreadyHavePro": "已有 Open-Lovable Pro？添加您的密钥",
     "accessLeadingModels": "一个计划即可访问领先的 AI 模型",
     "getOpen-LovablePro": "获取 Open-Lovable Pro",

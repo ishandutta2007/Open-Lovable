@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/accordion";
 import { useSettings } from "@/hooks/useSettings";
 import { ipc } from "@/ipc/types";
-import { hasOpen-LovableProKey, type UserSettings } from "@/lib/schemas";
+import { hasOpenLovableProKey, type UserSettings } from "@/lib/schemas";
 
 export function ProModeSelector() {
   const { settings, updateSettings } = useSettings();
@@ -59,12 +59,12 @@ export function ProModeSelector() {
 
   const toggleProEnabled = () => {
     updateSettings({
-      enableOpen-LovablePro: !settings?.enableOpen-LovablePro,
+      enableOpenLovablePro: !settings?.enableOpenLovablePro,
     });
   };
 
-  const hasProKey = settings ? hasOpen-LovableProKey(settings) : false;
-  const proModeTogglable = hasProKey && Boolean(settings?.enableOpen-LovablePro);
+  const hasProKey = settings ? hasOpenLovableProKey(settings) : false;
+  const proModeTogglable = hasProKey && Boolean(settings?.enableOpenLovablePro);
 
   return (
     <Popover>
@@ -107,7 +107,7 @@ export function ProModeSelector() {
               label="Enable Open-Lovable Pro"
               tooltip="Uses Open-Lovable Pro AI credits for the main AI model and Pro modes."
               isTogglable={hasProKey}
-              settingEnabled={Boolean(settings?.enableOpen-LovablePro)}
+              settingEnabled={Boolean(settings?.enableOpenLovablePro)}
               toggle={toggleProEnabled}
             />
             <Accordion>

@@ -24,7 +24,7 @@ import {
 import { getLanguageModelProviders } from "../shared/language_model_helpers";
 import { LanguageModelProvider } from "@/ipc/types";
 import {
-  createOpen-LovableEngine,
+  createOpenLovableEngine,
   type Open-LovableEngineProvider,
 } from "./llm_engine_provider";
 
@@ -81,14 +81,14 @@ export async function getModelClient(
   }
 
   // Handle Open-Lovable Pro override
-  if (openlovableApiKey && settings.enableOpen-LovablePro) {
+  if (openlovableApiKey && settings.enableOpenLovablePro) {
     // Check if the selected provider supports Open-Lovable Pro (has a gateway prefix) OR
     // we're using local engine.
     // IMPORTANT: some providers like OpenAI have an empty string gateway prefix,
     // so we do a nullish and not a truthy check here.
     if (providerConfig.gatewayPrefix != null || openlovableEngineUrl) {
       const enableSmartFilesContext = settings.enableProSmartFilesContextMode;
-      const provider = createOpen-LovableEngine({
+      const provider = createOpenLovableEngine({
         apiKey: openlovableApiKey,
         baseURL: openlovableEngineUrl ?? "https://engine.openlovable.sh/v1",
         openlovableOptions: {

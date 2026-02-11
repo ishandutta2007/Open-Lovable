@@ -301,7 +301,7 @@ export const UserSettingsSchema = z
     telemetryConsent: z.enum(["opted_in", "opted_out", "unset"]).optional(),
     telemetryUserId: z.string().optional(),
     hasRunBefore: z.boolean().optional(),
-    enableOpen-LovablePro: z.boolean().optional(),
+    enableOpenLovablePro: z.boolean().optional(),
     experiments: ExperimentsSchema.optional(),
     lastShownReleaseNotesVersion: z.string().optional(),
     maxChatTurnsInContext: z.number().optional(),
@@ -354,10 +354,10 @@ export const UserSettingsSchema = z
 export type UserSettings = z.infer<typeof UserSettingsSchema>;
 
 export function isOpen-LovableProEnabled(settings: UserSettings): boolean {
-  return settings.enableOpen-LovablePro === true && hasOpen-LovableProKey(settings);
+  return settings.enableOpenLovablePro === true && hasOpenLovableProKey(settings);
 }
 
-export function hasOpen-LovableProKey(settings: UserSettings): boolean {
+export function hasOpenLovableProKey(settings: UserSettings): boolean {
   return !!settings.providerSettings?.auto?.apiKey?.value;
 }
 

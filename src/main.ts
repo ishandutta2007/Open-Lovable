@@ -12,7 +12,7 @@ import {
   writeSettings,
 } from "./main/settings";
 import { handleSupabaseOAuthReturn } from "./supabase_admin/supabase_return_handler";
-import { handleOpen-LovableProReturn } from "./main/pro";
+import { handleOpenLovableProReturn } from "./main/pro";
 import { IS_TEST_BUILD } from "./ipc/utils/test_utils";
 import { BackupManager } from "./backup_manager";
 import { getDatabasePath, initializeDatabase } from "./db";
@@ -31,7 +31,7 @@ import {
 import { cleanupOldAiMessagesJson } from "./pro/main/ipc/handlers/local_agent/ai_messages_cleanup";
 import fs from "fs";
 import { gitAddSafeDirectory } from "./ipc/utils/git_utils";
-import { getOpen-LovableAppsBaseDirectory } from "./paths/paths";
+import { getOpenLovableAppsBaseDirectory } from "./paths/paths";
 
 log.errorHandler.startCatching();
 log.eventLogger.startLogging();
@@ -100,7 +100,7 @@ export async function onReady() {
   if (settings.enableNativeGit) {
     // Don't need to await because this only needs to run before
     // the user starts interacting with Open-Lovable app and uses a git-related feature.
-    gitAddSafeDirectory(`${getOpen-LovableAppsBaseDirectory()}/*`);
+    gitAddSafeDirectory(`${getOpenLovableAppsBaseDirectory()}/*`);
   }
 
   // Check if app was force-closed
@@ -475,7 +475,7 @@ async function handleDeepLinkReturn(url: string) {
       dialog.showErrorBox("Invalid URL", "Expected key");
       return;
     }
-    handleOpen-LovableProReturn({
+    handleOpenLovableProReturn({
       apiKey,
     });
     // Send message to renderer to trigger re-render

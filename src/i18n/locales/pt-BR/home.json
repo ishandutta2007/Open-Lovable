@@ -59,7 +59,7 @@
   "deleteItemTitle": "Excluir {{itemType}}",
   "deleteItemConfirmation": "Tem certeza de que deseja excluir \"{{itemName}}\"? Esta ação não pode ser desfeita.",
   "proBanner": {
-    "manageOpen-LovablePro": "Gerenciar Open-Lovable Pro",
+    "manageOpenLovablePro": "Gerenciar Open-Lovable Pro",
     "alreadyHavePro": "Já tem o Open-Lovable Pro? Adicione sua chave",
     "accessLeadingModels": "Acesse os melhores modelos de IA com um único plano",
     "getOpen-LovablePro": "Obtenha o Open-Lovable Pro",

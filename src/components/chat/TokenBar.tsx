@@ -130,12 +130,12 @@ export function TokenBar({ chatId }: TokenBarProps) {
         <div className="text-red-500 text-xs mt-1">Failed to count tokens</div>
       )}
       {(!settings?.enableProSmartFilesContextMode ||
-        !settings?.enableOpen-LovablePro) && (
+        !settings?.enableOpenLovablePro) && (
         <div className="text-xs text-center text-muted-foreground mt-2">
           Optimize your tokens with{" "}
           <a
             onClick={() =>
-              settings?.enableOpen-LovablePro
+              settings?.enableOpenLovablePro
                 ? ipc.system.openExternalUrl(
                     "https://www.openlovable.sh/docs/guides/ai-models/pro-modes#smart-context",
                   )

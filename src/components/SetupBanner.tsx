@@ -121,7 +121,7 @@ export function SetupBanner() {
       params: { provider: "openrouter" },
     });
   };
-  const handleOpen-LovableProSetupClick = () => {
+  const handleOpenLovableProSetupClick = () => {
     posthog.capture("setup-flow:ai-provider-setup:openlovable:click");
     setShowOpen-LovableProTrialDialog(true);
   };
@@ -326,7 +326,7 @@ export function SetupBanner() {
 
               <SetupProviderCard
                 variant="openlovable"
-                onClick={handleOpen-LovableProSetupClick}
+                onClick={handleOpenLovableProSetupClick}
                 tabIndex={isNodeSetupComplete ? 0 : -1}
                 leadingIcon={
                   <img src={logo} alt="Open-Lovable Logo" className="w-6 h-6 mr-0.5" />

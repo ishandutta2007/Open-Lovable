@@ -15,7 +15,7 @@ import {
   UserSettings,
   AzureProviderSetting,
   VertexProviderSetting,
-  hasOpen-LovableProKey,
+  hasOpenLovableProKey,
 } from "@/lib/schemas";
 
 import { ProviderSettingsHeader } from "./ProviderSettingsHeader";
@@ -126,7 +126,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
     setSaveError(null);
     try {
       // Check if this is the first time user is setting up Open-Lovable Pro
-      const isNewOpen-LovableProSetup = isOpen-Lovable && settings && !hasOpen-LovableProKey(settings);
+      const isNewOpen-LovableProSetup = isOpen-Lovable && settings && !hasOpenLovableProKey(settings);
 
       const settingsUpdate: Partial<UserSettings> = {
         providerSettings: {
@@ -140,7 +140,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
         },
       };
       if (isOpen-Lovable) {
-        settingsUpdate.enableOpen-LovablePro = true;
+        settingsUpdate.enableOpenLovablePro = true;
         // Set default chat mode to local-agent when user upgrades to pro
         if (isNewOpen-LovableProSetup) {
           settingsUpdate.defaultChatMode = "local-agent";
@@ -181,11 +181,11 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
   };
 
   // --- Toggle Open-Lovable Pro Handler ---
-  const handleToggleOpen-LovablePro = async (enabled: boolean) => {
+  const handleToggleOpenLovablePro = async (enabled: boolean) => {
     setIsSaving(true);
     try {
       await updateSettings({
-        enableOpen-LovablePro: enabled,
+        enableOpenLovablePro: enabled,
       });
     } catch (error: any) {
       showError(`Error toggling Open-Lovable Pro: ${error}`);
@@ -327,8 +327,8 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
             </div>
             <Switch
               aria-label="Enable Open-Lovable Pro"
-              checked={settings?.enableOpen-LovablePro}
-              onCheckedChange={handleToggleOpen-LovablePro}
+              checked={settings?.enableOpenLovablePro}
+              onCheckedChange={handleToggleOpenLovablePro}
               disabled={isSaving}
             />
           </div>

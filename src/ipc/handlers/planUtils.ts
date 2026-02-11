@@ -5,7 +5,7 @@ import path from "node:path";
  * Ensures `.openlovable/` is listed in the project's `.gitignore`.
  * Creates `.gitignore` if it doesn't exist.
  */
-export async function ensureOpen-LovableGitignored(appPath: string): Promise<void> {
+export async function ensureOpenLovableGitignored(appPath: string): Promise<void> {
   const gitignorePath = path.join(appPath, ".gitignore");
   let content = "";
   try {

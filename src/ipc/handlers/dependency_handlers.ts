@@ -1,7 +1,7 @@
 import { db } from "../../db";
 import { messages, apps, chats } from "../../db/schema";
 import { eq } from "drizzle-orm";
-import { getOpen-LovableAppPath } from "../../paths/paths";
+import { getOpenLovableAppPath } from "../../paths/paths";
 import { executeAddDependency } from "../processors/executeAddDependency";
 import { createLoggedHandler } from "./safe_handle";
 import log from "electron-log";
@@ -56,7 +56,7 @@ export function registerDependencyHandlers() {
       executeAddDependency({
         packages,
         message,
-        appPath: getOpen-LovableAppPath(app.path),
+        appPath: getOpenLovableAppPath(app.path),
       });
     },
   );

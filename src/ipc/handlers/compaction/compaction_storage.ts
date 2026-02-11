@@ -7,7 +7,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import log from "electron-log";
-import { ensureOpen-LovableGitignored } from "@/ipc/handlers/planUtils";
+import { ensureOpenLovableGitignored } from "@/ipc/handlers/planUtils";
 
 const logger = log.scope("compaction_storage");
 
@@ -103,7 +103,7 @@ export async function storePreCompactionMessages(
   if (!fs.existsSync(chatBackupDir)) {
     fs.mkdirSync(chatBackupDir, { recursive: true });
   }
-  await ensureOpen-LovableGitignored(appPath);
+  await ensureOpenLovableGitignored(appPath);
 
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   const backupFileName = `compaction-${timestamp}.md`;

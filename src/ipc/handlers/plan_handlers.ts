@@ -3,7 +3,7 @@ import path from "node:path";
 import { db } from "../../db";
 import { apps } from "../../db/schema";
 import { eq } from "drizzle-orm";
-import { getOpen-LovableAppPath } from "../../paths/paths";
+import { getOpenLovableAppPath } from "../../paths/paths";
 import log from "electron-log";
 import { createTypedHandler } from "./base";
 import { planContracts } from "../types/plan";
@@ -12,7 +12,7 @@ import {
   buildFrontmatter,
   validatePlanId,
   parsePlanFile,
-  ensureOpen-LovableGitignored,
+  ensureOpenLovableGitignored,
 } from "./planUtils";
 
 const logger = log.scope("plan_handlers");
@@ -20,10 +20,10 @@ const logger = log.scope("plan_handlers");
 async function getPlanDir(appId: number): Promise<string> {
   const app = await db.query.apps.findFirst({ where: eq(apps.id, appId) });
   if (!app) throw new Error("App not found");
-  const appPath = getOpen-LovableAppPath(app.path);
+  const appPath = getOpenLovableAppPath(app.path);
   const planDir = path.join(appPath, ".openlovable", "plans");
   await fs.promises.mkdir(planDir, { recursive: true });
-  await ensureOpen-LovableGitignored(appPath);
+  await ensureOpenLovableGitignored(appPath);
   return planDir;
 }
 

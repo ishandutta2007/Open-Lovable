@@ -1,5 +1,5 @@
 import { db } from "../../db";
-import { getOpen-LovableAppPath } from "../../paths/paths";
+import { getOpenLovableAppPath } from "../../paths/paths";
 import { CodebaseFile, extractCodebase } from "../../utils/codebase";
 import { validateChatContext } from "../utils/context_paths_utils";
 import log from "electron-log";
@@ -33,7 +33,7 @@ export async function extractMentionedAppsCodebases(
 
   for (const app of mentionedApps) {
     try {
-      const appPath = getOpen-LovableAppPath(app.path);
+      const appPath = getOpenLovableAppPath(app.path);
       const chatContext = validateChatContext(app.chatContext);
 
       const { formattedOutput, files } = await extractCodebase({

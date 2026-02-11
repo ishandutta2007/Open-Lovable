@@ -443,7 +443,7 @@ export async function extractCodebase({
 }> {
   const settings = readSettings();
   const isSmartContextEnabled =
-    settings?.enableOpen-LovablePro && settings?.enableProSmartFilesContextMode;
+    settings?.enableOpenLovablePro && settings?.enableProSmartFilesContextMode;
 
   try {
     await fsAsync.access(appPath);

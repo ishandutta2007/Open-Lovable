@@ -221,7 +221,7 @@ function FooterComponent({ context }: { context?: FooterContext }) {
       )}
 
       {isStreaming &&
-        !settings?.enableOpen-LovablePro &&
+        !settings?.enableOpenLovablePro &&
         !userBudget &&
         messages.length > 0 && (
           <PromoMessage

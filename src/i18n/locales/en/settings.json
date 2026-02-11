@@ -78,8 +78,8 @@
     "errorLoadingSettings": "Error Loading Settings",
     "couldNotLoadProvider": "Could not load provider data: {{message}}",
     "couldNotLoadSettings": "Could not load configuration data: {{message}}",
-    "enableOpen-LovablePro": "Enable Open-Lovable Pro",
-    "toggleOpen-LovablePro": "Toggle to enable Open-Lovable Pro",
+    "enableOpenLovablePro": "Enable Open-Lovable Pro",
+    "toggleOpenLovablePro": "Toggle to enable Open-Lovable Pro",
     "apiKeyEmpty": "API Key cannot be empty.",
     "errorTogglingPro": "Error toggling Open-Lovable Pro: {{error}}",
     "failedSaveApiKey": "Failed to save API key.",
@@ -262,6 +262,6 @@
     "updateProvider": "Update Provider",
     "failedCreate": "Failed to create custom provider"
   },
-  "manageOpen-LovablePro": "Manage Open-Lovable Pro Subscription",
+  "manageOpenLovablePro": "Manage Open-Lovable Pro Subscription",
   "setupOpen-LovablePro": "Setup Open-Lovable Pro Subscription"
 }

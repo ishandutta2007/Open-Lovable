@@ -579,7 +579,7 @@ Modern dark theme with purple accents for testing.
         };
       }
 
-      if (!settings.enableOpen-LovablePro) {
+      if (!settings.enableOpenLovablePro) {
         throw new Error(
           "Open-Lovable Pro is required for AI theme generation. Please enable Open-Lovable Pro in Settings.",
         );
@@ -707,7 +707,7 @@ Modern theme extracted from website for testing.
         };
       }
 
-      if (!settings.enableOpen-LovablePro) {
+      if (!settings.enableOpenLovablePro) {
         throw new Error(
           "Open-Lovable Pro is required for AI theme generation. Please enable Open-Lovable Pro in Settings.",
         );
