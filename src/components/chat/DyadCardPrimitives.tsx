@@ -202,16 +202,16 @@ export function Open-LovableBadge({ children, color = "blue" }: Open-LovableBadg
   );
 }
 
-// -- Open-LovableExpandIcon --
+// -- OpenLovableExpandIcon --
 
-interface Open-LovableExpandIconProps {
+interface OpenLovableExpandIconProps {
   isExpanded: boolean;
 }
 
 /**
  * Animated chevron icon for expand/collapse. Rotates 90 degrees when expanded.
  */
-export function Open-LovableExpandIcon({ isExpanded }: Open-LovableExpandIconProps) {
+export function OpenLovableExpandIcon({ isExpanded }: OpenLovableExpandIconProps) {
   return (
     <ChevronRight
       size={16}

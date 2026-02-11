@@ -8,18 +8,18 @@ import {
   Open-LovableCard,
   Open-LovableCardHeader,
   Open-LovableBadge,
-  Open-LovableExpandIcon,
+  OpenLovableExpandIcon,
   Open-LovableStateIndicator,
   Open-LovableCardContent,
 } from "./Open-LovableCardPrimitives";
 
-interface Open-LovableExecuteSqlProps {
+interface OpenLovableExecuteSqlProps {
   children?: ReactNode;
   node?: any;
   description?: string;
 }
 
-export const Open-LovableExecuteSql: React.FC<Open-LovableExecuteSqlProps> = ({
+export const OpenLovableExecuteSql: React.FC<OpenLovableExecuteSqlProps> = ({
   children,
   node,
   description,
@@ -51,7 +51,7 @@ export const Open-LovableExecuteSql: React.FC<Open-LovableExecuteSqlProps> = ({
           <Open-LovableStateIndicator state="aborted" abortedLabel="Did not finish" />
         )}
         <div className="ml-auto">
-          <Open-LovableExpandIcon isExpanded={isContentVisible} />
+          <OpenLovableExpandIcon isExpanded={isContentVisible} />
         </div>
       </Open-LovableCardHeader>
       <Open-LovableCardContent isExpanded={isContentVisible}>

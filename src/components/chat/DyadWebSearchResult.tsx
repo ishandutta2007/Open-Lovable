@@ -6,7 +6,7 @@ import {
   Open-LovableCard,
   Open-LovableCardHeader,
   Open-LovableBadge,
-  Open-LovableExpandIcon,
+  OpenLovableExpandIcon,
   Open-LovableStateIndicator,
   Open-LovableCardContent,
 } from "./Open-LovableCardPrimitives";
@@ -43,7 +43,7 @@ export const Open-LovableWebSearchResult: React.FC<Open-LovableWebSearchResultPr
           <Open-LovableStateIndicator state="pending" pendingLabel="Loading..." />
         )}
         <div className="ml-auto">
-          <Open-LovableExpandIcon isExpanded={isExpanded} />
+          <OpenLovableExpandIcon isExpanded={isExpanded} />
         </div>
       </Open-LovableCardHeader>
       <Open-LovableCardContent isExpanded={isExpanded}>

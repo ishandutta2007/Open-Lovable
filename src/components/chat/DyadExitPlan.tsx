@@ -4,7 +4,7 @@ import { CheckCircle, ArrowRight } from "lucide-react";
 import { planStateAtom } from "@/atoms/planAtoms";
 import { selectedChatIdAtom } from "@/atoms/chatAtoms";
 
-interface Open-LovableExitPlanProps {
+interface OpenLovableExitPlanProps {
   node: {
     properties: {
       notes?: string;
@@ -12,7 +12,7 @@ interface Open-LovableExitPlanProps {
   };
 }
 
-export const Open-LovableExitPlan: React.FC<Open-LovableExitPlanProps> = ({ node }) => {
+export const OpenLovableExitPlan: React.FC<OpenLovableExitPlanProps> = ({ node }) => {
   const { notes } = node.properties;
   const chatId = useAtomValue(selectedChatIdAtom);
   const planState = useAtomValue(planStateAtom);

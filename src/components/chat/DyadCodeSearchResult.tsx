@@ -4,7 +4,7 @@ import {
   Open-LovableCard,
   Open-LovableCardHeader,
   Open-LovableBadge,
-  Open-LovableExpandIcon,
+  OpenLovableExpandIcon,
   Open-LovableCardContent,
 } from "./Open-LovableCardPrimitives";
 
@@ -54,7 +54,7 @@ export const Open-LovableCodeSearchResult: React.FC<Open-LovableCodeSearchResult
           </span>
         )}
         <div className="ml-auto">
-          <Open-LovableExpandIcon isExpanded={isExpanded} />
+          <OpenLovableExpandIcon isExpanded={isExpanded} />
         </div>
       </Open-LovableCardHeader>
       <Open-LovableCardContent isExpanded={isExpanded}>

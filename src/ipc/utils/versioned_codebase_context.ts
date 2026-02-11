@@ -19,7 +19,7 @@ export interface VersionedFiles {
   hasExternalChanges: boolean;
 }
 
-interface Open-LovableEngineProviderOptions {
+interface OpenLovableEngineProviderOptions {
   sourceCommitHash: string | null;
   commitHash: string | null;
 }
@@ -140,7 +140,7 @@ export async function processChatMessagesWithVersionedFiles({
     // Extract sourceCommitHash from providerOptions
     const engineOptions = message.providerOptions?.[
       "openlovable-engine"
-    ] as unknown as Open-LovableEngineProviderOptions;
+    ] as unknown as OpenLovableEngineProviderOptions;
     const sourceCommitHash = engineOptions?.sourceCommitHash;
 
     // Skip messages without sourceCommitHash
@@ -226,7 +226,7 @@ export async function processChatMessagesWithVersionedFiles({
     if (message.role === "assistant") {
       const engineOptions = message.providerOptions?.[
         "openlovable-engine"
-      ] as unknown as Open-LovableEngineProviderOptions;
+      ] as unknown as OpenLovableEngineProviderOptions;
       if (engineOptions?.commitHash) {
         latestCommitHash = engineOptions.commitHash;
         break;

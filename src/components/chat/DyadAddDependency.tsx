@@ -10,7 +10,7 @@ import {
   Open-LovableCard,
   Open-LovableCardHeader,
   Open-LovableBadge,
-  Open-LovableExpandIcon,
+  OpenLovableExpandIcon,
   Open-LovableCardContent,
 } from "./Open-LovableCardPrimitives";
 
@@ -42,7 +42,7 @@ export const Open-LovableAddDependency: React.FC<Open-LovableAddDependencyProps>
         <Open-LovableBadge color="blue">Add Packages</Open-LovableBadge>
         {hasChildren && (
           <div className="ml-auto">
-            <Open-LovableExpandIcon isExpanded={isContentVisible} />
+            <OpenLovableExpandIcon isExpanded={isContentVisible} />
           </div>
         )}
       </Open-LovableCardHeader>

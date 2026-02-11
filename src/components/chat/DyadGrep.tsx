@@ -8,7 +8,7 @@ import {
   Open-LovableCard,
   Open-LovableCardHeader,
   Open-LovableBadge,
-  Open-LovableExpandIcon,
+  OpenLovableExpandIcon,
   Open-LovableStateIndicator,
   Open-LovableCardContent,
 } from "./Open-LovableCardPrimitives";
@@ -86,7 +86,7 @@ export const Open-LovableGrep: React.FC<Open-LovableGrepProps> = ({ children, no
           <Open-LovableStateIndicator state="aborted" abortedLabel="Did not finish" />
         )}
         <div className="ml-auto">
-          <Open-LovableExpandIcon isExpanded={isContentVisible} />
+          <OpenLovableExpandIcon isExpanded={isContentVisible} />
         </div>
       </Open-LovableCardHeader>
       <Open-LovableCardContent isExpanded={isContentVisible}>

@@ -5,7 +5,7 @@ import {
   Open-LovableCard,
   Open-LovableCardHeader,
   Open-LovableBadge,
-  Open-LovableExpandIcon,
+  OpenLovableExpandIcon,
   Open-LovableCardContent,
 } from "./Open-LovableCardPrimitives";
 
@@ -54,7 +54,7 @@ export const Open-LovableMcpToolCall: React.FC<Open-LovableMcpToolCallProps> = (
           </span>
         )}
         <div className="ml-auto">
-          <Open-LovableExpandIcon isExpanded={expanded} />
+          <OpenLovableExpandIcon isExpanded={expanded} />
         </div>
       </Open-LovableCardHeader>
       <Open-LovableCardContent isExpanded={expanded}>

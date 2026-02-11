@@ -5,7 +5,7 @@ import {
   Open-LovableCard,
   Open-LovableCardHeader,
   Open-LovableBadge,
-  Open-LovableExpandIcon,
+  OpenLovableExpandIcon,
   Open-LovableStateIndicator,
   Open-LovableCardContent,
 } from "./Open-LovableCardPrimitives";
@@ -50,7 +50,7 @@ export function Open-LovableListFiles({ node, children }: Open-LovableListFilesP
           <Open-LovableStateIndicator state="pending" pendingLabel="Listing..." />
         )}
         <div className="ml-auto">
-          <Open-LovableExpandIcon isExpanded={isExpanded} />
+          <OpenLovableExpandIcon isExpanded={isExpanded} />
         </div>
       </Open-LovableCardHeader>
       <Open-LovableCardContent isExpanded={isExpanded}>

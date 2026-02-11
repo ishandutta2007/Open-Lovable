@@ -8,20 +8,20 @@ import {
   Open-LovableCard,
   Open-LovableCardHeader,
   Open-LovableBadge,
-  Open-LovableExpandIcon,
+  OpenLovableExpandIcon,
   Open-LovableStateIndicator,
   Open-LovableDescription,
   Open-LovableCardContent,
 } from "./Open-LovableCardPrimitives";
 
-interface Open-LovableEditProps {
+interface OpenLovableEditProps {
   children?: ReactNode;
   node?: any;
   path?: string;
   description?: string;
 }
 
-export const Open-LovableEdit: React.FC<Open-LovableEditProps> = ({
+export const OpenLovableEdit: React.FC<OpenLovableEditProps> = ({
   children,
   node,
   path: pathProp,
@@ -65,7 +65,7 @@ export const Open-LovableEdit: React.FC<Open-LovableEditProps> = ({
         )}
         <div className="ml-auto flex items-center gap-1">
           <Open-LovableBadge color="sky">Turbo Edit</Open-LovableBadge>
-          <Open-LovableExpandIcon isExpanded={isContentVisible} />
+          <OpenLovableExpandIcon isExpanded={isContentVisible} />
         </div>
       </Open-LovableCardHeader>
       {description && (

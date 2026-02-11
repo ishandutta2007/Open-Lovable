@@ -10,7 +10,7 @@ import { selectedAppIdAtom } from "@/atoms/appAtoms";
 import {
   Open-LovableCard,
   Open-LovableCardHeader,
-  Open-LovableExpandIcon,
+  OpenLovableExpandIcon,
   Open-LovableStateIndicator,
   Open-LovableDescription,
   Open-LovableCardContent,
@@ -105,7 +105,7 @@ export const Open-LovableWrite: React.FC<Open-LovableWriteProps> = ({
               )}
             </>
           )}
-          <Open-LovableExpandIcon isExpanded={isContentVisible} />
+          <OpenLovableExpandIcon isExpanded={isContentVisible} />
         </div>
       </Open-LovableCardHeader>
       {description && (

@@ -3,7 +3,7 @@ import { CustomTagState } from "./stateTypes";
 import {
   Open-LovableCard,
   Open-LovableCardHeader,
-  Open-LovableExpandIcon,
+  OpenLovableExpandIcon,
   Open-LovableFinishedIcon,
   Open-LovableCardContent,
 } from "./Open-LovableCardPrimitives";
@@ -59,7 +59,7 @@ export function Open-LovableStatus({ node, children }: Open-LovableStatusProps) 
           {title}
         </span>
         <div className="ml-auto">
-          <Open-LovableExpandIcon isExpanded={isContentVisible} />
+          <OpenLovableExpandIcon isExpanded={isContentVisible} />
         </div>
       </Open-LovableCardHeader>
       <Open-LovableCardContent isExpanded={isContentVisible}>

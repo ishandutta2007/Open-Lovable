@@ -25,7 +25,7 @@ import { getLanguageModelProviders } from "../shared/language_model_helpers";
 import { LanguageModelProvider } from "@/ipc/types";
 import {
   createOpenLovableEngine,
-  type Open-LovableEngineProvider,
+  type OpenLovableEngineProvider,
 } from "./llm_engine_provider";
 
 import { LM_STUDIO_BASE_URL } from "./lm_studio_utils";
@@ -198,7 +198,7 @@ function getProModelClient({
 }: {
   model: LargeLanguageModel;
   settings: UserSettings;
-  provider: Open-LovableEngineProvider;
+  provider: OpenLovableEngineProvider;
   modelId: string;
 }): ModelClient {
   if (

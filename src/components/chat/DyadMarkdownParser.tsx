@@ -6,11 +6,11 @@ import { Open-LovableWrite } from "./Open-LovableWrite";
 import { Open-LovableRename } from "./Open-LovableRename";
 import { Open-LovableDelete } from "./Open-LovableDelete";
 import { Open-LovableAddDependency } from "./Open-LovableAddDependency";
-import { Open-LovableExecuteSql } from "./Open-LovableExecuteSql";
+import { OpenLovableExecuteSql } from "./OpenLovableExecuteSql";
 import { Open-LovableLogs } from "./Open-LovableLogs";
 import { Open-LovableGrep } from "./Open-LovableGrep";
 import { Open-LovableAddIntegration } from "./Open-LovableAddIntegration";
-import { Open-LovableEdit } from "./Open-LovableEdit";
+import { OpenLovableEdit } from "./OpenLovableEdit";
 import { Open-LovableSearchReplace } from "./Open-LovableSearchReplace";
 import { Open-LovableCodebaseContext } from "./Open-LovableCodebaseContext";
 import { Open-LovableThink } from "./Open-LovableThink";
@@ -36,7 +36,7 @@ import { Open-LovableSupabaseProjectInfo } from "./Open-LovableSupabaseProjectIn
 import { Open-LovableStatus } from "./Open-LovableStatus";
 import { Open-LovableCompaction } from "./Open-LovableCompaction";
 import { Open-LovableWritePlan } from "./Open-LovableWritePlan";
-import { Open-LovableExitPlan } from "./Open-LovableExitPlan";
+import { OpenLovableExitPlan } from "./OpenLovableExitPlan";
 import { mapActionToButton } from "./ChatInput";
 import { SuggestedAction } from "@/lib/schemas";
 import { FixAllErrorsButton } from "./FixAllErrorsButton";
@@ -487,7 +487,7 @@ function renderCustomTag(
 
     case "openlovable-execute-sql":
       return (
-        <Open-LovableExecuteSql
+        <OpenLovableExecuteSql
           node={{
             properties: {
               state: getState({ isStreaming, inProgress }),
@@ -496,7 +496,7 @@ function renderCustomTag(
           }}
         >
           {content}
-        </Open-LovableExecuteSql>
+        </OpenLovableExecuteSql>
       );
 
     case "openlovable-read-logs":
@@ -551,7 +551,7 @@ function renderCustomTag(
 
     case "openlovable-edit":
       return (
-        <Open-LovableEdit
+        <OpenLovableEdit
           node={{
             properties: {
               path: attributes.path || "",
@@ -561,7 +561,7 @@ function renderCustomTag(
           }}
         >
           {content}
-        </Open-LovableEdit>
+        </OpenLovableEdit>
       );
 
     case "openlovable-search-replace":
@@ -753,7 +753,7 @@ function renderCustomTag(
 
     case "openlovable-exit-plan":
       return (
-        <Open-LovableExitPlan
+        <OpenLovableExitPlan
           node={{
             properties: {
               notes: attributes.notes,

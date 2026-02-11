@@ -5,7 +5,7 @@ import {
   Open-LovableCard,
   Open-LovableCardHeader,
   Open-LovableBadge,
-  Open-LovableExpandIcon,
+  OpenLovableExpandIcon,
   Open-LovableStateIndicator,
   Open-LovableCardContent,
 } from "./Open-LovableCardPrimitives";
@@ -50,7 +50,7 @@ export const Open-LovableCodebaseContext: React.FC<Open-LovableCodebaseContextPr
         )}
         {inProgress && <Open-LovableStateIndicator state="pending" />}
         <div className="ml-auto">
-          <Open-LovableExpandIcon isExpanded={isExpanded} />
+          <OpenLovableExpandIcon isExpanded={isExpanded} />
         </div>
       </Open-LovableCardHeader>
       <Open-LovableCardContent isExpanded={isExpanded}>

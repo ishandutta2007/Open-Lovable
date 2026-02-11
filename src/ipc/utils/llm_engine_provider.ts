@@ -48,7 +48,7 @@ or to provide a custom fetch implementation for e.g. testing.
   settings: UserSettings;
 }
 
-export interface Open-LovableEngineProvider {
+export interface OpenLovableEngineProvider {
   /**
 Creates a model for text generation.
 */
@@ -64,7 +64,7 @@ Creates a chat model for text generation.
 
 export function createOpenLovableEngine(
   options: ExampleProviderSettings,
-): Open-LovableEngineProvider {
+): OpenLovableEngineProvider {
   const baseURL = withoutTrailingSlash(options.baseURL);
   logger.info("creating openlovable engine with baseURL", baseURL);
 
