@@ -6,9 +6,9 @@ import log from "electron-log";
 import { WorkerInput, WorkerOutput } from "../../../shared/tsc_types";
 
 import {
-  getOpen-LovableDeleteTags,
-  getOpen-LovableRenameTags,
-  getOpen-LovableWriteTags,
+  getOpenLovableDeleteTags,
+  getOpenLovableRenameTags,
+  getOpenLovableWriteTags,
 } from "../utils/openlovable_tag_parser";
 import { getTypeScriptCachePath } from "@/paths/paths";
 
@@ -58,9 +58,9 @@ export async function generateProblemReport({
       }
     });
 
-    const writeTags = getOpen-LovableWriteTags(fullResponse);
-    const renameTags = getOpen-LovableRenameTags(fullResponse);
-    const deletePaths = getOpen-LovableDeleteTags(fullResponse);
+    const writeTags = getOpenLovableWriteTags(fullResponse);
+    const renameTags = getOpenLovableRenameTags(fullResponse);
+    const deletePaths = getOpenLovableDeleteTags(fullResponse);
     const virtualChanges = {
       deletePaths,
       renameTags,

@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 import {
-  getOpen-LovableWriteTags,
-  getOpen-LovableRenameTags,
-  getOpen-LovableAddDependencyTags,
-  getOpen-LovableDeleteTags,
+  getOpenLovableWriteTags,
+  getOpenLovableRenameTags,
+  getOpenLovableAddDependencyTags,
+  getOpenLovableDeleteTags,
 } from "../ipc/utils/openlovable_tag_parser";
 
 import { processFullResponseActions } from "../ipc/processors/response_processor";
@@ -85,49 +85,49 @@ vi.mock("../db", () => ({
   },
 }));
 
-describe("getOpen-LovableAddDependencyTags", () => {
+describe("getOpenLovableAddDependencyTags", () => {
   it("should return an empty array when no openlovable-add-dependency tags are found", () => {
-    const result = getOpen-LovableAddDependencyTags("No openlovable-add-dependency tags here");
+    const result = getOpenLovableAddDependencyTags("No openlovable-add-dependency tags here");
     expect(result).toEqual([]);
   });
 
   it("should return an array of openlovable-add-dependency tags", () => {
-    const result = getOpen-LovableAddDependencyTags(
+    const result = getOpenLovableAddDependencyTags(
       `<openlovable-add-dependency packages="uuid"></openlovable-add-dependency>`,
     );
     expect(result).toEqual(["uuid"]);
   });
 
   it("should return all the packages in the openlovable-add-dependency tags", () => {
-    const result = getOpen-LovableAddDependencyTags(
+    const result = getOpenLovableAddDependencyTags(
       `<openlovable-add-dependency packages="pkg1 pkg2"></openlovable-add-dependency>`,
     );
     expect(result).toEqual(["pkg1", "pkg2"]);
   });
 
   it("should return all the packages in the openlovable-add-dependency tags", () => {
-    const result = getOpen-LovableAddDependencyTags(
+    const result = getOpenLovableAddDependencyTags(
       `txt before<openlovable-add-dependency packages="pkg1 pkg2"></openlovable-add-dependency>text after`,
     );
     expect(result).toEqual(["pkg1", "pkg2"]);
   });
 
   it("should return all the packages in multiple openlovable-add-dependency tags", () => {
-    const result = getOpen-LovableAddDependencyTags(
+    const result = getOpenLovableAddDependencyTags(
       `txt before<openlovable-add-dependency packages="pkg1 pkg2"></openlovable-add-dependency>txt between<openlovable-add-dependency packages="pkg3"></openlovable-add-dependency>text after`,
     );
     expect(result).toEqual(["pkg1", "pkg2", "pkg3"]);
   });
 });
-describe("getOpen-LovableWriteTags", () => {
+describe("getOpenLovableWriteTags", () => {
   it("should return an empty array when no openlovable-write tags are found", () => {
-    const result = getOpen-LovableWriteTags("No openlovable-write tags here");
+    const result = getOpenLovableWriteTags("No openlovable-write tags here");
     expect(result).toEqual([]);
   });
 
   it("should return a openlovable-write tag", () => {
     const result =
-      getOpen-LovableWriteTags(`<openlovable-write path="src/components/TodoItem.tsx" description="Creating a component for individual todo items">
+      getOpenLovableWriteTags(`<openlovable-write path="src/components/TodoItem.tsx" description="Creating a component for individual todo items">
 import React from "react";
 console.log("TodoItem");
 </openlovable-write>`);
@@ -143,7 +143,7 @@ console.log("TodoItem");`,
 
   it("should strip out code fence (if needed) from a openlovable-write tag", () => {
     const result =
-      getOpen-LovableWriteTags(`<openlovable-write path="src/components/TodoItem.tsx" description="Creating a component for individual todo items">
+      getOpenLovableWriteTags(`<openlovable-write path="src/components/TodoItem.tsx" description="Creating a component for individual todo items">
 \`\`\`tsx
 import React from "react";
 console.log("TodoItem");
@@ -161,7 +161,7 @@ console.log("TodoItem");`,
   });
 
   it("should handle missing description", () => {
-    const result = getOpen-LovableWriteTags(`
+    const result = getOpenLovableWriteTags(`
       <openlovable-write path="src/pages/locations/neighborhoods/louisville/Highlands.tsx">
 import React from 'react';
 </openlovable-write>
@@ -176,7 +176,7 @@ import React from 'react';
   });
 
   it("should handle extra space", () => {
-    const result = getOpen-LovableWriteTags(
+    const result = getOpenLovableWriteTags(
       cleanFullResponse(`
       <openlovable-write path="src/pages/locations/neighborhoods/louisville/Highlands.tsx" description="Updating Highlands neighborhood page to use <a> tags." >
 import React from 'react';
@@ -193,7 +193,7 @@ import React from 'react';
   });
 
   it("should handle nested tags", () => {
-    const result = getOpen-LovableWriteTags(
+    const result = getOpenLovableWriteTags(
       cleanFullResponse(`
       BEFORE TAG
   <openlovable-write path="src/pages/locations/neighborhoods/louisville/Highlands.tsx" description="Updating Highlands neighborhood page to use <a> tags.">
@@ -223,7 +223,7 @@ AFTER TAG
 
     const cleanedInput = cleanFullResponse(inputWithNestedTags);
 
-    const result = getOpen-LovableWriteTags(cleanedInput);
+    const result = getOpenLovableWriteTags(cleanedInput);
     expect(result).toEqual([
       {
         path: "src/pages/locations/neighborhoods/louisville/Highlands.tsx",
@@ -238,7 +238,7 @@ AFTER TAG
 
     // This simulates what cleanFullResponse should do
     const cleanedInput = cleanFullResponse(inputWithMultipleNestedTags);
-    const result = getOpen-LovableWriteTags(cleanedInput);
+    const result = getOpenLovableWriteTags(cleanedInput);
     expect(result).toEqual([
       {
         path: "src/file.tsx",
@@ -254,7 +254,7 @@ AFTER TAG
     // This simulates what cleanFullResponse should do
     const cleanedInput = cleanFullResponse(inputWithNestedInMultipleAttrs);
 
-    const result = getOpen-LovableWriteTags(cleanedInput);
+    const result = getOpenLovableWriteTags(cleanedInput);
     expect(result).toEqual([
       {
         path: "src/＜component＞.tsx",
@@ -265,7 +265,7 @@ AFTER TAG
   });
 
   it("should return an array of openlovable-write tags", () => {
-    const result = getOpen-LovableWriteTags(
+    const result = getOpenLovableWriteTags(
       `I'll create a simple todo list app using React, TypeScript, and shadcn/ui components. Let's get started!
 
 First, I'll create the necessary files for our todo list application:
@@ -597,14 +597,14 @@ I've created a complete todo list application with the ability to add, complete,
   });
 });
 
-describe("getOpen-LovableRenameTags", () => {
+describe("getOpenLovableRenameTags", () => {
   it("should return an empty array when no openlovable-rename tags are found", () => {
-    const result = getOpen-LovableRenameTags("No openlovable-rename tags here");
+    const result = getOpenLovableRenameTags("No openlovable-rename tags here");
     expect(result).toEqual([]);
   });
 
   it("should return an array of openlovable-rename tags", () => {
-    const result = getOpen-LovableRenameTags(
+    const result = getOpenLovableRenameTags(
       `<openlovable-rename from="src/components/UserProfile.jsx" to="src/components/ProfileCard.jsx"></openlovable-rename>
       <openlovable-rename from="src/utils/helpers.js" to="src/utils/utils.js"></openlovable-rename>`,
     );
@@ -618,14 +618,14 @@ describe("getOpen-LovableRenameTags", () => {
   });
 });
 
-describe("getOpen-LovableDeleteTags", () => {
+describe("getOpenLovableDeleteTags", () => {
   it("should return an empty array when no openlovable-delete tags are found", () => {
-    const result = getOpen-LovableDeleteTags("No openlovable-delete tags here");
+    const result = getOpenLovableDeleteTags("No openlovable-delete tags here");
     expect(result).toEqual([]);
   });
 
   it("should return an array of openlovable-delete paths", () => {
-    const result = getOpen-LovableDeleteTags(
+    const result = getOpenLovableDeleteTags(
       `<openlovable-delete path="src/components/Analytics.jsx"></openlovable-delete>
       <openlovable-delete path="src/utils/unused.js"></openlovable-delete>`,
     );

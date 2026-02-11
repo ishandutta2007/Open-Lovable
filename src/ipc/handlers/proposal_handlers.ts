@@ -11,14 +11,14 @@ import path from "node:path"; // Import path for basename
 // Import tag parsers
 import { processFullResponseActions } from "../processors/response_processor";
 import {
-  getOpen-LovableWriteTags,
-  getOpen-LovableRenameTags,
-  getOpen-LovableDeleteTags,
-  getOpen-LovableExecuteSqlTags,
-  getOpen-LovableAddDependencyTags,
-  getOpen-LovableChatSummaryTag,
-  getOpen-LovableCommandTags,
-  getOpen-LovableSearchReplaceTags,
+  getOpenLovableWriteTags,
+  getOpenLovableRenameTags,
+  getOpenLovableDeleteTags,
+  getOpenLovableExecuteSqlTags,
+  getOpenLovableAddDependencyTags,
+  getOpenLovableChatSummaryTag,
+  getOpenLovableCommandTags,
+  getOpenLovableSearchReplaceTags,
 } from "../utils/openlovable_tag_parser";
 import log from "electron-log";
 import { isServerFunction } from "../../supabase_admin/supabase_utils";
@@ -151,15 +151,15 @@ const getProposalHandler = async (
         );
         const messageContent = latestAssistantMessage.content;
 
-        const proposalTitle = getOpen-LovableChatSummaryTag(messageContent);
+        const proposalTitle = getOpenLovableChatSummaryTag(messageContent);
 
-        const proposalWriteFiles = getOpen-LovableWriteTags(messageContent);
+        const proposalWriteFiles = getOpenLovableWriteTags(messageContent);
         const proposalSearchReplaceFiles =
-          getOpen-LovableSearchReplaceTags(messageContent);
-        const proposalRenameFiles = getOpen-LovableRenameTags(messageContent);
-        const proposalDeleteFiles = getOpen-LovableDeleteTags(messageContent);
-        const proposalExecuteSqlQueries = getOpen-LovableExecuteSqlTags(messageContent);
-        const packagesAdded = getOpen-LovableAddDependencyTags(messageContent);
+          getOpenLovableSearchReplaceTags(messageContent);
+        const proposalRenameFiles = getOpenLovableRenameTags(messageContent);
+        const proposalDeleteFiles = getOpenLovableDeleteTags(messageContent);
+        const proposalExecuteSqlQueries = getOpenLovableExecuteSqlTags(messageContent);
+        const packagesAdded = getOpenLovableAddDependencyTags(messageContent);
 
         const filesChanged = [
           ...proposalWriteFiles
@@ -226,7 +226,7 @@ const getProposalHandler = async (
       }
       const actions: ActionProposal["actions"] = [];
       if (latestAssistantMessage?.content) {
-        const writeTags = getOpen-LovableWriteTags(latestAssistantMessage.content);
+        const writeTags = getOpenLovableWriteTags(latestAssistantMessage.content);
         const refactorTarget = writeTags.reduce(
           (largest, tag) => {
             const lineCount = tag.content.split("\n").length;
@@ -253,7 +253,7 @@ const getProposalHandler = async (
         }
 
         // Check for command tags and add corresponding actions
-        const commandTags = getOpen-LovableCommandTags(latestAssistantMessage.content);
+        const commandTags = getOpenLovableCommandTags(latestAssistantMessage.content);
         if (commandTags.includes("rebuild")) {
           actions.push({
             id: "rebuild",
@@ -362,7 +362,7 @@ const approveProposalHandler = async (
   }
 
   // 2. Process the actions defined in the message content
-  const chatSummary = getOpen-LovableChatSummaryTag(messageToApprove.content);
+  const chatSummary = getOpenLovableChatSummaryTag(messageToApprove.content);
   const processResult = await processFullResponseActions(
     messageToApprove.content,
     chatId,

@@ -5,7 +5,7 @@ import { SqlQuery } from "../../lib/schemas";
 
 const logger = log.scope("openlovable_tag_parser");
 
-export function getOpen-LovableWriteTags(fullResponse: string): {
+export function getOpenLovableWriteTags(fullResponse: string): {
   path: string;
   content: string;
   description?: string;
@@ -50,7 +50,7 @@ export function getOpen-LovableWriteTags(fullResponse: string): {
   return tags;
 }
 
-export function getOpen-LovableRenameTags(fullResponse: string): {
+export function getOpenLovableRenameTags(fullResponse: string): {
   from: string;
   to: string;
 }[] {
@@ -67,7 +67,7 @@ export function getOpen-LovableRenameTags(fullResponse: string): {
   return tags;
 }
 
-export function getOpen-LovableDeleteTags(fullResponse: string): string[] {
+export function getOpenLovableDeleteTags(fullResponse: string): string[] {
   const openlovableDeleteRegex =
     /<openlovable-delete path="([^"]+)"[^>]*>([\s\S]*?)<\/openlovable-delete>/g;
   let match;
@@ -78,7 +78,7 @@ export function getOpen-LovableDeleteTags(fullResponse: string): string[] {
   return paths;
 }
 
-export function getOpen-LovableAddDependencyTags(fullResponse: string): string[] {
+export function getOpenLovableAddDependencyTags(fullResponse: string): string[] {
   const openlovableAddDependencyRegex =
     /<openlovable-add-dependency packages="([^"]+)">[^<]*<\/openlovable-add-dependency>/g;
   let match;
@@ -89,7 +89,7 @@ export function getOpen-LovableAddDependencyTags(fullResponse: string): string[]
   return packages;
 }
 
-export function getOpen-LovableChatSummaryTag(fullResponse: string): string | null {
+export function getOpenLovableChatSummaryTag(fullResponse: string): string | null {
   const openlovableChatSummaryRegex =
     /<openlovable-chat-summary>([\s\S]*?)<\/openlovable-chat-summary>/g;
   const match = openlovableChatSummaryRegex.exec(fullResponse);
@@ -99,7 +99,7 @@ export function getOpen-LovableChatSummaryTag(fullResponse: string): string | nu
   return null;
 }
 
-export function getOpen-LovableExecuteSqlTags(fullResponse: string): SqlQuery[] {
+export function getOpenLovableExecuteSqlTags(fullResponse: string): SqlQuery[] {
   const openlovableExecuteSqlRegex =
     /<openlovable-execute-sql([^>]*)>([\s\S]*?)<\/openlovable-execute-sql>/g;
   const descriptionRegex = /description="([^"]+)"/;
@@ -130,7 +130,7 @@ export function getOpen-LovableExecuteSqlTags(fullResponse: string): SqlQuery[] 
   return queries;
 }
 
-export function getOpen-LovableCommandTags(fullResponse: string): string[] {
+export function getOpenLovableCommandTags(fullResponse: string): string[] {
   const openlovableCommandRegex =
     /<openlovable-command type="([^"]+)"[^>]*><\/openlovable-command>/g;
   let match;
@@ -143,7 +143,7 @@ export function getOpen-LovableCommandTags(fullResponse: string): string[] {
   return commands;
 }
 
-export function getOpen-LovableSearchReplaceTags(fullResponse: string): {
+export function getOpenLovableSearchReplaceTags(fullResponse: string): {
   path: string;
   content: string;
   description?: string;

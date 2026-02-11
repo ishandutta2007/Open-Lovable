@@ -71,10 +71,10 @@ import { createProblemFixPrompt } from "@/shared/problem_prompt";
 import { AsyncVirtualFileSystem } from "../../../shared/VirtualFilesystem";
 import { escapeXmlAttr, escapeXmlContent } from "../../../shared/xmlEscape";
 import {
-  getOpen-LovableAddDependencyTags,
-  getOpen-LovableWriteTags,
-  getOpen-LovableDeleteTags,
-  getOpen-LovableRenameTags,
+  getOpenLovableAddDependencyTags,
+  getOpenLovableWriteTags,
+  getOpenLovableDeleteTags,
+  getOpenLovableRenameTags,
 } from "../utils/openlovable_tag_parser";
 import { fileExists } from "../utils/file_utils";
 import { FileUploadsState } from "../utils/file_uploads_state";
@@ -1414,7 +1414,7 @@ ${formattedSearchReplaceIssues}`,
               }
             }
           }
-          const addDependencies = getOpen-LovableAddDependencyTags(fullResponse);
+          const addDependencies = getOpenLovableAddDependencyTags(fullResponse);
           if (
             !abortController.signal.aborted &&
             // If there are dependencies, we don't want to auto-fix problems
@@ -1461,9 +1461,9 @@ ${problemReport.problems
                     readFile: (fileName: string) => readFileWithCache(fileName),
                   },
                 );
-                const writeTags = getOpen-LovableWriteTags(fullResponse);
-                const renameTags = getOpen-LovableRenameTags(fullResponse);
-                const deletePaths = getOpen-LovableDeleteTags(fullResponse);
+                const writeTags = getOpenLovableWriteTags(fullResponse);
+                const renameTags = getOpenLovableRenameTags(fullResponse);
+                const deletePaths = getOpenLovableDeleteTags(fullResponse);
                 virtualFileSystem.applyResponseChanges({
                   deletePaths,
                   renameTags,

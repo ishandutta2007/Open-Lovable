@@ -30,12 +30,12 @@ import {
 import { readSettings } from "@/main/settings";
 import { writeMigrationFile } from "../utils/file_utils";
 import {
-  getOpen-LovableWriteTags,
-  getOpen-LovableRenameTags,
-  getOpen-LovableDeleteTags,
-  getOpen-LovableAddDependencyTags,
-  getOpen-LovableExecuteSqlTags,
-  getOpen-LovableSearchReplaceTags,
+  getOpenLovableWriteTags,
+  getOpenLovableRenameTags,
+  getOpenLovableDeleteTags,
+  getOpenLovableAddDependencyTags,
+  getOpenLovableExecuteSqlTags,
+  getOpenLovableSearchReplaceTags,
 } from "../utils/openlovable_tag_parser";
 import { applySearchReplace } from "../../pro/main/ipc/processors/search_replace_processor";
 import { storeDbTimestampAtCurrentVersion } from "../utils/neon_timestamp_utils";
@@ -58,7 +58,7 @@ export async function dryRunSearchReplace({
   appPath: string;
 }) {
   const issues: { filePath: string; error: string }[] = [];
-  const openlovableSearchReplaceTags = getOpen-LovableSearchReplaceTags(fullResponse);
+  const openlovableSearchReplaceTags = getOpenLovableSearchReplaceTags(fullResponse);
   for (const tag of openlovableSearchReplaceTags) {
     const filePath = tag.path;
     const fullFilePath = safeJoin(appPath, filePath);
@@ -157,12 +157,12 @@ export async function processFullResponseActions(
 
   try {
     // Extract all tags
-    const openlovableWriteTags = getOpen-LovableWriteTags(fullResponse);
-    const openlovableRenameTags = getOpen-LovableRenameTags(fullResponse);
-    const openlovableDeletePaths = getOpen-LovableDeleteTags(fullResponse);
-    const openlovableAddDependencyPackages = getOpen-LovableAddDependencyTags(fullResponse);
+    const openlovableWriteTags = getOpenLovableWriteTags(fullResponse);
+    const openlovableRenameTags = getOpenLovableRenameTags(fullResponse);
+    const openlovableDeletePaths = getOpenLovableDeleteTags(fullResponse);
+    const openlovableAddDependencyPackages = getOpenLovableAddDependencyTags(fullResponse);
     const openlovableExecuteSqlQueries = chatWithApp.app.supabaseProjectId
-      ? getOpen-LovableExecuteSqlTags(fullResponse)
+      ? getOpenLovableExecuteSqlTags(fullResponse)
       : [];
 
     const message = await db.query.messages.findFirst({
@@ -362,7 +362,7 @@ export async function processFullResponseActions(
     }
 
     // Process all search-replace edits
-    const openlovableSearchReplaceTags = getOpen-LovableSearchReplaceTags(fullResponse);
+    const openlovableSearchReplaceTags = getOpenLovableSearchReplaceTags(fullResponse);
     for (const tag of openlovableSearchReplaceTags) {
       const filePath = tag.path;
       const fullFilePath = safeJoin(appPath, filePath);
