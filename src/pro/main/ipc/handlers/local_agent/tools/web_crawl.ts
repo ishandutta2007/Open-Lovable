@@ -81,7 +81,7 @@ export const webCrawlTool: ToolDefinition<z.infer<typeof webCrawlSchema>> = {
   defaultConsent: "ask",
 
   // Requires Open-Lovable Pro engine API
-  isEnabled: (ctx) => ctx.isOpen-LovablePro,
+  isEnabled: (ctx) => ctx.isOpenLovablePro,
 
   getConsentPreview: (args) => `Crawl URL: "${args.url}"`,
 

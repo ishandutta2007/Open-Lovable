@@ -5,7 +5,7 @@ import fs from "fs";
 testSkipIfWindows(
   "annotator - capture and submit screenshot",
   async ({ po }) => {
-    await po.setUpOpen-LovablePro({ autoApprove: true });
+    await po.setUpOpenLovablePro({ autoApprove: true });
 
     // Create a basic app
     await po.sendPrompt("basic");

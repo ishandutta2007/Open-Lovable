@@ -10,7 +10,7 @@ import { providerSettingsRoute } from "@/routes/settings/providers/$provider";
 import { cn } from "@/lib/utils";
 import { useDeepLink } from "@/contexts/DeepLinkContext";
 import { useCallback, useEffect, useState } from "react";
-import { Open-LovableProSuccessDialog } from "@/components/Open-LovableProSuccessDialog";
+import { OpenLovableProSuccessDialog } from "@/components/OpenLovableProSuccessDialog";
 import { useTheme } from "@/contexts/ThemeContext";
 import { ipc } from "@/ipc/types";
 import { useSystemPlatform } from "@/hooks/useSystemPlatform";
@@ -43,7 +43,7 @@ export const TitleBar = () => {
   const platform = useSystemPlatform();
   const showWindowControls = platform !== null && platform !== "darwin";
 
-  const showOpen-LovableProSuccessDialog = () => {
+  const showOpenLovableProSuccessDialog = () => {
     setIsSuccessDialogOpen(true);
   };
 
@@ -52,7 +52,7 @@ export const TitleBar = () => {
     const handleDeepLink = async () => {
       if (lastDeepLink?.type === "openlovable-pro-return") {
         await refreshSettings();
-        showOpen-LovableProSuccessDialog();
+        showOpenLovableProSuccessDialog();
         clearLastDeepLink();
       }
     };
@@ -71,8 +71,8 @@ export const TitleBar = () => {
     }
   };
 
-  const isOpen-LovablePro = !!settings?.providerSettings?.auto?.apiKey?.value;
-  const isOpen-LovableProEnabled = Boolean(settings?.enableOpenLovablePro);
+  const isOpenLovablePro = !!settings?.providerSettings?.auto?.apiKey?.value;
+  const isOpenLovableProEnabled = Boolean(settings?.enableOpenLovablePro);
 
   return (
     <>
@@ -91,7 +91,7 @@ export const TitleBar = () => {
         >
           {displayText}
         </Button>
-        {isOpen-LovablePro && <Open-LovableProButton isOpen-LovableProEnabled={isOpen-LovableProEnabled} />}
+        {isOpenLovablePro && <OpenLovableProButton isOpenLovableProEnabled={isOpenLovableProEnabled} />}
 
         {/* Spacer to push window controls to the right */}
         <div className="flex-1" />
@@ -101,7 +101,7 @@ export const TitleBar = () => {
         {showWindowControls && <WindowsControls />}
       </div>
 
-      <Open-LovableProSuccessDialog
+      <OpenLovableProSuccessDialog
         isOpen={isSuccessDialogOpen}
         onClose={() => setIsSuccessDialogOpen(false)}
       />
@@ -253,10 +253,10 @@ function TitleBarActions() {
   );
 }
 
-export function Open-LovableProButton({
-  isOpen-LovableProEnabled,
+export function OpenLovableProButton({
+  isOpenLovableProEnabled,
 }: {
-  isOpen-LovableProEnabled: boolean;
+  isOpenLovableProEnabled: boolean;
 }) {
   const { navigate } = useRouter();
   const { userBudget } = useUserBudgetInfo();
@@ -272,16 +272,16 @@ export function Open-LovableProButton({
       variant="outline"
       className={cn(
         "hidden @2xl:block ml-1 no-app-region-drag h-7 bg-indigo-600 text-white dark:bg-indigo-600 dark:text-white text-xs px-2 pt-1 pb-1",
-        !isOpen-LovableProEnabled && "bg-zinc-600 dark:bg-zinc-600",
+        !isOpenLovableProEnabled && "bg-zinc-600 dark:bg-zinc-600",
       )}
       size="sm"
     >
-      {isOpen-LovableProEnabled
+      {isOpenLovableProEnabled
         ? userBudget?.isTrial
           ? "Pro Trial"
           : "Pro"
         : "Pro (off)"}
-      {userBudget && isOpen-LovableProEnabled && (
+      {userBudget && isOpenLovableProEnabled && (
         <AICreditStatus userBudget={userBudget} />
       )}
     </Button>

@@ -11,7 +11,7 @@ import { testSkipIfWindows } from "./helpers/test_helper";
  * (e.g., DYAD_ATTACHMENT_0) to the actual uploaded file content.
  */
 testSkipIfWindows("local-agent - upload file to codebase", async ({ po }) => {
-  await po.setUpOpen-LovablePro({ localAgent: true });
+  await po.setUpOpenLovablePro({ localAgent: true });
   await po.importApp("minimal");
   await po.chatActions.selectLocalAgentMode();
 

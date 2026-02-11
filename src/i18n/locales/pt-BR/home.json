@@ -62,7 +62,7 @@
     "manageOpenLovablePro": "Gerenciar Open-Lovable Pro",
     "alreadyHavePro": "Já tem o Open-Lovable Pro? Adicione sua chave",
     "accessLeadingModels": "Acesse os melhores modelos de IA com um único plano",
-    "getOpen-LovablePro": "Obtenha o Open-Lovable Pro",
+    "getOpenLovablePro": "Obtenha o Open-Lovable Pro",
     "upTo3xCheaper": "Até 3x mais barato",
     "byUsingSmartContext": "usando o Contexto Inteligente",
     "generateCode4x": "Gere código 4-10x mais rápido",
@@ -90,7 +90,7 @@
     "notSureWatchVideo": "Não sabe o que fazer? Assista ao vídeo de introdução acima",
     "setupGeminiApiKey": "Configurar Chave de API do Google Gemini",
     "setupOpenRouterApiKey": "Configurar Chave de API do OpenRouter",
-    "setupOpen-LovablePro": "Configurar Open-Lovable Pro",
+    "setupOpenLovablePro": "Configurar Open-Lovable Pro",
     "accessAllModels": "Acesse todos os modelos de IA com um único plano",
     "setupOtherProviders": "Configurar outros provedores",
     "openAiAnthropicMore": "OpenAI, Anthropic e mais",
@@ -331,7 +331,7 @@
       "closeAnnotator": "Fechar Anotador",
       "proFeatureTitle": "O Anotador é um Recurso Pro",
       "proFeatureDescription": "Desbloqueie a capacidade de anotar capturas de tela e aprimore seu fluxo de trabalho com o Open-Lovable Pro.",
-      "getOpen-LovablePro": "Obtenha o Open-Lovable Pro"
+      "getOpenLovablePro": "Obtenha o Open-Lovable Pro"
     }
   },
   "integrations": {

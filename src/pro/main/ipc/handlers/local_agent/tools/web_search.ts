@@ -162,7 +162,7 @@ export const webSearchTool: ToolDefinition<z.infer<typeof webSearchSchema>> = {
   defaultConsent: "ask",
 
   // Requires Open-Lovable Pro engine API
-  isEnabled: (ctx) => ctx.isOpen-LovablePro,
+  isEnabled: (ctx) => ctx.isOpenLovablePro,
 
   getConsentPreview: (args) => `Search the web: "${args.query}"`,
 

@@ -1,7 +1,7 @@
 import { test } from "./helpers/test_helper";
 
 test("switching turbo edits saves the right setting", async ({ po }) => {
-  await po.setUpOpen-LovablePro();
+  await po.setUpOpenLovablePro();
   const proModesDialog = await po.openProModesDialog({
     location: "home-chat-input-container",
   });

@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import type { ChatMode } from "@/lib/schemas";
-import { isOpen-LovableProEnabled, getEffectiveDefaultChatMode } from "@/lib/schemas";
+import { isOpenLovableProEnabled, getEffectiveDefaultChatMode } from "@/lib/schemas";
 import { useTranslation } from "react-i18next";
 
 export function DefaultChatModeSelector() {
@@ -20,7 +20,7 @@ export function DefaultChatModeSelector() {
     return null;
   }
 
-  const isProEnabled = isOpen-LovableProEnabled(settings);
+  const isProEnabled = isOpenLovableProEnabled(settings);
   // Wait for quota status to load before determining effective default
   const freeAgentQuotaAvailable = !isQuotaLoading && !isQuotaExceeded;
   const effectiveDefault = getEffectiveDefaultChatMode(

@@ -14,7 +14,7 @@ import { useSettings } from "@/hooks/useSettings";
 import { useFreeAgentQuota } from "@/hooks/useFreeAgentQuota";
 import { useMcp } from "@/hooks/useMcp";
 import type { ChatMode } from "@/lib/schemas";
-import { isOpen-LovableProEnabled } from "@/lib/schemas";
+import { isOpenLovableProEnabled } from "@/lib/schemas";
 import { cn } from "@/lib/utils";
 import { detectIsMac } from "@/hooks/useChatModeToggle";
 import { useRouterState } from "@tanstack/react-router";
@@ -42,7 +42,7 @@ export function ChatModeSelector() {
   // Treat "agent" mode as "build" for UI purposes (backwards compatibility)
   const rawSelectedMode = settings?.selectedChatMode || "build";
   const selectedMode = rawSelectedMode === "agent" ? "build" : rawSelectedMode;
-  const isProEnabled = settings ? isOpen-LovableProEnabled(settings) : false;
+  const isProEnabled = settings ? isOpenLovableProEnabled(settings) : false;
   const { messagesRemaining, isQuotaExceeded } = useFreeAgentQuota();
   const { servers } = useMcp();
   const enabledMcpServersCount = servers.filter((s) => s.enabled).length;

@@ -7,7 +7,7 @@ import { testSkipIfWindows } from "./helpers/test_helper";
  */
 
 testSkipIfWindows("local-agent - search_replace edit", async ({ po }) => {
-  await po.setUpOpen-LovablePro({ localAgent: true });
+  await po.setUpOpenLovablePro({ localAgent: true });
   await po.importApp("minimal");
   await po.chatActions.selectLocalAgentMode();
 

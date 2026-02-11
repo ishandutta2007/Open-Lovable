@@ -143,7 +143,7 @@ export const editFileTool: ToolDefinition<z.infer<typeof editFileSchema>> = {
   modifiesState: true,
 
   // Requires Open-Lovable Pro engine API
-  isEnabled: (ctx) => ctx.isOpen-LovablePro,
+  isEnabled: (ctx) => ctx.isOpenLovablePro,
 
   getConsentPreview: (args) => `Edit ${args.path}`,
 

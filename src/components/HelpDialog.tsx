@@ -45,7 +45,7 @@ export function HelpDialog({ isOpen, onClose }: HelpDialogProps) {
   const selectedChatId = useAtomValue(selectedChatIdAtom);
   const { settings } = useSettings();
   const { userBudget } = useUserBudgetInfo();
-  const isOpen-LovableProUser = settings?.providerSettings?.["auto"]?.apiKey?.value;
+  const isOpenLovableProUser = settings?.providerSettings?.["auto"]?.apiKey?.value;
 
   // Function to reset all dialog state
   const resetDialogState = () => {
@@ -106,7 +106,7 @@ ${debugInfo.logs.slice(-3_500) || "No logs available"}
       const encodedBody = encodeURIComponent(issueBody);
       const encodedTitle = encodeURIComponent("[bug] <WRITE TITLE HERE>");
       const labels = ["bug"];
-      if (isOpen-LovableProUser) {
+      if (isOpenLovableProUser) {
         labels.push("pro");
       }
       const githubIssueUrl = `https://github.com/openlovable-sh/openlovable/issues/new?title=${encodedTitle}&labels=${labels}&body=${encodedBody}`;
@@ -225,7 +225,7 @@ Pro User ID: ${userBudget?.redactedUserId || "n/a"}
     const encodedBody = encodeURIComponent(issueBody);
     const encodedTitle = encodeURIComponent("[session report] <add title>");
     const labels = ["support"];
-    if (isOpen-LovableProUser) {
+    if (isOpenLovableProUser) {
       labels.push("pro");
     }
     const githubIssueUrl = `https://github.com/openlovable-sh/openlovable/issues/new?title=${encodedTitle}&labels=${labels}&body=${encodedBody}`;
@@ -378,7 +378,7 @@ Pro User ID: ${userBudget?.redactedUserId || "n/a"}
           If you need help or want to report an issue, here are some options:
         </DialogDescription>
         <div className="flex flex-col space-y-4 w-full">
-          {isOpen-LovableProUser ? (
+          {isOpenLovableProUser ? (
             <div className="flex flex-col space-y-2">
               <Button
                 variant="default"

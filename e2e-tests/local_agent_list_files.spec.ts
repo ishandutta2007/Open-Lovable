@@ -6,7 +6,7 @@ import { testSkipIfWindows } from "./helpers/test_helper";
  */
 
 testSkipIfWindows("local-agent - list_files", async ({ po }) => {
-  await po.setUpOpen-LovablePro({ localAgent: true });
+  await po.setUpOpenLovablePro({ localAgent: true });
   await po.importApp("minimal");
   await po.chatActions.selectLocalAgentMode();
 
@@ -22,7 +22,7 @@ testSkipIfWindows("local-agent - list_files", async ({ po }) => {
 });
 
 testSkipIfWindows("local-agent - list_files include_hidden", async ({ po }) => {
-  await po.setUpOpen-LovablePro({ localAgent: true });
+  await po.setUpOpenLovablePro({ localAgent: true });
   await po.importApp("minimal-with-openlovable");
   await po.chatActions.selectLocalAgentMode();
 

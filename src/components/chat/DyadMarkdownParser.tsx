@@ -19,7 +19,7 @@ import { useAtomValue } from "jotai";
 import { isStreamingByIdAtom, selectedChatIdAtom } from "@/atoms/chatAtoms";
 import { CustomTagState } from "./stateTypes";
 import { Open-LovableOutput } from "./Open-LovableOutput";
-import { Open-LovableProblemSummary } from "./Open-LovableProblemSummary";
+import { OpenLovableProblemSummary } from "./OpenLovableProblemSummary";
 import { ipc } from "@/ipc/types";
 import { Open-LovableMcpToolCall } from "./Open-LovableMcpToolCall";
 import { Open-LovableMcpToolResult } from "./Open-LovableMcpToolResult";
@@ -633,9 +633,9 @@ function renderCustomTag(
 
     case "openlovable-problem-report":
       return (
-        <Open-LovableProblemSummary summary={attributes.summary}>
+        <OpenLovableProblemSummary summary={attributes.summary}>
           {content}
-        </Open-LovableProblemSummary>
+        </OpenLovableProblemSummary>
       );
 
     case "openlovable-chat-summary":

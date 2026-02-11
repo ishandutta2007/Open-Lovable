@@ -115,7 +115,7 @@ export class PageObject {
     await this.modelPicker.selectTestModel();
   }
 
-  async setUpOpen-LovablePro({
+  async setUpOpenLovablePro({
     autoApprove = false,
     localAgent = false,
     localAgentUseAutoModel = false,
@@ -129,7 +129,7 @@ export class PageObject {
     if (autoApprove) {
       await this.settings.toggleAutoApprove();
     }
-    await this.settings.setUpOpen-LovableProvider();
+    await this.settings.setUpOpenLovableProvider();
     await this.navigation.goToAppsTab();
     if (!localAgent) {
       await this.chatActions.selectChatMode("build");
@@ -151,7 +151,7 @@ export class PageObject {
       await this.settings.toggleAutoApprove();
     }
     // Azure should already be configured via environment variables
-    // so we don't need additional setup steps like setUpOpen-LovableProvider
+    // so we don't need additional setup steps like setUpOpenLovableProvider
     await this.navigation.goToAppsTab();
   }
 

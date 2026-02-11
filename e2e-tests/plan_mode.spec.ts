@@ -7,7 +7,7 @@ test("plan mode - accept plan redirects to new chat and saves to disk", async ({
   po,
 }) => {
   test.setTimeout(180000);
-  await po.setUpOpen-LovablePro({ localAgent: true });
+  await po.setUpOpenLovablePro({ localAgent: true });
   await po.importApp("minimal");
   await po.chatActions.selectChatMode("plan");
 
@@ -54,7 +54,7 @@ test("plan mode - accept plan redirects to new chat and saves to disk", async ({
 
 test("plan mode - questionnaire flow", async ({ po }) => {
   test.setTimeout(180000);
-  await po.setUpOpen-LovablePro({ localAgent: true });
+  await po.setUpOpenLovablePro({ localAgent: true });
   await po.importApp("minimal");
   await po.chatActions.selectChatMode("plan");
 

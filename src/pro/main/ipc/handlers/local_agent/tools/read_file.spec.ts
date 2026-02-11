@@ -58,7 +58,7 @@ line 5`;
       supabaseOrganizationSlug: null,
       messageId: 1,
       isSharedModulesChanged: false,
-      isOpen-LovablePro: false,
+      isOpenLovablePro: false,
       todos: [],
       openlovableRequestId: "test-request",
       fileEditTracker: {},

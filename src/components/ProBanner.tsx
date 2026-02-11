@@ -60,7 +60,7 @@ export function ManageOpenLovableProButton({ className }: { className?: string }
   );
 }
 
-export function SetupOpen-LovableProButton() {
+export function SetupOpenLovableProButton() {
   const { t } = useTranslation("home");
   return (
     <Button
@@ -106,7 +106,7 @@ export function AiAccessBanner() {
             aria-label="Subscribe to Open-Lovable Pro"
             className="inline-flex items-center rounded-md bg-white/90 text-indigo-800 hover:bg-white shadow px-3 py-1.5 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-white/50"
           >
-            {t("proBanner.getOpen-LovablePro")}
+            {t("proBanner.getOpenLovablePro")}
           </button>
         </div>
 
@@ -178,7 +178,7 @@ export function SmartContextBanner() {
             aria-label="Get Open-Lovable Pro"
             className="inline-flex items-center rounded-md bg-white/90 text-emerald-800 hover:bg-white shadow px-3 py-1.5 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-white/50"
           >
-            {t("proBanner.getOpen-LovablePro")}
+            {t("proBanner.getOpenLovablePro")}
           </button>
         </div>
       </div>
@@ -220,7 +220,7 @@ export function TurboBanner() {
             aria-label="Get Open-Lovable Pro"
             className="inline-flex items-center rounded-md bg-white/90 text-rose-800 hover:bg-white shadow px-3 py-1.5 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-white/50"
           >
-            {t("proBanner.getOpen-LovablePro")}
+            {t("proBanner.getOpenLovablePro")}
           </button>
         </div>
       </div>

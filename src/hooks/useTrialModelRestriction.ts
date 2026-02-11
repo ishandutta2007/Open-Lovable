@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useUserBudgetInfo } from "./useUserBudgetInfo";
 import { useSettings } from "./useSettings";
-import { isOpen-LovableProEnabled } from "../lib/schemas";
+import { isOpenLovableProEnabled } from "../lib/schemas";
 
 const AUTO_MODEL = { name: "auto", provider: "auto" };
 
@@ -10,7 +10,7 @@ export function useTrialModelRestriction() {
   const { settings, updateSettings } = useSettings();
 
   const isTrial =
-    (userBudget?.isTrial && settings && isOpen-LovableProEnabled(settings)) ?? false;
+    (userBudget?.isTrial && settings && isOpenLovableProEnabled(settings)) ?? false;
   const isOnAutoModel =
     settings?.selectedModel?.provider === "auto" &&
     settings?.selectedModel?.name === "auto";

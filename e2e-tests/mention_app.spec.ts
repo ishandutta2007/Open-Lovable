@@ -11,7 +11,7 @@ test("mention app (without pro)", async ({ po }) => {
 });
 
 test("mention app (with pro)", async ({ po }) => {
-  await po.setUpOpen-LovablePro();
+  await po.setUpOpenLovablePro();
 
   await po.importApp("minimal-with-ai-rules");
   await po.navigation.goToAppsTab();

@@ -179,9 +179,9 @@
     "versionCount": "Versão {{count}}"
   },
   "errorBox": {
-    "accessWithOpen-LovablePro": "Acessar com Open-Lovable Pro",
+    "accessWithOpenLovablePro": "Acessar com Open-Lovable Pro",
     "orSwitchModel": "ou mudar para outro modelo.",
-    "upgradeToOpen-LovablePro": "Atualizar para Open-Lovable Pro",
+    "upgradeToOpenLovablePro": "Atualizar para Open-Lovable Pro",
     "troubleshootingGuide": "Guia de solução de problemas",
     "invalidProKey": "Parece que você não tem uma chave válida do Open-Lovable Pro.",
     "today": "hoje.",
@@ -192,7 +192,7 @@
   },
   "promo": {
     "tiredOfWaiting": "Cansado de esperar pela IA?",
-    "getOpen-LovablePro": "Obtenha o Open-Lovable Pro",
+    "getOpenLovablePro": "Obtenha o Open-Lovable Pro",
     "fasterEdits": "para edições mais rápidas com Turbo Edits.",
     "saveOnCosts": "Economize até 3x nos custos de IA com",
     "debuggingLoop": "Preso em um loop de depuração? Tente um modelo diferente.",

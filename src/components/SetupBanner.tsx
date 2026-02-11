@@ -37,7 +37,7 @@ import openrouterLogo from "../../assets/ai-logos/openrouter-logo.png";
 import { OnboardingBanner } from "./home/OnboardingBanner";
 import { showError } from "@/lib/toast";
 import { useSettings } from "@/hooks/useSettings";
-import { Open-LovableProTrialDialog } from "./Open-LovableProTrialDialog";
+import { OpenLovableProTrialDialog } from "./OpenLovableProTrialDialog";
 
 type NodeInstallStep =
   | "install"
@@ -71,7 +71,7 @@ export function SetupBanner() {
   }, [setNodeSystemInfo, setNodeCheckError]);
   const [showManualConfig, setShowManualConfig] = useState(false);
   const [isSelectingPath, setIsSelectingPath] = useState(false);
-  const [showOpen-LovableProTrialDialog, setShowOpen-LovableProTrialDialog] = useState(false);
+  const [showOpenLovableProTrialDialog, setShowOpenLovableProTrialDialog] = useState(false);
   const { updateSettings } = useSettings();
 
   // Add handler for manual path selection
@@ -123,7 +123,7 @@ export function SetupBanner() {
   };
   const handleOpenLovableProSetupClick = () => {
     posthog.capture("setup-flow:ai-provider-setup:openlovable:click");
-    setShowOpen-LovableProTrialDialog(true);
+    setShowOpenLovableProTrialDialog(true);
   };
 
   const handleOtherProvidersClick = () => {
@@ -393,9 +393,9 @@ export function SetupBanner() {
         </Accordion>
       </div>
 
-      <Open-LovableProTrialDialog
-        isOpen={showOpen-LovableProTrialDialog}
-        onClose={() => setShowOpen-LovableProTrialDialog(false)}
+      <OpenLovableProTrialDialog
+        isOpen={showOpenLovableProTrialDialog}
+        onClose={() => setShowOpenLovableProTrialDialog(false)}
       />
     </>
   );

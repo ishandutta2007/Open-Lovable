@@ -38,7 +38,7 @@ import { neonTemplateHook } from "@/client_logic/template_hook";
 import {
   ProBanner,
   ManageOpenLovableProButton,
-  SetupOpen-LovableProButton,
+  SetupOpenLovableProButton,
 } from "@/components/ProBanner";
 import { hasOpenLovableProKey, getEffectiveDefaultChatMode } from "@/lib/schemas";
 import { useFreeAgentQuota } from "@/hooks/useFreeAgentQuota";
@@ -243,7 +243,7 @@ export default function HomePage() {
         {settings && hasOpenLovableProKey(settings) ? (
           <ManageOpenLovableProButton className="mt-0 w-auto h-9 px-3 text-base shadow-sm bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:bg-white dark:hover:bg-gray-800" />
         ) : (
-          <SetupOpen-LovableProButton />
+          <SetupOpenLovableProButton />
         )}
       </div>
       <ForceCloseDialog

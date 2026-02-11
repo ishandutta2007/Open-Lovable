@@ -61,7 +61,7 @@ export interface AgentContext {
    * If true, the user has Open-Lovable Pro enabled.
    * Engine-dependent tools require this to access the Open-Lovable Pro API.
    */
-  isOpen-LovablePro: boolean;
+  isOpenLovablePro: boolean;
   /**
    * Streams accumulated XML to UI without persisting to DB (for live preview).
    * Call this repeatedly with the full accumulated XML so far.

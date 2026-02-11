@@ -17,12 +17,12 @@ import {
 export function ChatErrorBox({
   onDismiss,
   error,
-  isOpen-LovableProEnabled,
+  isOpenLovableProEnabled,
   onStartNewChat,
 }: {
   onDismiss: () => void;
   error: string;
-  isOpen-LovableProEnabled: boolean;
+  isOpenLovableProEnabled: boolean;
   onStartNewChat?: () => void;
 }) {
   if (error.includes("doesn't have a free quota tier")) {
@@ -49,7 +49,7 @@ export function ChatErrorBox({
   // show the upgrade to Open-Lovable Pro link in that case because they are
   // already on the Open-Lovable Pro plan.
   if (
-    !isOpen-LovableProEnabled &&
+    !isOpenLovableProEnabled &&
     (error.includes("Resource has been exhausted") ||
       error.includes("https://ai.google.dev/gemini-api/docs/rate-limits") ||
       error.includes("Provider returned error"))
@@ -89,7 +89,7 @@ export function ChatErrorBox({
       </ChatInfoContainer>
     );
   }
-  if (isOpen-LovableProEnabled && error.includes("ExceededBudget:")) {
+  if (isOpenLovableProEnabled && error.includes("ExceededBudget:")) {
     return (
       <ChatInfoContainer onDismiss={onDismiss}>
         <span>
@@ -136,7 +136,7 @@ export function ChatErrorBox({
     <ChatErrorContainer onDismiss={onDismiss}>
       {error}
       <div className="mt-2 space-y-2 space-x-2">
-        {!isOpen-LovableProEnabled &&
+        {!isOpenLovableProEnabled &&
           error.includes(AI_STREAMING_ERROR_MESSAGE_PREFIX) &&
           !error.includes("TypeError: terminated") && (
             <ExternalLink
@@ -146,7 +146,7 @@ export function ChatErrorBox({
               Upgrade to Open-Lovable Pro
             </ExternalLink>
           )}
-        {isOpen-LovableProEnabled && onStartNewChat && (
+        {isOpenLovableProEnabled && onStartNewChat && (
           <Tooltip>
             <TooltipTrigger
               onClick={onStartNewChat}

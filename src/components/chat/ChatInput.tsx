@@ -404,7 +404,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
         <ChatErrorBox
           onDismiss={dismissError}
           error={error}
-          isOpen-LovableProEnabled={settings.enableOpenLovablePro ?? false}
+          isOpenLovableProEnabled={settings.enableOpenLovablePro ?? false}
           onStartNewChat={handleNewChat}
         />
       )}

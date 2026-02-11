@@ -11,7 +11,7 @@ import {
 
 type ProblemWithoutSnippet = Omit<Problem, "snippet">;
 
-interface Open-LovableProblemSummaryProps {
+interface OpenLovableProblemSummaryProps {
   summary?: string;
   children?: React.ReactNode;
 }
@@ -50,7 +50,7 @@ const ProblemItem: React.FC<ProblemItemProps> = ({ problem, index }) => {
   );
 };
 
-export const Open-LovableProblemSummary: React.FC<Open-LovableProblemSummaryProps> = ({
+export const OpenLovableProblemSummary: React.FC<OpenLovableProblemSummaryProps> = ({
   summary,
   children,
 }) => {

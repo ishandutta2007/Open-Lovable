@@ -62,7 +62,7 @@
     "manageOpenLovablePro": "Manage Open-Lovable Pro",
     "alreadyHavePro": "Already have Open-Lovable Pro? Add your key",
     "accessLeadingModels": "Access leading AI models with one plan",
-    "getOpen-LovablePro": "Get Open-Lovable Pro",
+    "getOpenLovablePro": "Get Open-Lovable Pro",
     "upTo3xCheaper": "Up to 3x cheaper",
     "byUsingSmartContext": "by using Smart Context",
     "generateCode4x": "Generate code 4-10x faster",
@@ -90,7 +90,7 @@
     "notSureWatchVideo": "Not sure what to do? Watch the Get Started video above",
     "setupGeminiApiKey": "Setup Google Gemini API Key",
     "setupOpenRouterApiKey": "Setup OpenRouter API Key",
-    "setupOpen-LovablePro": "Setup Open-Lovable Pro",
+    "setupOpenLovablePro": "Setup Open-Lovable Pro",
     "accessAllModels": "Access all AI models with one plan",
     "setupOtherProviders": "Setup other AI providers",
     "openAiAnthropicMore": "OpenAI, Anthropic and more",
@@ -331,7 +331,7 @@
       "closeAnnotator": "Close Annotator",
       "proFeatureTitle": "Annotator is a Pro Feature",
       "proFeatureDescription": "Unlock the ability to annotate screenshots and enhance your workflow with Open-Lovable Pro.",
-      "getOpen-LovablePro": "Get Open-Lovable Pro"
+      "getOpenLovablePro": "Get Open-Lovable Pro"
     }
   },
   "integrations": {

@@ -179,9 +179,9 @@
     "versionCount": "版本 {{count}}"
   },
   "errorBox": {
-    "accessWithOpen-LovablePro": "使用 Open-Lovable Pro 访问",
+    "accessWithOpenLovablePro": "使用 Open-Lovable Pro 访问",
     "orSwitchModel": "或切换到其他模型。",
-    "upgradeToOpen-LovablePro": "升级到 Open-Lovable Pro",
+    "upgradeToOpenLovablePro": "升级到 Open-Lovable Pro",
     "troubleshootingGuide": "故障排除指南",
     "invalidProKey": "您似乎没有有效的 Open-Lovable Pro 密钥。",
     "today": "今天。",
@@ -192,7 +192,7 @@
   },
   "promo": {
     "tiredOfWaiting": "厌倦了等待 AI？",
-    "getOpen-LovablePro": "获取 Open-Lovable Pro",
+    "getOpenLovablePro": "获取 Open-Lovable Pro",
     "fasterEdits": "使用 Turbo Edits 实现更快的编辑。",
     "saveOnCosts": "使用以下功能节省高达 3 倍的 AI 成本",
     "debuggingLoop": "陷入调试循环？尝试换一个模型。",

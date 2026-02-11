@@ -206,11 +206,11 @@ export const ExperimentsSchema = z.object({
 });
 export type Experiments = z.infer<typeof ExperimentsSchema>;
 
-export const Open-LovableProBudgetSchema = z.object({
+export const OpenLovableProBudgetSchema = z.object({
   budgetResetAt: z.string(),
   maxBudget: z.number(),
 });
-export type Open-LovableProBudget = z.infer<typeof Open-LovableProBudgetSchema>;
+export type OpenLovableProBudget = z.infer<typeof OpenLovableProBudgetSchema>;
 
 export const GlobPathSchema = z.object({
   globPath: z.string(),
@@ -283,7 +283,7 @@ export const UserSettingsSchema = z
     // DEPRECATED.
     ////////////////////////////////
     enableProSaverMode: z.boolean().optional(),
-    openlovableProBudget: Open-LovableProBudgetSchema.optional(),
+    openlovableProBudget: OpenLovableProBudgetSchema.optional(),
     runtimeMode: RuntimeModeSchema.optional(),
 
     ////////////////////////////////
@@ -353,7 +353,7 @@ export const UserSettingsSchema = z
  */
 export type UserSettings = z.infer<typeof UserSettingsSchema>;
 
-export function isOpen-LovableProEnabled(settings: UserSettings): boolean {
+export function isOpenLovableProEnabled(settings: UserSettings): boolean {
   return settings.enableOpenLovablePro === true && hasOpenLovableProKey(settings);
 }
 
@@ -377,7 +377,7 @@ export function getEffectiveDefaultChatMode(
   envVars: Record<string, string | undefined>,
   freeAgentQuotaAvailable?: boolean,
 ): ChatMode {
-  const isPro = isOpen-LovableProEnabled(settings);
+  const isPro = isOpenLovableProEnabled(settings);
   // We are checking that OpenAI or Anthropic is setup, which are the first two
   // choices for the Auto model selection.
   //
@@ -410,7 +410,7 @@ export function getEffectiveDefaultChatMode(
  */
 export function isBasicAgentMode(settings: UserSettings): boolean {
   return (
-    !isOpen-LovableProEnabled(settings) && settings.selectedChatMode === "local-agent"
+    !isOpenLovableProEnabled(settings) && settings.selectedChatMode === "local-agent"
   );
 }
 
@@ -427,7 +427,7 @@ export function isSupabaseConnected(settings: UserSettings | null): boolean {
 
 export function isTurboEditsV2Enabled(settings: UserSettings): boolean {
   return Boolean(
-    isOpen-LovableProEnabled(settings) &&
+    isOpenLovableProEnabled(settings) &&
     settings.enableProLazyEditsMode === true &&
     settings.proLazyEditsMode === "v2",
   );

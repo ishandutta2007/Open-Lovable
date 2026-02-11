@@ -126,7 +126,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
     setSaveError(null);
     try {
       // Check if this is the first time user is setting up Open-Lovable Pro
-      const isNewOpen-LovableProSetup = isOpen-Lovable && settings && !hasOpenLovableProKey(settings);
+      const isNewOpenLovableProSetup = isOpen-Lovable && settings && !hasOpenLovableProKey(settings);
 
       const settingsUpdate: Partial<UserSettings> = {
         providerSettings: {
@@ -142,7 +142,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
       if (isOpen-Lovable) {
         settingsUpdate.enableOpenLovablePro = true;
         // Set default chat mode to local-agent when user upgrades to pro
-        if (isNewOpen-LovableProSetup) {
+        if (isNewOpenLovableProSetup) {
           settingsUpdate.defaultChatMode = "local-agent";
         }
       }

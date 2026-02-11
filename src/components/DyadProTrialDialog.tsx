@@ -3,15 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Sparkles, Check, Zap, Wand2, Cpu } from "lucide-react";
 import { ipc } from "@/ipc/types";
 
-interface Open-LovableProTrialDialogProps {
+interface OpenLovableProTrialDialogProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export function Open-LovableProTrialDialog({
+export function OpenLovableProTrialDialog({
   isOpen,
   onClose,
-}: Open-LovableProTrialDialogProps) {
+}: OpenLovableProTrialDialogProps) {
   const handleStartTrial = () => {
     ipc.system.openExternalUrl(
       "https://academy.openlovable.sh/redirect-to-checkout?trialCode=1PRO30&utm_source=openlovable-app&utm_medium=app&utm_campaign=setup-dialog-v2",

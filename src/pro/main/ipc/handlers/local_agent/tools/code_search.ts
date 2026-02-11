@@ -77,7 +77,7 @@ export const codeSearchTool: ToolDefinition<z.infer<typeof codeSearchSchema>> =
     defaultConsent: "always",
 
     // Requires Open-Lovable Pro engine API
-    isEnabled: (ctx) => ctx.isOpen-LovablePro,
+    isEnabled: (ctx) => ctx.isOpenLovablePro,
 
     getConsentPreview: (args) => `Search for "${args.query}"`,
 

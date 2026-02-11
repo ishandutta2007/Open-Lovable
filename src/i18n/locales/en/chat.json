@@ -179,9 +179,9 @@
     "versionCount": "Version {{count}}"
   },
   "errorBox": {
-    "accessWithOpen-LovablePro": "Access with Open-Lovable Pro",
+    "accessWithOpenLovablePro": "Access with Open-Lovable Pro",
     "orSwitchModel": "or switch to another model.",
-    "upgradeToOpen-LovablePro": "Upgrade to Open-Lovable Pro",
+    "upgradeToOpenLovablePro": "Upgrade to Open-Lovable Pro",
     "troubleshootingGuide": "Troubleshooting guide",
     "invalidProKey": "Looks like you don't have a valid Open-Lovable Pro key.",
     "today": "today.",
@@ -192,7 +192,7 @@
   },
   "promo": {
     "tiredOfWaiting": "Tired of waiting on AI?",
-    "getOpen-LovablePro": "Get Open-Lovable Pro",
+    "getOpenLovablePro": "Get Open-Lovable Pro",
     "fasterEdits": "for faster edits with Turbo Edits.",
     "saveOnCosts": "Save up to 3x on AI costs with",
     "debuggingLoop": "Getting stuck in a debugging loop? Try a different model.",

@@ -1,7 +1,7 @@
 import { testSkipIfWindows } from "./helpers/test_helper";
 
 testSkipIfWindows("smart context balanced - simple", async ({ po }) => {
-  await po.setUpOpen-LovablePro({ autoApprove: true });
+  await po.setUpOpenLovablePro({ autoApprove: true });
   const proModesDialog = await po.openProModesDialog({
     location: "home-chat-input-container",
   });

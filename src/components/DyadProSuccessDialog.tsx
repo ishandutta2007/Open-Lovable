@@ -8,15 +8,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { Sparkles, Bot, Zap } from "lucide-react";
 
-interface Open-LovableProSuccessDialogProps {
+interface OpenLovableProSuccessDialogProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export function Open-LovableProSuccessDialog({
+export function OpenLovableProSuccessDialog({
   isOpen,
   onClose,
-}: Open-LovableProSuccessDialogProps) {
+}: OpenLovableProSuccessDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-md">

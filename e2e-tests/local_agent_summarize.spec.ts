@@ -12,7 +12,7 @@ import { expect } from "@playwright/test";
 testSkipIfWindows(
   "local-agent - summarize to new chat works",
   async ({ po }) => {
-    await po.setUpOpen-LovablePro({ localAgent: true });
+    await po.setUpOpenLovablePro({ localAgent: true });
     await po.importApp("minimal");
     await po.chatActions.selectLocalAgentMode();
 

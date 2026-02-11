@@ -62,7 +62,7 @@
     "manageOpenLovablePro": "管理 Open-Lovable Pro",
     "alreadyHavePro": "已有 Open-Lovable Pro？添加您的密钥",
     "accessLeadingModels": "一个计划即可访问领先的 AI 模型",
-    "getOpen-LovablePro": "获取 Open-Lovable Pro",
+    "getOpenLovablePro": "获取 Open-Lovable Pro",
     "upTo3xCheaper": "便宜高达 3 倍",
     "byUsingSmartContext": "通过使用智能上下文",
     "generateCode4x": "代码生成速度提升 4-10 倍",
@@ -90,7 +90,7 @@
     "notSureWatchVideo": "不确定该怎么做？观看上方的入门视频",
     "setupGeminiApiKey": "设置 Google Gemini API 密钥",
     "setupOpenRouterApiKey": "设置 OpenRouter API 密钥",
-    "setupOpen-LovablePro": "设置 Open-Lovable Pro",
+    "setupOpenLovablePro": "设置 Open-Lovable Pro",
     "accessAllModels": "一个计划即可访问所有 AI 模型",
     "setupOtherProviders": "设置其他 AI 提供商",
     "openAiAnthropicMore": "OpenAI、Anthropic 等",
@@ -331,7 +331,7 @@
       "closeAnnotator": "关闭标注器",
       "proFeatureTitle": "标注器是 Pro 功能",
       "proFeatureDescription": "解锁截图标注功能，使用 Open-Lovable Pro 提升您的工作流程。",
-      "getOpen-LovablePro": "获取 Open-Lovable Pro"
+      "getOpenLovablePro": "获取 Open-Lovable Pro"
     }
   },
   "integrations": {

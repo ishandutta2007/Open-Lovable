@@ -174,7 +174,7 @@ export class Settings {
     await expect(this.page.getByText("test-api-key-12345")).toBeVisible();
   }
 
-  async setUpOpen-LovableProvider() {
+  async setUpOpenLovableProvider() {
     await this.page
       .locator("div")
       .filter({ hasText: /^Open-LovableNeeds Setup$/ })

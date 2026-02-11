@@ -18,7 +18,7 @@ import { db } from "@/db";
 import { chats, messages } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
-import { isOpen-LovableProEnabled, isBasicAgentMode } from "@/lib/schemas";
+import { isOpenLovableProEnabled, isBasicAgentMode } from "@/lib/schemas";
 import { readSettings } from "@/main/settings";
 import { getOpenLovableAppPath } from "@/paths/paths";
 import { getModelClient } from "@/ipc/utils/get_model_client";
@@ -263,7 +263,7 @@ export async function handleLocalAgentStream(
   // Check Pro status or Basic Agent mode
   // Basic Agent mode allows non-Pro users with quota (quota check is done in chat_stream_handlers)
   // Read-only mode (ask mode) is allowed for all users without Pro
-  if (!readOnly && !isOpen-LovableProEnabled(settings) && !isBasicAgentMode(settings)) {
+  if (!readOnly && !isOpenLovableProEnabled(settings) && !isBasicAgentMode(settings)) {
     safeSend(event.sender, "chat:response:error", {
       chatId: req.chatId,
       error:
@@ -427,7 +427,7 @@ export async function handleLocalAgentStream(
       todos: [],
       openlovableRequestId,
       fileEditTracker,
-      isOpen-LovablePro: isOpen-LovableProEnabled(settings),
+      isOpenLovablePro: isOpenLovableProEnabled(settings),
       onXmlStream: (accumulatedXml: string) => {
         // Stream accumulated XML to UI without persisting
         streamingPreview = accumulatedXml;
