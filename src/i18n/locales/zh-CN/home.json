@@ -18,7 +18,7 @@
   "selectingFolder": "正在选择文件夹...",
   "selectedFolder": "已选择文件夹：",
   "clearSelection": "清除选择",
-  "copyToOpen-LovableApps": "复制到 openlovable-apps 文件夹",
+  "copyToOpenLovableApps": "复制到 openlovable-apps 文件夹",
   "appNameExists": "此名称的应用已存在。请选择其他名称：",
   "appName": "应用名称",
   "appNameOptional": "应用名称（可选）",

@@ -56,7 +56,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
   const supportsCustomModels =
     providerData?.type === "custom" || providerData?.type === "cloud";
 
-  const isOpen-Lovable = provider === "auto";
+  const isOpenLovable = provider === "auto";
 
   const [apiKeyInput, setApiKeyInput] = useState("");
   const [isSaving, setIsSaving] = useState(false);
@@ -64,12 +64,12 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
   const router = useRouter();
 
   // Use fetched data (or defaults for Open-Lovable)
-  const providerDisplayName = isOpen-Lovable
+  const providerDisplayName = isOpenLovable
     ? "Open-Lovable"
     : (providerData?.name ?? "Unknown Provider");
   const providerWebsiteUrl = providerData?.websiteUrl;
-  const hasFreeTier = isOpen-Lovable ? false : providerData?.hasFreeTier;
-  const envVarName = isOpen-Lovable ? undefined : providerData?.envVarName;
+  const hasFreeTier = isOpenLovable ? false : providerData?.hasFreeTier;
+  const envVarName = isOpenLovable ? undefined : providerData?.envVarName;
 
   // Use provider ID (which is the 'provider' prop)
   const userApiKey = settings?.providerSettings?.[provider]?.apiKey?.value;
@@ -126,7 +126,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
     setSaveError(null);
     try {
       // Check if this is the first time user is setting up Open-Lovable Pro
-      const isNewOpenLovableProSetup = isOpen-Lovable && settings && !hasOpenLovableProKey(settings);
+      const isNewOpenLovableProSetup = isOpenLovable && settings && !hasOpenLovableProKey(settings);
 
       const settingsUpdate: Partial<UserSettings> = {
         providerSettings: {
@@ -139,7 +139,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
           },
         },
       };
-      if (isOpen-Lovable) {
+      if (isOpenLovable) {
         settingsUpdate.enableOpenLovablePro = true;
         // Set default chat mode to local-agent when user upgrades to pro
         if (isNewOpenLovableProSetup) {
@@ -247,7 +247,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
   }
 
   // Handle case where provider is not found (e.g., invalid ID in URL)
-  if (!providerData && !isOpen-Lovable) {
+  if (!providerData && !isOpenLovable) {
     return (
       <div className="min-h-screen px-8 py-4">
         <div className="max-w-4xl mx-auto">
@@ -284,7 +284,7 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
           isLoading={settingsLoading}
           hasFreeTier={hasFreeTier}
           providerWebsiteUrl={providerWebsiteUrl}
-          isOpen-Lovable={isOpen-Lovable}
+          isOpenLovable={isOpenLovable}
           onBackClick={() => router.history.back()}
         />
 
@@ -312,12 +312,12 @@ export function ProviderSettingsPage({ provider }: ProviderSettingsPageProps) {
             onApiKeyInputChange={setApiKeyInput}
             onSaveKey={handleSaveKey}
             onDeleteKey={handleDeleteKey}
-            isOpen-Lovable={isOpen-Lovable}
+            isOpenLovable={isOpenLovable}
             updateSettings={updateSettings}
           />
         )}
 
-        {isOpen-Lovable && !settingsLoading && (
+        {isOpenLovable && !settingsLoading && (
           <div className="mt-6 flex items-center justify-between p-4 bg-(--background-lightest) rounded-lg border">
             <div>
               <h3 className="font-medium">Enable Open-Lovable Pro</h3>

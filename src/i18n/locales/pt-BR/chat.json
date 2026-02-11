@@ -18,7 +18,7 @@
   "deleteChatNote": "Nota: Quaisquer alterações de código já aceitas serão mantidas.",
   "scrollToBottom": "Rolar para o final",
   "dismissError": "Dispensar erro",
-  "askOpen-LovableToBuild": "Peça ao Open-Lovable para construir...",
+  "askOpenLovableToBuild": "Peça ao Open-Lovable para construir...",
   "cancelGeneration": "Cancelar geração",
   "sendMessage": "Enviar mensagem",
   "loadingProposal": "Carregando proposta...",

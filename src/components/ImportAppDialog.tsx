@@ -51,7 +51,7 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
   const [isCheckingName, setIsCheckingName] = useState<boolean>(false);
   const [installCommand, setInstallCommand] = useState("");
   const [startCommand, setStartCommand] = useState("");
-  const [copyToOpen-LovableApps, setCopyToOpen-LovableApps] = useState(true);
+  const [copyToOpenLovableApps, setCopyToOpenLovableApps] = useState(true);
   const navigate = useNavigate();
   const { streamMessage } = useStreamChat({ hasChatId: false });
   const { refreshApps } = useLoadApps();
@@ -75,12 +75,12 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
     }
   }, [isOpen]);
 
-  // Re-check app name when copyToOpen-LovableApps changes
+  // Re-check app name when copyToOpenLovableApps changes
   useEffect(() => {
     if (customAppName.trim() && selectedPath) {
-      checkAppName({ name: customAppName, skipCopy: !copyToOpen-LovableApps });
+      checkAppName({ name: customAppName, skipCopy: !copyToOpenLovableApps });
     }
-  }, [copyToOpen-LovableApps]);
+  }, [copyToOpenLovableApps]);
 
   const handleUrlBlur = async () => {
     if (!url.trim()) return;
@@ -236,7 +236,7 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
       // Use the folder name from the IPC response
       setCustomAppName(result.name);
       // Check if the app name already exists
-      await checkAppName({ name: result.name, skipCopy: !copyToOpen-LovableApps });
+      await checkAppName({ name: result.name, skipCopy: !copyToOpenLovableApps });
       return result;
     },
     onError: (error: Error) => {
@@ -252,7 +252,7 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
         appName: customAppName,
         installCommand: installCommand || undefined,
         startCommand: startCommand || undefined,
-        skipCopy: !copyToOpen-LovableApps,
+        skipCopy: !copyToOpenLovableApps,
       });
     },
     onSuccess: async (result) => {
@@ -291,7 +291,7 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
     setNameExists(false);
     setInstallCommand("");
     setStartCommand("");
-    setCopyToOpen-LovableApps(true);
+    setCopyToOpenLovableApps(true);
   };
 
   const handleAppNameChange = async (
@@ -300,7 +300,7 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
     const newName = e.target.value;
     setCustomAppName(newName);
     if (newName.trim()) {
-      await checkAppName({ name: newName, skipCopy: !copyToOpen-LovableApps });
+      await checkAppName({ name: newName, skipCopy: !copyToOpenLovableApps });
     }
   };
 
@@ -396,9 +396,9 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
                       <Checkbox
                         id="copy-to-openlovable-apps"
                         aria-label="Copy to the openlovable-apps folder"
-                        checked={copyToOpen-LovableApps}
+                        checked={copyToOpenLovableApps}
                         onCheckedChange={(checked) =>
-                          setCopyToOpen-LovableApps(checked === true)
+                          setCopyToOpenLovableApps(checked === true)
                         }
                         disabled={importAppMutation.isPending}
                       />
@@ -406,7 +406,7 @@ export function ImportAppDialog({ isOpen, onClose }: ImportAppDialogProps) {
                         htmlFor="copy-to-openlovable-apps"
                         className="text-xs sm:text-sm cursor-pointer"
                       >
-                        {t("home:copyToOpen-LovableApps")}
+                        {t("home:copyToOpenLovableApps")}
                       </label>
                     </div>
 

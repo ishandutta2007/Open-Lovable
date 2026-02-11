@@ -29,7 +29,7 @@ export const useCopyToClipboard = () => {
 
   const copyMessageContent = async (messageContent: string) => {
     try {
-      // Use the same parsing logic as Open-LovableMarkdownParser but convert to clean text
+      // Use the same parsing logic as OpenLovableMarkdownParser but convert to clean text
       const formattedContent = convertOpenLovableContentToMarkdown(messageContent);
 
       // Copy to clipboard
@@ -50,11 +50,11 @@ export const useCopyToClipboard = () => {
     }
   };
 
-  // Convert Open-Lovable content to clean markdown using the same parsing logic as Open-LovableMarkdownParser
+  // Convert Open-Lovable content to clean markdown using the same parsing logic as OpenLovableMarkdownParser
   const convertOpenLovableContentToMarkdown = (content: string): string => {
     if (!content) return "";
 
-    // Use the same parsing functions from Open-LovableMarkdownParser
+    // Use the same parsing functions from OpenLovableMarkdownParser
     const contentPieces = parseCustomTags(content);
 
     let result = "";
@@ -76,7 +76,7 @@ export const useCopyToClipboard = () => {
       .trim();
   };
 
-  // Convert individual custom tags to markdown (reuse the same logic from Open-LovableMarkdownParser)
+  // Convert individual custom tags to markdown (reuse the same logic from OpenLovableMarkdownParser)
   const convertCustomTagToMarkdown = (tagInfo: any): string => {
     const { tag, attributes, content } = tagInfo;
 
@@ -193,7 +193,7 @@ export const useCopyToClipboard = () => {
     }
   };
 
-  // Reuse the same parsing functions from Open-LovableMarkdownParser but simplified
+  // Reuse the same parsing functions from OpenLovableMarkdownParser but simplified
   const parseCustomTags = (content: string) => {
     const { processedContent } = preprocessUnclosedTags(content);
 

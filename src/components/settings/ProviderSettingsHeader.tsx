@@ -22,18 +22,18 @@ interface ProviderSettingsHeaderProps {
   isLoading: boolean;
   hasFreeTier?: boolean;
   providerWebsiteUrl?: string;
-  isOpen-Lovable: boolean;
+  isOpenLovable: boolean;
   onBackClick: () => void;
 }
 
 function getKeyButtonText({
   isConfigured,
-  isOpen-Lovable,
+  isOpenLovable,
 }: {
   isConfigured: boolean;
-  isOpen-Lovable: boolean;
+  isOpenLovable: boolean;
 }) {
-  if (isOpen-Lovable) {
+  if (isOpenLovable) {
     return isConfigured
       ? "Manage Open-Lovable Pro Subscription"
       : "Setup Open-Lovable Pro Subscription";
@@ -47,7 +47,7 @@ export function ProviderSettingsHeader({
   isLoading,
   hasFreeTier,
   providerWebsiteUrl,
-  isOpen-Lovable,
+  isOpenLovable,
   onBackClick,
 }: ProviderSettingsHeaderProps) {
   const handleGetApiKeyClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -63,7 +63,7 @@ export function ProviderSettingsHeader({
       className="mb-4 cursor-pointer py-5 w-full ring-4 ring-primary/60 shadow-lg shadow-primary/30 border-primary/60"
     >
       <KeyRound className="mr-2 h-4 w-4" />
-      {getKeyButtonText({ isConfigured, isOpen-Lovable })}
+      {getKeyButtonText({ isConfigured, isOpenLovable })}
       <ExternalLink className="ml-2 h-4 w-4" />
     </Button>
   );

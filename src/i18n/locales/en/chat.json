@@ -18,7 +18,7 @@
   "deleteChatNote": "Note: Any code changes that have already been accepted will be kept.",
   "scrollToBottom": "Scroll to bottom",
   "dismissError": "Dismiss error",
-  "askOpen-LovableToBuild": "Ask Open-Lovable to build...",
+  "askOpenLovableToBuild": "Ask Open-Lovable to build...",
   "cancelGeneration": "Cancel generation",
   "sendMessage": "Send message",
   "loadingProposal": "Loading proposal...",

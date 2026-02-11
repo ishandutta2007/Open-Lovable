@@ -18,7 +18,7 @@
   "deleteChatNote": "注意：已接受的代码更改将被保留。",
   "scrollToBottom": "滚动到底部",
   "dismissError": "忽略错误",
-  "askOpen-LovableToBuild": "让 Open-Lovable 来构建...",
+  "askOpenLovableToBuild": "让 Open-Lovable 来构建...",
   "cancelGeneration": "取消生成",
   "sendMessage": "发送消息",
   "loadingProposal": "正在加载提案...",

@@ -177,7 +177,7 @@ export class Settings {
   async setUpOpenLovableProvider() {
     await this.page
       .locator("div")
-      .filter({ hasText: /^Open-LovableNeeds Setup$/ })
+      .filter({ hasText: /^OpenLovableNeeds Setup$/ })
       .nth(1)
       .click();
     await this.page.getByRole("textbox", { name: "Set Open-Lovable API Key" }).click();

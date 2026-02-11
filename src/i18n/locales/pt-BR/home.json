@@ -18,7 +18,7 @@
   "selectingFolder": "Selecionando pasta...",
   "selectedFolder": "Pasta selecionada:",
   "clearSelection": "Limpar seleção",
-  "copyToOpen-LovableApps": "Copiar para a pasta openlovable-apps",
+  "copyToOpenLovableApps": "Copiar para a pasta openlovable-apps",
   "appNameExists": "Já existe um app com este nome. Escolha um nome diferente:",
   "appName": "Nome do app",
   "appNameOptional": "Nome do app (opcional)",

@@ -32,7 +32,7 @@ interface ApiKeyConfigurationProps {
   onApiKeyInputChange: (value: string) => void;
   onSaveKey: (value: string) => Promise<void>;
   onDeleteKey: () => Promise<void>;
-  isOpen-Lovable: boolean;
+  isOpenLovable: boolean;
   updateSettings: (settings: Partial<UserSettings>) => Promise<UserSettings>;
 }
 
@@ -48,7 +48,7 @@ export function ApiKeyConfiguration({
   onApiKeyInputChange,
   onSaveKey,
   onDeleteKey,
-  isOpen-Lovable,
+  isOpenLovable,
   updateSettings,
 }: ApiKeyConfigurationProps) {
   // Special handling for Azure OpenAI which requires environment variables
@@ -85,7 +85,7 @@ export function ApiKeyConfiguration({
   if (isValidUserKey || !hasEnvKey) {
     defaultAccordionValue.push("settings-key");
   }
-  if (!isOpen-Lovable && hasEnvKey) {
+  if (!isOpenLovable && hasEnvKey) {
     defaultAccordionValue.push("env-key");
   }
 
@@ -182,7 +182,7 @@ export function ApiKeyConfiguration({
         </AccordionContent>
       </AccordionItem>
 
-      {!isOpen-Lovable && envVarName && (
+      {!isOpenLovable && envVarName && (
         <AccordionItem
           value="env-key"
           className="border rounded-lg px-4 bg-(--background-lightest)"

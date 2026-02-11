@@ -1,8 +1,8 @@
 import type { Message } from "@/ipc/types";
 import {
-  Open-LovableMarkdownParser,
+  OpenLovableMarkdownParser,
   VanillaMarkdownParser,
-} from "./Open-LovableMarkdownParser";
+} from "./OpenLovableMarkdownParser";
 import { useStreamChat } from "@/hooks/useStreamChat";
 import { StreamingLoadingAnimation } from "./StreamingLoadingAnimation";
 import {
@@ -105,7 +105,7 @@ const ChatMessage = ({ message, isLastMessage }: ChatMessageProps) => {
             >
               {message.role === "assistant" ? (
                 <>
-                  <Open-LovableMarkdownParser content={message.content} />
+                  <OpenLovableMarkdownParser content={message.content} />
                   {isLastMessage && isStreaming && (
                     <StreamingLoadingAnimation variant="streaming" />
                   )}

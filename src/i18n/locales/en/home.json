@@ -18,7 +18,7 @@
   "selectingFolder": "Selecting folder...",
   "selectedFolder": "Selected folder:",
   "clearSelection": "Clear selection",
-  "copyToOpen-LovableApps": "Copy to the openlovable-apps folder",
+  "copyToOpenLovableApps": "Copy to the openlovable-apps folder",
   "appNameExists": "An app with this name already exists. Please choose a different name:",
   "appName": "App name",
   "appNameOptional": "App name (optional)",
