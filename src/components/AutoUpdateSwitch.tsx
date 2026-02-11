@@ -27,7 +27,7 @@ export function AutoUpdateSwitch() {
             action: {
               label: "Restart Open-Lovable",
               onClick: () => {
-                ipc.system.restartOpen-Lovable();
+                ipc.system.restartOpenLovable();
               },
             },
           });

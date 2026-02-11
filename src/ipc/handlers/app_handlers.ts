@@ -757,7 +757,7 @@ async function searchAppFilesWithRipgrep({
 }
 
 export function registerAppHandlers() {
-  createTypedHandler(systemContracts.restartOpen-Lovable, async () => {
+  createTypedHandler(systemContracts.restartOpenLovable, async () => {
     app.relaunch();
     app.quit();
   });

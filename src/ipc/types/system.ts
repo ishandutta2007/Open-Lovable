@@ -233,7 +233,7 @@ export const systemContracts = {
   }),
 
   // Restart
-  restartOpen-Lovable: defineContract({
+  restartOpenLovable: defineContract({
     channel: "restart-openlovable",
     input: z.void(),
     output: z.void(),

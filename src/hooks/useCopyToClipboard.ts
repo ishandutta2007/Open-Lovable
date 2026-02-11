@@ -30,7 +30,7 @@ export const useCopyToClipboard = () => {
   const copyMessageContent = async (messageContent: string) => {
     try {
       // Use the same parsing logic as Open-LovableMarkdownParser but convert to clean text
-      const formattedContent = convertOpen-LovableContentToMarkdown(messageContent);
+      const formattedContent = convertOpenLovableContentToMarkdown(messageContent);
 
       // Copy to clipboard
       await navigator.clipboard.writeText(formattedContent);
@@ -51,7 +51,7 @@ export const useCopyToClipboard = () => {
   };
 
   // Convert Open-Lovable content to clean markdown using the same parsing logic as Open-LovableMarkdownParser
-  const convertOpen-LovableContentToMarkdown = (content: string): string => {
+  const convertOpenLovableContentToMarkdown = (content: string): string => {
     if (!content) return "";
 
     // Use the same parsing functions from Open-LovableMarkdownParser
