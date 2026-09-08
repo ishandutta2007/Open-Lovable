@@ -15,7 +15,7 @@
   <img alt="followers" title="Follow me on Github" src="https://custom-icon-badges.herokuapp.com/github/followers/ishandutta2007?color=236ad3&labelColor=1155ba&style=for-the-badge&logo=person-add&label=Follow&logoColor=white"/>
 </a>
 
-[Features](#-features) • [Quick Start](#-getting-started) • [Tech Stack](#-tech-stack) • [Comparison](#-comparison) • [Contributing](#-contributing)
+[Features](#-features) • [Quick Start](#-getting-started) • [Tech Stack](#-tech-stack) • [Comparison](#-comparison) • [Roadmap](#️-roadmap--todo-upcoming-premium-alternative-features) • [Contributing](#-contributing)
 
 </div>
 
@@ -102,13 +102,27 @@ OpenLaudableis built with modern, industry-standard technologies:
 
 ## 📊 Comparison
 
-| Feature | OpenLaudable| Lovable.dev | v0.dev | Bolt.new |
-| :--- | :---: | :---: | :---: | :---: |
-| **Pricing** | **Free (Local)** | Paid/Credits | Paid/Credits | Paid/Tokens |
-| **Open Source** | **✅ Yes** | ❌ No | ❌ No | ❌ No |
-| **Local-First** | **✅ Yes** | ❌ No | ❌ No | ❌ No |
-| **Code Ownership** | **✅ 100%** | Partial | Partial | Partial |
-| **Custom Models** | **✅ Any** | Fixed | Fixed | Fixed |
+| Product | Pricing | Free Tier Limits | Open Source | Local-First / Offline | Privacy & Data Isolation | BYO API Keys / Custom LLMs | Direct Local File Access | Database Integrations | Visual Component Inspector | Multi-File Editing & Diff View |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **OpenLaudable** | **100% Free** | **Unlimited** (Local execution, no credit caps) | **✅ Yes (Apache 2.0)** | **✅ Full** | **✅ 100% On-Device** | **✅ Any (Ollama, OpenAI, Anthropic, Gemini, OpenRouter)** | **✅ Direct filesystem** | Supabase, SQLite | ✅ Yes | ✅ Yes |
+| **Lovable.dev** | Freemium ($20/mo Starter, $50/mo Launch, Custom Scale) | 5 messages/day (or ~10-20 credits/mo reset) | ❌ No | ❌ Cloud-only | ❌ Prompts & code stored on cloud servers | ❌ Limited / Platform credits | ❌ Sandboxed cloud workspace | Supabase | ✅ Yes | ✅ Yes |
+| **v0.dev** | Freemium ($20/mo Premium, Custom Enterprise) | $10 free credits/month (~200 message credits, 10 daily max) | ❌ No | ❌ Cloud-only | ❌ Cloud hosted by Vercel | ❌ Platform credits only | ❌ Cloud deployment | Supabase, Neon | ✅ Yes | ⚠️ Limited (Web editor) |
+| **Bolt.new** | Freemium ($20/mo Pro, $50/mo Team, $200/mo Enterprise) | ~10M tokens / ~10 prompts total one-time credit | ❌ No | ❌ Browser container (WebContainers) | ❌ Cloud-tied environment | ⚠️ Partial (Pro tier only) | ❌ Browser memory / export required | Supabase, PostgreSQL | ⚠️ Partial | ✅ Yes |
+
+---
+
+## 🗺️ Roadmap & TODO (Upcoming Premium Alternative Features)
+
+We are actively bridging the gap between proprietary platforms and OpenLaudable. Here are features found in premium alternatives currently slated for upcoming releases:
+
+- [ ] **One-Click Cloud Deployment Integrations**: Instant 1-click deployments to platforms like Vercel, Netlify, and Cloudflare Pages directly from the desktop app (similar to Lovable & v0).
+- [ ] **Custom Domain & SSL Provisioning**: Automated domain mapping and DNS verification for deployed apps.
+- [ ] **Multi-User Real-time Collaboration**: Shared workspace multiplayer mode for live pair-programming and prompt sharing across teams.
+- [ ] **Native Mobile App Generation**: React Native / Expo export pipeline to generate cross-platform iOS and Android apps alongside web apps.
+- [ ] **Visual Drag-and-Drop Canvas & WYSIWYG Styling**: Direct canvas styling controls (spacing, typography, layout) without relying purely on chat prompts.
+- [ ] **AI Screenshot & Figma-to-Code Pipeline**: Direct Figma file importing and automated pixel-perfect UI component conversion.
+- [ ] **Production Auth & Stripe Billing Boilerplates**: 1-click presets for role-based authentication, user management, and Stripe subscription checkout logic.
+- [ ] **Integrated Vector & RAG Store Connectors**: Built-in vector search bindings (Pinecone, pgvector, Qdrant) for AI-native app scaffolds.
 
 ---
 
